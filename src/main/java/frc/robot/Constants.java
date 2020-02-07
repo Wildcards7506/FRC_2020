@@ -33,5 +33,5 @@ public final class Constants {
     //Driver Controller 2 declarations
 	public static final int DRIVER_CONTROLLER_2 = 1;
 
-	public static final int JOHN_IS_COOL = 99999;
+	
 }
