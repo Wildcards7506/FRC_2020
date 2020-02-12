@@ -7,7 +7,9 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.PWMVictorSPX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.TankDrive;
@@ -16,23 +18,23 @@ public class DriveTrain extends SubsystemBase {
   /**
    * Creates a new DriveTrain.
    */
-  private final PWMVictorSPX motorLeft0 = new PWMVictorSPX(Constants.MOTOR_LEFT_0);
-  private final PWMVictorSPX motorLeft1 = new PWMVictorSPX(Constants.MOTOR_LEFT_1);
-  private final PWMVictorSPX motorLeft2 = new PWMVictorSPX(Constants.MOTOR_LEFT_2);
-  private final PWMVictorSPX motorRight3 = new PWMVictorSPX(Constants.MOTOR_RIGHT_3);
-  private final PWMVictorSPX motorRight4 = new PWMVictorSPX(Constants.MOTOR_RIGHT_4);
-  private final PWMVictorSPX motorRight5 = new PWMVictorSPX(Constants.MOTOR_RIGHT_5);
+  private final VictorSPX motorLeft0 = new VictorSPX(Constants.MOTOR_LEFT_0);
+  private final VictorSPX motorLeft1 = new VictorSPX(Constants.MOTOR_LEFT_1);
+  private final VictorSPX motorLeft2 = new VictorSPX(Constants.MOTOR_LEFT_2);
+  private final VictorSPX motorRight3 = new VictorSPX(Constants.MOTOR_RIGHT_3);
+  private final VictorSPX motorRight4 = new VictorSPX(Constants.MOTOR_RIGHT_4);
+  private final VictorSPX motorRight5 = new VictorSPX(Constants.MOTOR_RIGHT_5);
 
   public void setLeftMotors(final double speed) {
-    motorLeft0.set(speed);
-    motorLeft1.set(speed);
-    motorLeft2.set(speed);
+    motorLeft0.set(ControlMode.PercentOutput, speed);
+    motorLeft1.set(ControlMode.PercentOutput,speed);
+    motorLeft2.set(ControlMode.PercentOutput,speed);
   }
 
   public void setRightMotors(final double speed) {
-    motorRight3.set(-speed);
-    motorRight4.set(-speed);
-    motorRight5.set(-speed);
+    motorRight3.set(ControlMode.PercentOutput,-speed);
+    motorRight4.set(ControlMode.PercentOutput,-speed);
+    motorRight5.set(ControlMode.PercentOutput,-speed);
   }
 
   @Override
