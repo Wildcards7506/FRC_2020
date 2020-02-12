@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -24,6 +25,8 @@ public class Robot extends TimedRobot {
   public static RobotContainer m_robotContainer;
 
   public static DriveTrain driveTrain = new DriveTrain();
+
+  public static Intake intake = new Intake();
 
   /**
    * This function is run when the robot is first started up and should be used for any

@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Camera extends CommandBase {
+public class STMCom extends CommandBase {
   /**
-   * Creates a new Camera.
+   * Creates a new STM.
    */
-  public Camera() {
+  public STMCom() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

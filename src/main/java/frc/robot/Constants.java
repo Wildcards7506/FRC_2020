@@ -17,12 +17,14 @@ package frc.robot;
  */
 public final class Constants {
     //MotorController Assignments
-	public static final int MOTOR_LEFT_0 = 0;
+	public static final int MOTOR_LEFT_0 = 0; 
 	public static final int MOTOR_LEFT_1 = 1;
 	public static final int MOTOR_LEFT_2 = 2;
 	public static final int MOTOR_RIGHT_3 = 3;
 	public static final int MOTOR_RIGHT_4 = 4;
 	public static final int MOTOR_RIGHT_5 = 5;
+	public static final int MOTOR_INTAKE_6 = 6;//Intake
+	public static final int MOTOR_INTAKE_7 = 7;
 	
     //Driver Controller 1 declarations
 	public static final int DRIVER_CONTROLLER_1 = 0;
@@ -32,6 +34,7 @@ public final class Constants {
 	
     //Driver Controller 2 declarations
 	public static final int DRIVER_CONTROLLER_2 = 1;
+	
 
 	
 }
