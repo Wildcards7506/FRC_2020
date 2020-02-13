@@ -36,7 +36,7 @@ public final class Constants {
     //Driver Controller 2 declarations
 	public static final int DRIVER_CONTROLLER_2 = 1;
 
-
+	//motor speeds?
 	public static final double MAX_SPEED = 1;
 	public static final double MIN_SPEED = 0;
 	
