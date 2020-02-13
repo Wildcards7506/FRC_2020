@@ -31,9 +31,15 @@ public final class Constants {
 	public static final int LEFT_STICK_Y = 1;
 	public static final int RIGHT_STICK_Y = 5;
 	public static final int BUTTON_X = 3;
+	public static final int BUTTON_Y = 0;//need to reassign to an axis
 	
     //Driver Controller 2 declarations
 	public static final int DRIVER_CONTROLLER_2 = 1;
+
+
+	public static final double MAX_SPEED = 1;
+	public static final double MIN_SPEED = 0;
+	
 	
 
 	

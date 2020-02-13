@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants;
 import frc.robot.commands.MoveSequence;
+import frc.robot.commands.IntakeCom;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -27,17 +28,22 @@ public class RobotContainer {
 
   private XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
    JoystickButton xButton = new JoystickButton(driverController1, Constants.BUTTON_X);
+   JoystickButton aButton = new JoystickButton(driverController1, Constants.BUTTON_Y);
   //private XboxController xButton = new XboxController(Constants.BUTTON_X);
 
   public double GetDriverRawAxis(int axis) {
     return driverController1.getRawAxis(axis);
   }
 
+  
+
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    xButton.whenPressed(new MoveSequence());
+    xButton.whileHeld(new IntakeCom());
+
+
     // Configure the button bindings
     configureButtonBindings();
   }
