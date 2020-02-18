@@ -7,18 +7,29 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.commands.IntakeCom;
 
 public class Intake extends SubsystemBase {
   /**
    * Creates a new Intake.
    */
-  public Intake() {
+    private final VictorSPX intakeMotor6 = new VictorSPX(Constants.MOTOR_INTAKE_6);
+    private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_INTAKE_7);
 
+  public void setIntakeMotors(final double speed)
+  {
+    intakeMotor6.set(ControlMode.PercentOutput, speed);
+    intakeMotor7.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    setDefaultCommand(new IntakeCom());
   }
 }
