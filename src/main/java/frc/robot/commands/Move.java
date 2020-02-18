@@ -14,6 +14,8 @@ public class Move extends CommandBase {
   /**
    * Creates a new Move.
    */
+  int timer = 0;
+
   double m_time, m_lSpeed, m_rSpeed;
 
   public Move(double time, double lSpeed, double rSpeed) {
@@ -27,17 +29,21 @@ public class Move extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    //withTimeout(m_time);
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
-    withTimeout(m_time);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    //withTimeout(m_time);
+    while (timer < m_time) {
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
-    withTimeout(m_time);
+    timer++;
+    }
+    //withTimeout(m_time);
   }
 
   // Called once the command ends or is interrupted.

@@ -20,6 +20,7 @@ public class MoveSequence extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     //super(new Move(2, 0.5, 0.5), new Move(5, -0.7, -0.7), new Move(10, -1, 1));
-    super(new Move(2, -0.3, 0.3), new Move(3, -0.4, 0.4));
+    super(new Move(5, -0.3, 0.3), new Move(3, -0.4, 0.4));
+
   }
 }
