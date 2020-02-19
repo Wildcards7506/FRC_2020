@@ -8,13 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+
 import frc.robot.Robot;
 
 public class Move extends CommandBase {
   /**
    * Creates a new Move.
    */
-  int timer = 0;
 
   double m_time, m_lSpeed, m_rSpeed;
 
@@ -32,17 +32,15 @@ public class Move extends CommandBase {
     //withTimeout(m_time);
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
+    //setTimeout(m_time);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     //withTimeout(m_time);
-    while (timer < m_time) {
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
-    timer++;
-    }
     //withTimeout(m_time);
   }
 

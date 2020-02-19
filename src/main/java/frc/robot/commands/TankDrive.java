@@ -31,8 +31,8 @@ public class TankDrive extends CommandBase {
     double leftStickY = Robot.m_robotContainer.GetDriverRawAxis(Constants.LEFT_STICK_Y);
     double rightStickY = Robot.m_robotContainer.GetDriverRawAxis(Constants.RIGHT_STICK_Y);
 
-    Robot.driveTrain.setLeftMotors(leftStickY * 0.8);
-    Robot.driveTrain.setRightMotors(rightStickY * 0.8);
+    Robot.driveTrain.setLeftMotors(leftStickY * Constants.DRIVE_MAX_SPEED);
+    Robot.driveTrain.setRightMotors(rightStickY * Constants.DRIVE_MAX_SPEED);
 
   }
 

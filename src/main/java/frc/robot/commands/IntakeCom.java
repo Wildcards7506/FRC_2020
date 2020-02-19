@@ -9,12 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-import frc.robot.RobotContainer;
 import frc.robot.Constants;
 
 public class IntakeCom extends CommandBase {
   /**
-   * Creates a new Intake.
+   * Creates a new IntakeCom.
    */
   public IntakeCom() {
     // Use addRequirements() here to declare subsystem dependencies.

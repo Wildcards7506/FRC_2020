@@ -17,7 +17,6 @@ package frc.robot;
  */
 public final class Constants {
     //MotorController Assignments
-<<<<<<< HEAD
 	public static final int MOTOR_1 = 1;
 	public static final int MOTOR_2 = 2;
 	public static final int MOTOR_3 = 3;
@@ -29,32 +28,28 @@ public final class Constants {
 	public static final int MOTOR_9 = 9;
 	public static final int MOTOR_10 = 10;
 	public static final int MOTOR_11 = 11;
-=======
-	public static final int MOTOR_LEFT_0 = 0; 
-	public static final int MOTOR_LEFT_1 = 1;
-	public static final int MOTOR_LEFT_2 = 2;
-	public static final int MOTOR_RIGHT_3 = 3;
-	public static final int MOTOR_RIGHT_4 = 4;
-	public static final int MOTOR_RIGHT_5 = 5;
-	public static final int MOTOR_INTAKE_6 = 6;//Intake
-	public static final int MOTOR_INTAKE_7 = 7;
->>>>>>> 923f6ac5c0d5d4cb8c47e9cc32184c06d08429ff
 	
-    //Driver Controller 1 declarations
+    //DriverController Assignments
 	public static final int DRIVER_CONTROLLER_1 = 0;
-	public static final int LEFT_STICK_Y = 1;
-	public static final int RIGHT_STICK_Y = 5;
-	public static final int BUTTON_X = 3;
-	public static final int BUTTON_Y = 0;//need to reassign to an axis
-	
-    //Driver Controller 2 declarations
 	public static final int DRIVER_CONTROLLER_2 = 1;
 
-	//motor speeds?
+	//JBT Assignments
+	public static final int LEFT_STICK_Y = 1;
+	public static final int RIGHT_STICK_Y = 5;
+	public static final int LEFT_STICK_X = 0;
+	public static final int RIGHT_STICK_X = 0;
+	public static final int BUTTON_A = 0;
+	public static final int BUTTON_B = 0;
+	public static final int BUTTON_X = 0;
+	public static final int BUTTON_Y = 0;
+	public static final int RIGHT_BUTTON = 0;
+	public static final int LEFT_BUTTON = 0;
+	public static final int RIGHT_TRIGGER = 0;
+	public static final int LEFT_TRIGGER = 0;//need to reassign to an axis
+
+	//Fixed MotorSpeeds
 	public static final double MAX_SPEED = 1;
 	public static final double MIN_SPEED = 0;
-	
-	
+	public static final double DRIVE_MAX_SPEED = 0.8;
 
-	
 }
