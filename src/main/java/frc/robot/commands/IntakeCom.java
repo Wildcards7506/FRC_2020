@@ -24,7 +24,7 @@ public class IntakeCom extends CommandBase {
   @Override
   public void initialize() 
   {
-    
+    Robot.intake.setIntakeMotors(Constants.MAX_SPEED);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,7 +38,7 @@ public class IntakeCom extends CommandBase {
   @Override
   public void end(boolean interrupted) 
   {
-    Robot.intake.setIntakeMotors(Constants.MIN_SPEED);
+    Robot.intake.setIntakeMotors(Constants.STOP);
   }
 
   // Returns true when the command should end.

@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants;
 import frc.robot.commands.IntakeCom;
 import frc.robot.commands.Move;
+import frc.robot.commands.ShooterCom;
 //import frc.robot.commands.MoveSequence;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -28,7 +28,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   private XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
-   JoystickButton xButton = new JoystickButton(driverController1, Constants.BUTTON_X);
+  private XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
+  //private JoystickButton xButton = new JoystickButton(driverController1, Constants.BUTTON_X);
   //private XboxController xButton = new XboxController(Constants.BUTTON_X);
 
   public double GetDriverRawAxis(int axis) {
@@ -40,9 +41,8 @@ public class RobotContainer {
    */
   public RobotContainer() {
     //xButton.whenPressed(new MoveSequence());
-    xButton.whileHeld(new IntakeCom());
-
-
+    //xButton.whileHeld(new IntakeCom());
+    
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -54,6 +54,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    if (driverController2.getXButton()) new IntakeCom();
+    if (driverController2.getAButton()) new ShooterCom();
   }
 
 

@@ -7,18 +7,26 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.commands.ClimbCom;
 
 public class Climb extends SubsystemBase {
   /**
    * Creates a new Climb.
    */
-  public Climb() {
+  private final VictorSPX climbMotor8 = new VictorSPX(Constants.MOTOR_8);
 
+  public void setClimbMotor(final double speed) {
+    climbMotor8.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    setDefaultCommand(new ClimbCom());
   }
 }

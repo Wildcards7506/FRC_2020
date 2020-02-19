@@ -33,7 +33,8 @@ public final class Constants {
 	public static final int DRIVER_CONTROLLER_1 = 0;
 	public static final int DRIVER_CONTROLLER_2 = 1;
 
-	//JBT Assignments
+	/*JBT Assignments -- These might loose thier purpose in future updates of this program with 
+	"DriverController Assignments" being the only ones needed to control the robot. */
 	public static final int LEFT_STICK_Y = 1;
 	public static final int RIGHT_STICK_Y = 5;
 	public static final int LEFT_STICK_X = 0;
@@ -49,7 +50,7 @@ public final class Constants {
 
 	//Fixed MotorSpeeds
 	public static final double MAX_SPEED = 1;
-	public static final double MIN_SPEED = 0;
+	public static final double STOP = 0;
 	public static final double DRIVE_MAX_SPEED = 0.8;
 
 }
