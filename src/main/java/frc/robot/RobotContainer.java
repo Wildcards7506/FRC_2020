@@ -9,10 +9,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.Constants;
-import frc.robot.commands.IntakeCom;
+//import frc.robot.Constants;
+//import frc.robot.commands.IntakeCom;
 import frc.robot.commands.Move;
-import frc.robot.commands.ShooterCom;
+//import frc.robot.commands.ShooterCom;
 //import frc.robot.commands.MoveSequence;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -32,15 +32,30 @@ public class RobotContainer {
   //private JoystickButton xButton = new JoystickButton(driverController1, Constants.BUTTON_X);
   //private XboxController xButton = new XboxController(Constants.BUTTON_X);
 
-  public double GetDriverRawAxis(int axis) {
+  public double getDriver1RawAxis(int axis) {
     return driverController1.getRawAxis(axis);
+  }
+
+  public double getDriver2RawAxis(int axis) {
+    return driverController2.getRawAxis(axis);
+  }
+
+  public double getDriver2TwoButtonConfig(int button1, int button2, double initialSpeed, double finalSpeed1, double finalSpeed2) {
+    if (driverController2.getRawButton(button1)) return finalSpeed1;
+    if (driverController2.getRawButton(button2)) return finalSpeed2;
+    return initialSpeed;
+  }
+
+  public double getDriver2OneButtonConfig(int button, double initialSpeed, double finalSpeed) {
+    if (driverController2.getRawButton(button)) return finalSpeed;
+    return initialSpeed;
   }
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    //xButton.whenPressed(new MoveSequence());
+    //xButton.whenPressed(new IntakeCom());
     //xButton.whileHeld(new IntakeCom());
     
     // Configure the button bindings
@@ -54,8 +69,9 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    if (driverController2.getXButton()) new IntakeCom();
-    if (driverController2.getAButton()) new ShooterCom();
+    //if (driverController2.getXButtonPressed()) new IntakeCom();
+    //if (driverController2.getXButtonReleased()) new IntakeCom().end(true);
+    //if (driverController2.getAButtonPressed()) new ShooterCom();
   }
 
 

@@ -26,15 +26,15 @@ public class DriveTrain extends SubsystemBase {
   private final VictorSPX motorRight3 = new VictorSPX(Constants.MOTOR_3);
 
   public void setLeftMotors(final double speed) {
-    motorLeft9.set(ControlMode.PercentOutput, -speed);
-    motorLeft10.set(ControlMode.PercentOutput, -speed);
-    motorLeft11.set(ControlMode.PercentOutput, -speed);
+    motorLeft9.set(ControlMode.PercentOutput, speed);
+    motorLeft10.set(ControlMode.PercentOutput, speed);
+    motorLeft11.set(ControlMode.PercentOutput, speed);
   }
 
   public void setRightMotors(final double speed) {
-    motorRight1.set(ControlMode.PercentOutput, speed);
-    motorRight2.set(ControlMode.PercentOutput, speed);
-    motorRight3.set(ControlMode.PercentOutput, speed);
+    motorRight1.set(ControlMode.PercentOutput, -speed);
+    motorRight2.set(ControlMode.PercentOutput, -speed);
+    motorRight3.set(ControlMode.PercentOutput, -speed);
   }
 
   @Override

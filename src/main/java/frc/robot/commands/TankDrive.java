@@ -28,8 +28,8 @@ public class TankDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftStickY = Robot.m_robotContainer.GetDriverRawAxis(Constants.LEFT_STICK_Y);
-    double rightStickY = Robot.m_robotContainer.GetDriverRawAxis(Constants.RIGHT_STICK_Y);
+    double leftStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.LEFT_STICK_Y);
+    double rightStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_Y);
 
     Robot.driveTrain.setLeftMotors(leftStickY * Constants.DRIVE_MAX_SPEED);
     Robot.driveTrain.setRightMotors(rightStickY * Constants.DRIVE_MAX_SPEED);
@@ -40,8 +40,8 @@ public class TankDrive extends CommandBase {
   //david was here  <--- lol  -Alberto
   @Override
   public void end(boolean interrupted) {
-    Robot.driveTrain.setLeftMotors(0);
-    Robot.driveTrain.setRightMotors(0);
+    Robot.driveTrain.setLeftMotors(Constants.STOP);
+    Robot.driveTrain.setRightMotors(Constants.STOP);
   }
 
   // Returns true when the command should end.

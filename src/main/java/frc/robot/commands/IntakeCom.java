@@ -24,14 +24,15 @@ public class IntakeCom extends CommandBase {
   @Override
   public void initialize() 
   {
-    Robot.intake.setIntakeMotors(Constants.MAX_SPEED);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() 
   {
-    Robot.intake.setIntakeMotors(Constants.MAX_SPEED);
+    double motorSpeed = Robot.m_robotContainer.getDriver2TwoButtonConfig(Constants.LEFT_BUTTON, 
+    Constants.RIGHT_BUTTON, Constants.STOP, Constants.MIN_SPEED, Constants.MAX_SPEED);
+    Robot.intake.setIntakeMotors(motorSpeed);
   }
 
   // Called once the command ends or is interrupted.

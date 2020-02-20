@@ -8,6 +8,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
+import frc.robot.Robot;
 
 public class ClimbCom extends CommandBase {
   /**
@@ -15,6 +17,7 @@ public class ClimbCom extends CommandBase {
    */
   public ClimbCom() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(Robot.climb);
   }
 
   // Called when the command is initially scheduled.
@@ -25,11 +28,14 @@ public class ClimbCom extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    double rightStickY = Robot.m_robotContainer.getDriver2RawAxis(Constants.RIGHT_STICK_Y);
+    Robot.climb.setClimbMotor((int)(Math.pow(rightStickY*Constants.JOYSTICK_LOWER_BOUND, 1/3)));
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Robot.climb.setClimbMotor(Constants.STOP);
   }
 
   // Returns true when the command should end.
