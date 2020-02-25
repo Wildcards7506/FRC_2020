@@ -29,7 +29,7 @@ public class ClimbCom extends CommandBase {
   @Override
   public void execute() {
     double rightStickY = Robot.m_robotContainer.getDriver2RawAxis(Constants.RIGHT_STICK_Y);
-    Robot.climb.setClimbMotor((int)(Math.pow(rightStickY*Constants.JOYSTICK_LOWER_BOUND, 1/3)));
+    Robot.climb.setClimbMotor((int) (rightStickY * 1.99));
   }
 
   // Called once the command ends or is interrupted.

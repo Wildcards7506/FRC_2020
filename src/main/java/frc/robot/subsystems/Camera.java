@@ -7,18 +7,23 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Camera extends SubsystemBase {
   /**
    * Creates a new Camera.
    */
-  public Camera() {
+  private final CameraServer server = CameraServer.getInstance();
 
+  public Camera() {
+    server.startAutomaticCapture(Constants.CAMERA_USB);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    //setDefaultCommand(new CameraCom());
   }
 }

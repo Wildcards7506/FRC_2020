@@ -28,16 +28,27 @@ public class TankDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.LEFT_STICK_Y);
+    double rightStickX = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_X);
     double rightStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_Y);
 
-    Robot.driveTrain.setLeftMotors(leftStickY * Constants.DRIVE_MAX_SPEED);
-    Robot.driveTrain.setRightMotors(rightStickY * Constants.DRIVE_MAX_SPEED);
+    Robot.driveTrain.setRightMotors(.5 * ( rightStickY/2 + rightStickX/2) * Constants.DRIVE_MAX_SPEED );
+    Robot.driveTrain.setLeftMotors(( rightStickY/2 - rightStickX/2) * Constants.DRIVE_MAX_SPEED );
 
+    //Not really drivetrain but still usefull
+    System.out.println(Robot.m_robotContainer.controlValues(
+     Constants.RIGHT_STICK_Y,
+     Constants.RIGHT_STICK_X,
+     Constants.BUTTON_A,
+     Constants.BUTTON_B,
+     Constants.BUTTON_X,
+     Constants.BUTTON_Y,
+     Constants.LEFT_BUTTON,
+     Constants.RIGHT_BUTTON,
+     Constants.RIGHT_STICK_Y)
+     );
   }
 
   // Called once the command ends or is interrupted.
-  //david was here  <--- lol  -Alberto
   @Override
   public void end(boolean interrupted) {
     Robot.driveTrain.setLeftMotors(Constants.STOP);

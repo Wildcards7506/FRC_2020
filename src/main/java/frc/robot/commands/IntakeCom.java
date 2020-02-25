@@ -30,7 +30,7 @@ public class IntakeCom extends CommandBase {
   @Override
   public void execute() 
   {
-    double motorSpeed = Robot.m_robotContainer.getDriver2TwoButtonConfig(Constants.LEFT_BUTTON, 
+    double motorSpeed = Robot.m_robotContainer.driver2TwoButtonConfig(Constants.LEFT_BUTTON, 
     Constants.RIGHT_BUTTON, Constants.STOP, Constants.MIN_SPEED, Constants.MAX_SPEED);
     Robot.intake.setIntakeMotors(motorSpeed);
   }

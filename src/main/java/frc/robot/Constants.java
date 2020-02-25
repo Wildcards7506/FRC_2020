@@ -33,8 +33,7 @@ public final class Constants {
 	public static final int DRIVER_CONTROLLER_1 = 0;
 	public static final int DRIVER_CONTROLLER_2 = 1;
 
-	/*JBT Assignments -- These might loose thier purpose in future updates of this program with 
-	"DriverController Assignments" being the only ones needed to control the robot. */
+	//JBT Assignments
 	public static final int LEFT_STICK_Y = 1;
 	public static final int RIGHT_STICK_Y = 5;
 	public static final int LEFT_STICK_X = 0;
@@ -43,16 +42,25 @@ public final class Constants {
 	public static final int BUTTON_B = 2;
 	public static final int BUTTON_X = 3;
 	public static final int BUTTON_Y = 4;
-	public static final int RIGHT_BUTTON = 6;
 	public static final int LEFT_BUTTON = 5;
-	public static final int RIGHT_TRIGGER = 3;
+	public static final int RIGHT_BUTTON = 6;
 	public static final int LEFT_TRIGGER = 2;
+	public static final int RIGHT_TRIGGER = 3;
+
+	//Camera Assignment
+	public static final int CAMERA_USB = 0;
+
+	//Colors______________________________R____G____B__
+	public static final int[] CYAN =    {0  , 100, 100};
+	public static final int[] MAGENTA = {100, 0  , 0  };
+	public static final int[] YELLOW =  {100, 100, 0  };
+	public static final int[] BLACK =   {0  , 0  , 0  };
 
 	//Fixed MotorSpeeds
 	public static final double MAX_SPEED = 1;
 	public static final double MIN_SPEED = -1;
 	public static final double STOP = 0;
-	public static final double DRIVE_MAX_SPEED = 0.8;
+	public static final double DRIVE_MAX_SPEED = 1;
 	public static final double ELEVATOR_STOP = 0;
 
 	//Fixed Variables

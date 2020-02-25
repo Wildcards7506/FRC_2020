@@ -10,9 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.STM;
 import frc.robot.subsystems.Shooter;
 
 /**
@@ -33,6 +35,10 @@ public class Robot extends TimedRobot {
   public static Shooter shooter = new Shooter();
   
   public static Climb climb = new Climb();
+
+  public static Camera camera = new Camera();
+
+  public static STM stm = new STM();
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -58,6 +64,7 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
+
     CommandScheduler.getInstance().run();
   }
 

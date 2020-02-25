@@ -28,9 +28,9 @@ public class ShooterCom extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double motorSpeed = Robot.m_robotContainer.getDriver2OneButtonConfig(Constants.BUTTON_A, 
+    double motorSpeed = Robot.m_robotContainer.driver2OneButtonConfig(Constants.BUTTON_A, 
     Constants.MAX_SPEED, Constants.STOP);
-    Robot.intake.setIntakeMotors(motorSpeed);
+    Robot.shooter.setShooterMotor(motorSpeed);;
   }
 
   // Called once the command ends or is interrupted.
