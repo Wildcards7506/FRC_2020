@@ -51,9 +51,9 @@ public final class Constants {
 	public static final int CAMERA_USB = 0;
 
 	//Colors______________________________R____G____B__
-	public static final int[] CYAN =    {0  , 100, 100};
-	public static final int[] MAGENTA = {100, 0  , 0  };
-	public static final int[] YELLOW =  {100, 100, 0  };
+	public static final int[] CYAN =    {0  , 255, 255};
+	public static final int[] MAGENTA = {255, 0  , 0  };
+	public static final int[] YELLOW =  {255, 255, 0  };
 	public static final int[] BLACK =   {0  , 0  , 0  };
 
 	//Fixed MotorSpeeds
@@ -61,8 +61,8 @@ public final class Constants {
 	public static final double MIN_SPEED = -1;
 	public static final double STOP = 0;
 	public static final double DRIVE_MAX_SPEED = 1;
-	public static final double ELEVATOR_STOP = 0;
+	public static final double STM_SPEED = .2;
 
 	//Fixed Variables
-	public static final double JOYSTICK_LOWER_BOUND = 0.5;
+	
 }

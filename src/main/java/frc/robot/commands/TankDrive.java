@@ -31,8 +31,8 @@ public class TankDrive extends CommandBase {
     double rightStickX = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_X);
     double rightStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_Y);
 
-    Robot.driveTrain.setRightMotors(.5 * ( rightStickY/2 + rightStickX/2) * Constants.DRIVE_MAX_SPEED );
-    Robot.driveTrain.setLeftMotors(( rightStickY/2 - rightStickX/2) * Constants.DRIVE_MAX_SPEED );
+    Robot.driveTrain.setRightMotors(( rightStickY + rightStickX) * Constants.DRIVE_MAX_SPEED );
+    Robot.driveTrain.setLeftMotors(( rightStickY - rightStickX) * Constants.DRIVE_MAX_SPEED );
 
     //Not really drivetrain but still usefull
     System.out.println(Robot.m_robotContainer.controlValues(

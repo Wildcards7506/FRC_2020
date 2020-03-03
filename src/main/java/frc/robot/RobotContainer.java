@@ -7,16 +7,22 @@
 
 package frc.robot;
 
+import java.lang.reflect.Method;
+//import java.util.Set;
+
 //import edu.wpi.cscore.AxisCamera;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 //import frc.robot.Constants;
 //import frc.robot.commands.IntakeCom;
 import frc.robot.commands.Move;
+//import frc.robot.commands.STMCom;
 //import frc.robot.commands.ShooterCom;
 //import frc.robot.commands.MoveSequence;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+//import edu.wpi.first.wpilibj2.command.ConditionalCommand;
+//import edu.wpi.first.wpilibj2.command.Subsystem;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -29,23 +35,20 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   private XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
-  private XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
+  private static XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
 
-  //private AxisCamera camera = new AxisCamera.getInstance();
-  //private JoystickButton xButton =  JoystickButton(driverController1, Constants.BUTTON_X);
-  //private XboxController xButton = new XboxController(Constants.BUTTON_X);
+  // private AxisCamera camera = new AxisCamera.getInstance();
+  // private JoystickButton xButton = JoystickButton(driverController1,
+  // Constants.BUTTON_X);
+  // private XboxController xButton = new XboxController(Constants.BUTTON_X);
 
-  //This just gives all the controller values
+  // This just gives all the controller values
   public String controlValues(int j1, int j2, int b1, int b2, int b3, int b4, int b5, int b6, int j3) {
-    return "JY: " + (int)(-getDriver1RawAxis(j1) * 100) + 
-    " | JX: " + (int)(getDriver1RawAxis(j2) * 100) + 
-    " | A: " + driverController2.getRawButton(b1) + 
-    " | B: " + driverController2.getRawButton(b2) + 
-    " | X: " + driverController2.getRawButton(b3) + 
-    " | Y: " + driverController2.getRawButton(b4) + 
-    " | LB: " + driverController2.getRawButton(b5) + 
-    " | RB: " + driverController2.getRawButton(b6) + 
-    " | Elevator: " + (int)(-getDriver2RawAxis(j3) * 100);
+    return "JY: " + (int) (-getDriver1RawAxis(j1) * 100) + " | JX: " + (int) (getDriver1RawAxis(j2) * 100) + " | A: "
+        + driverController2.getRawButton(b1) + " | B: " + driverController2.getRawButton(b2) + " | X: "
+        + driverController2.getRawButton(b3) + " | Y: " + driverController2.getRawButton(b4) + " | LB: "
+        + driverController2.getRawButton(b5) + " | RB: " + driverController2.getRawButton(b6) + " | Elevator: "
+        + (int) (-getDriver2RawAxis(j3) * 100);
 
   }
 
@@ -57,19 +60,31 @@ public class RobotContainer {
     return driverController2.getRawAxis(axis);
   }
 
-  public double driver2TwoButtonConfig(int button1, int button2, double initialSpeed, double finalSpeed1, double finalSpeed2) {
-    if (driverController2.getRawButton(button1)) return finalSpeed1;
-    if (driverController2.getRawButton(button2)) return finalSpeed2;
+  public double driver2TwoButtonConfig(int button1, int button2, double initialSpeed, double finalSpeed1,
+      double finalSpeed2) {
+    if (driverController2.getRawButton(button1))
+      return finalSpeed1;
+    if (driverController2.getRawButton(button2))
+      return finalSpeed2;
     return initialSpeed;
   }
 
   public double driver2OneButtonConfig(int button, double initialSpeed, double finalSpeed) {
-    if (!driverController2.getRawButton(button)) return finalSpeed;
+    if (!driverController2.getRawButton(button))
+      return finalSpeed;
     return initialSpeed;
   }
 
-  public static void buttonCommand(int button) {}
 
+  public Method commandButton(int button, Method command) {
+    if (driverController2.getRawButton(button)) return command;
+    return null;
+  }
+
+  //public Command STMButton(int button, Command cmd) {
+  // if (driverController2.getRawButton(button)) return new Command(){
+  //  return null;
+  //}
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */

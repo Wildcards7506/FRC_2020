@@ -18,13 +18,13 @@ public class Intake extends SubsystemBase {
   /**
    * Creates a new Intake.
    */
-    private final VictorSPX intakeMotor6 = new VictorSPX(Constants.MOTOR_6);
+    //private final VictorSPX intakeMotor6 = new VictorSPX(Constants.MOTOR_6);
     private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_7);
 
   public void setIntakeMotors(final double speed)
   {
-    intakeMotor6.set(ControlMode.PercentOutput, speed);
-    intakeMotor7.set(ControlMode.PercentOutput, speed);
+    //intakeMotor6.set(ControlMode.PercentOutput, speed);
+    intakeMotor7.set(ControlMode.PercentOutput, -speed * 0.4);
   }
 
   @Override

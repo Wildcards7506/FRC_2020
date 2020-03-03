@@ -18,10 +18,10 @@ public class Shooter extends SubsystemBase {
   /**
    * Creates a new Shooter.
    */
-    private final VictorSPX shooterMotor4 = new VictorSPX(Constants.MOTOR_4);
+    private final VictorSPX shooterMotor4 = new VictorSPX(Constants.MOTOR_8);
 
   public void setShooterMotor(final double speed) {
-    shooterMotor4.set(ControlMode.PercentOutput, speed);
+    shooterMotor4.set(ControlMode.PercentOutput, -speed);
   }
 
   @Override

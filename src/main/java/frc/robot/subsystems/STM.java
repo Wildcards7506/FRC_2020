@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import java.util.TimerTask;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -28,8 +30,9 @@ public class STM extends SubsystemBase {
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
-  public void setSTM_Motor(final double speed) {
-    STM_Motor5.set(ControlMode.PercentOutput, speed);
+  public TimerTask setSTM_Motor(final double speed) {
+     STM_Motor5.set(ControlMode.PercentOutput, speed);
+     return null;
   }
 
   @Override
@@ -51,4 +54,8 @@ public class STM extends SubsystemBase {
     // This method will be called once per scheduler run
     setDefaultCommand(new STMCom());
   }
+
+public static double addRequirements(STM stm) {
+	return 0;
+}
 }

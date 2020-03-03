@@ -18,7 +18,7 @@ public class Climb extends SubsystemBase {
   /**
    * Creates a new Climb.
    */
-  private final VictorSPX climbMotor8 = new VictorSPX(Constants.MOTOR_8);
+  private final VictorSPX climbMotor8 = new VictorSPX(Constants.MOTOR_4);
 
   public void setClimbMotor(final double speed) {
     climbMotor8.set(ControlMode.PercentOutput, -speed);
