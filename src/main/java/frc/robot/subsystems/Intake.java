@@ -15,15 +15,14 @@ import frc.robot.Constants;
 import frc.robot.commands.IntakeCom;
 
 public class Intake extends SubsystemBase {
-  /**
-   * Creates a new Intake.
-   */
-    //private final VictorSPX intakeMotor6 = new VictorSPX(Constants.MOTOR_6);
-    private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_7);
+  /* Declares and initializes motor */
+  private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_7);
 
-  public void setIntakeMotors(final double speed)
-  {
-    //intakeMotor6.set(ControlMode.PercentOutput, speed);
+  /*
+   * This method sets the speed of the motor (returns a double ranging from -1 to
+   * 1)
+   */
+  public void setIntakeMotors(final double speed) {
     intakeMotor7.set(ControlMode.PercentOutput, -speed * 0.4);
   }
 

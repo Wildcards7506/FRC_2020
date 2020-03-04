@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
+
+/* Class still in development */
 public class MoveSequence extends SequentialCommandGroup {
   /**
    * Creates a new MoveSequence.
@@ -19,7 +21,7 @@ public class MoveSequence extends SequentialCommandGroup {
   public MoveSequence() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    //super(new Move(2, 0.5, 0.5), new Move(5, -0.7, -0.7), new Move(10, -1, 1));
+    // super(new Move(2, 0.5, 0.5), new Move(5, -0.7, -0.7), new Move(10, -1, 1));
     super(new Move(5, -0.3, 0.3), new Move(3, -0.4, 0.4));
 
   }

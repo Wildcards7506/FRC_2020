@@ -12,11 +12,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Camera extends SubsystemBase {
-  /**
-   * Creates a new Camera.
-   */
+  /* Declares and initializes the camera */
   private final CameraServer server = CameraServer.getInstance();
 
+  /* This method starts the camera */
   public Camera() {
     server.startAutomaticCapture(Constants.CAMERA_USB);
   }
@@ -24,6 +23,6 @@ public class Camera extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    //setDefaultCommand(new CameraCom());
+    // setDefaultCommand(new CameraCom());
   }
 }

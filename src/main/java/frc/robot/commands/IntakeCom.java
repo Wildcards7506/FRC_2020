@@ -12,37 +12,36 @@ import frc.robot.Robot;
 import frc.robot.Constants;
 
 public class IntakeCom extends CommandBase {
-  /**
-   * Creates a new IntakeCom.
-   */
   public IntakeCom() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.intake);
   }
 
-  // Called when the command is initially scheduled.
+  /* Called when the command is initially scheduled. */
   @Override
-  public void initialize() 
-  {
+  public void initialize() {
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  /* Called every time the scheduler runs while the command is scheduled. */
   @Override
-  public void execute() 
-  {
-    double motorSpeed = Robot.m_robotContainer.driver2TwoButtonConfig(Constants.LEFT_BUTTON, 
-    Constants.RIGHT_BUTTON, Constants.STOP, Constants.MIN_SPEED, Constants.MAX_SPEED);
+  public void execute() {
+    // initializes and declares motor speed basedXboxController2's LB and RB button
+    // values
+    double motorSpeed = Robot.m_robotContainer.driver2TwoButtonConfig(Constants.LEFT_BUTTON, Constants.RIGHT_BUTTON,
+        Constants.STOP, -Constants.INTAKE_SPEED, Constants.INTAKE_SPEED);
+        
+    // set the speed of the motor
     Robot.intake.setIntakeMotors(motorSpeed);
   }
 
-  // Called once the command ends or is interrupted.
+  /* Called once the command ends or is interrupted. */
   @Override
-  public void end(boolean interrupted) 
-  {
+  public void end(boolean interrupted) {
+    // stops the motor
     Robot.intake.setIntakeMotors(Constants.STOP);
   }
 
-  // Returns true when the command should end.
+  /* Returns true when the command should end. */
   @Override
   public boolean isFinished() {
     return false;

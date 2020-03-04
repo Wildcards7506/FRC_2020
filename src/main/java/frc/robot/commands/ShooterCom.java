@@ -12,30 +12,32 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class ShooterCom extends CommandBase {
-  /**
-   * Creates a new Shooter.
-   */
   public ShooterCom() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.shooter);
   }
 
-  // Called when the command is initially scheduled.
+  /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    double motorSpeed = Robot.m_robotContainer.driver2OneButtonConfig(Constants.BUTTON_A, 
-    Constants.MAX_SPEED, Constants.STOP);
-    Robot.shooter.setShooterMotor(motorSpeed);;
+    // initializes and declares motor speed basedXboxController2's A button value
+    double motorSpeed = Robot.m_robotContainer.driver2OneButtonConfig(Constants.BUTTON_A, Constants.SHOOTER_SPEED,
+        Constants.STOP);
+        
+    // set the speed of the motor
+    Robot.shooter.setShooterMotor(motorSpeed);
+    ;
   }
 
-  // Called once the command ends or is interrupted.
+  /* Called once the command ends or is interrupted. */
   @Override
   public void end(boolean interrupted) {
+    // stops motor
     Robot.shooter.setShooterMotor(Constants.STOP);
   }
 

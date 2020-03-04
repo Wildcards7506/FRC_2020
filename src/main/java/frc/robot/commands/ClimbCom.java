@@ -12,33 +12,34 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class ClimbCom extends CommandBase {
-  /**
-   * Creates a new Climb.
-   */
   public ClimbCom() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    /* Use addRequirements() here to declare subsystem dependencies. */
     addRequirements(Robot.climb);
   }
 
-  // Called when the command is initially scheduled.
+  /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
+    // initializes and declares joystick value from XboxController2
     double rightStickY = Robot.m_robotContainer.getDriver2RawAxis(Constants.RIGHT_STICK_Y);
-    Robot.climb.setClimbMotor((int) (rightStickY * 1.99));
+    
+    // set the speed of the motor
+    Robot.climb.setClimbMotor((int) (Constants.CLIMB_SPEED * rightStickY * 1.99));
   }
 
-  // Called once the command ends or is interrupted.
+  /* Called once the command ends or is interrupted. */
   @Override
   public void end(boolean interrupted) {
+    //stops the motor
     Robot.climb.setClimbMotor(Constants.STOP);
   }
 
-  // Returns true when the command should end.
+  /* Returns true when the command should end. */
   @Override
   public boolean isFinished() {
     return false;

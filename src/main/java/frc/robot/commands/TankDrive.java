@@ -12,50 +12,42 @@ import frc.robot.Robot;
 import frc.robot.Constants;
 
 public class TankDrive extends CommandBase {
-  /**
-   * Creates a new TankDrive.
-   */
   public TankDrive() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.driveTrain);
   }
 
-  // Called when the command is initially scheduled.
+  /* Called when the command is initially scheduled. */
   @Override
-  public void initialize(){
+  public void initialize() {
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
+    // initializes and declares joystick values from XboxController1
     double rightStickX = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_X);
     double rightStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_Y);
 
-    Robot.driveTrain.setRightMotors(( rightStickY + rightStickX) * Constants.DRIVE_MAX_SPEED );
-    Robot.driveTrain.setLeftMotors(( rightStickY - rightStickX) * Constants.DRIVE_MAX_SPEED );
+    // set the speed of the motors
+    Robot.driveTrain.setRightMotors((rightStickY + rightStickX) * Constants.DRIVE_MAX_SPEED);
+    Robot.driveTrain.setLeftMotors((rightStickY - rightStickX) * Constants.DRIVE_MAX_SPEED);
 
-    //Not really drivetrain but still usefull
-    System.out.println(Robot.m_robotContainer.controlValues(
-     Constants.RIGHT_STICK_Y,
-     Constants.RIGHT_STICK_X,
-     Constants.BUTTON_A,
-     Constants.BUTTON_B,
-     Constants.BUTTON_X,
-     Constants.BUTTON_Y,
-     Constants.LEFT_BUTTON,
-     Constants.RIGHT_BUTTON,
-     Constants.RIGHT_STICK_Y)
-     );
+    // Prints XboxController values on dashboard
+    System.out.println(Robot.m_robotContainer.controlValues(Constants.RIGHT_STICK_Y, Constants.RIGHT_STICK_X,
+        Constants.BUTTON_A, Constants.BUTTON_B, Constants.BUTTON_X, Constants.BUTTON_Y, Constants.LEFT_BUTTON,
+        Constants.RIGHT_BUTTON, Constants.RIGHT_STICK_Y));
   }
 
-  // Called once the command ends or is interrupted.
+  /* Called once the command ends or is interrupted. */
   @Override
   public void end(boolean interrupted) {
+    // stops motors
     Robot.driveTrain.setLeftMotors(Constants.STOP);
     Robot.driveTrain.setRightMotors(Constants.STOP);
   }
 
-  // Returns true when the command should end.
+  /* Returns true when the command should end. */
   @Override
   public boolean isFinished() {
     return false;

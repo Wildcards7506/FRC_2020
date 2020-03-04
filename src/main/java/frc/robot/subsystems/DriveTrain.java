@@ -15,9 +15,7 @@ import frc.robot.Constants;
 import frc.robot.commands.TankDrive;
 
 public class DriveTrain extends SubsystemBase {
-  /**
-   * Creates a new DriveTrain.
-   */
+  /* Declares and initializes motors */
   private final VictorSPX motorLeft9 = new VictorSPX(Constants.MOTOR_9);
   private final VictorSPX motorLeft10 = new VictorSPX(Constants.MOTOR_10);
   private final VictorSPX motorLeft11 = new VictorSPX(Constants.MOTOR_11);
@@ -25,12 +23,20 @@ public class DriveTrain extends SubsystemBase {
   private final VictorSPX motorRight2 = new VictorSPX(Constants.MOTOR_2);
   private final VictorSPX motorRight3 = new VictorSPX(Constants.MOTOR_3);
 
+  /*
+   * This method sets the speed of the left motors (returns a double ranging from
+   * -1 to 1)
+   */
   public void setLeftMotors(final double speed) {
     motorLeft9.set(ControlMode.PercentOutput, speed);
     motorLeft10.set(ControlMode.PercentOutput, speed);
     motorLeft11.set(ControlMode.PercentOutput, speed);
   }
 
+  /*
+   * This method sets the speed of the left motors (returns a double ranging from
+   * -1 to 1)
+   */
   public void setRightMotors(final double speed) {
     motorRight1.set(ControlMode.PercentOutput, -speed);
     motorRight2.set(ControlMode.PercentOutput, -speed);

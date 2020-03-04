@@ -29,19 +29,19 @@ public class Move extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //withTimeout(m_time);
+    // withTimeout(m_time);
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
-    //setTimeout(m_time);
+    // setTimeout(m_time);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //withTimeout(m_time);
+    // withTimeout(m_time);
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
-    //withTimeout(m_time);
+    // withTimeout(m_time);
   }
 
   // Called once the command ends or is interrupted.
@@ -49,7 +49,7 @@ public class Move extends CommandBase {
   public void end(boolean interrupted) {
     Robot.driveTrain.setLeftMotors(0);
     Robot.driveTrain.setRightMotors(0);
-  } 
+  }
 
   // Returns true when the command should end.
   @Override
