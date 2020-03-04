@@ -74,7 +74,7 @@ public class RobotContainer {
    * -1 and 1)
    */
   public double driver2OneButtonConfig(int button, double nullSpeed, double speed) {
-    // if button is pressed
+    // if button is pressed 
     if (driverController2.getRawButton(button))
       return speed;
     // if button is not pressed

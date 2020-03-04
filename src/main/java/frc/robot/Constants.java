@@ -59,7 +59,7 @@ public final class Constants {
 	public static final int[] BLACK = { 0, 0, 0 };
 
 	// Fixed MotorSpeeds
-	public static final double SHOOTER_SPEED = 1;
+	public static final double SHOOTER_SPEED = 0.8;
 	public static final double INTAKE_SPEED = 0.4;
 	public static final double DRIVE_MAX_SPEED = 1;
 	public static final double STM_SPEED = 0.2;
