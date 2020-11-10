@@ -5,53 +5,45 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class Move extends CommandBase {
-  /**
-   * Creates a new Move.
-   */
+public class Drive extends CommandBase {
+  double m_lSpeed, m_rSpeed;
 
-  double m_time, m_lSpeed, m_rSpeed;
+  public Drive(double lSpeed, double rSpeed) {
 
-  public Move(double time, double lSpeed, double rSpeed) {
-    m_time = time;
     m_lSpeed = lSpeed;
     m_rSpeed = rSpeed;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.driveTrain);
   }
 
-  // Called when the command is initially scheduled.
+  /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
-    // withTimeout(m_time);
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
-    // setTimeout(m_time);
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    // withTimeout(m_time);
     Robot.driveTrain.setLeftMotors(m_lSpeed);
     Robot.driveTrain.setRightMotors(m_rSpeed);
-    // withTimeout(m_time);
   }
 
-  // Called once the command ends or is interrupted.
+  /* Called once the command ends or is interrupted. */
   @Override
   public void end(boolean interrupted) {
-    Robot.driveTrain.setLeftMotors(0);
-    Robot.driveTrain.setRightMotors(0);
+    Robot.driveTrain.setLeftMotors(Constants.STOP);
+    Robot.driveTrain.setRightMotors(Constants.STOP);
   }
 
-  // Returns true when the command should end.
+  /* Returns true when the command should end. */
   @Override
   public boolean isFinished() {
     return false;

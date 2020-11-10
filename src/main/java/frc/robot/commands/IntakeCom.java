@@ -27,18 +27,28 @@ public class IntakeCom extends CommandBase {
   public void execute() {
     // initializes and declares motor speed basedXboxController2's LB and RB button
     // values
-    double motorSpeed = Robot.m_robotContainer.driver2TwoButtonConfig(Constants.LEFT_BUTTON, Constants.RIGHT_BUTTON,
-        Constants.STOP, -Constants.INTAKE_SPEED, Constants.INTAKE_SPEED);
-        
-    // set the speed of the motor
-    Robot.intake.setIntakeMotors(motorSpeed);
+    double motorSpeed = Robot.m_robotContainer.driver2ButtontrigggerConfig(Constants.RIGHT_BUTTON,
+        Constants.RIGHT_TRIGGER, Constants.STOP, Constants.INTAKE_SPEED, -Constants.INTAKE_SPEED);
+
+    // set the speed of the motor top intake motor
+    Robot.intake.setIntakeMotorUp(motorSpeed);
+
+    // initializes and declares motor speed basedXboxController2's L and R Triggers
+    // values
+    double motorSpeed2 = Robot.m_robotContainer.driver2ButtontrigggerConfig(Constants.LEFT_BUTTON,
+        Constants.LEFT_TRIGGER, Constants.STOP, -Constants.INTAKE_SPEED * 2, Constants.INTAKE_SPEED * 2);
+
+    // set the speed of the bottom intake motor
+    Robot.intake.setIntakeMotorDown(motorSpeed2);
+
   }
 
   /* Called once the command ends or is interrupted. */
   @Override
   public void end(boolean interrupted) {
     // stops the motor
-    Robot.intake.setIntakeMotors(Constants.STOP);
+    Robot.intake.setIntakeMotorUp(Constants.STOP);
+    Robot.intake.setIntakeMotorDown(Constants.STOP);
   }
 
   /* Returns true when the command should end. */

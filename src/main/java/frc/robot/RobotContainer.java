@@ -7,11 +7,11 @@
 
 package frc.robot;
 
-import java.lang.reflect.Method;
-// import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.Move;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.Timer;
+import frc.robot.commands.auton.Drive;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
 
   /* This initializes XboxControllers */
-  private XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
+  private static XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
   private static XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
 
   /* This method is used to print XboxController values */
@@ -57,12 +57,13 @@ public class RobotContainer {
    * what assigned button in XboxController2 is being pressed (doubles nullSpeed,
    * speed1, and speed2 can be assigned a value between -1 and 1)
    */
-  public double driver2TwoButtonConfig(int button1, int button2, double nullSpeed, double speed1, double speed2) {
+  public double driver2ButtontrigggerConfig(int button, Hand trigger, double nullSpeed, double speed1, double speed2) {
     // if button1 is pressed
-    if (driverController2.getRawButton(button1))
+    if (driverController2.getRawButton(button))
       return speed1;
+
     // if button2 is pressed
-    if (driverController2.getRawButton(button2))
+    if (driverController2.getTriggerAxis(trigger) > 0.5)
       return speed2;
     // if no button is pressed
     return nullSpeed;
@@ -74,42 +75,48 @@ public class RobotContainer {
    * -1 and 1)
    */
   public double driver2OneButtonConfig(int button, double nullSpeed, double speed) {
-    // if button is pressed 
+    // if button is pressed
     if (driverController2.getRawButton(button))
       return speed;
     // if button is not pressed
     return nullSpeed;
   }
 
-  /*
-   * This method is used to run a command when an assigned button in
-   * XboxController2 is pressed
-   */
-  public Method commandButton(int button, Method command) {
+  /* Same thing as driver2OneButtonConfig but for XboxController1 */
+  public double driver1OneButtonConfig(int button, double nullSpeed, double speed) {
     // if button is pressed
-    if (driverController2.getRawButton(button))
+    if (driverController1.getRawButton(button))
+      return speed;
+    // if button is not pressed
+    return nullSpeed;
+  }
+
+  public Command tCmd(double time, Command command) {
+    double startTime = Timer.getFPGATimestamp();
+
+    if (Timer.getFPGATimestamp() - startTime < time) {
       return command;
-    // if no button is pressed
+    }
+    // return getClass(command).isFinished();
     return null;
   }
 
-  /*
-   * public Command STMButton(int button, Command cmd) { if
-   * (driverController2.getRawButton(button)) return new Command(){ return null; }
-   * // The container for the robot. Contains subsystems, OI devices, and
-   * commands.
-   * 
-   * public RobotContainer() { // Configure the button bindings
-   * configureButtonBindings(); }
-   * 
-   * // * Use this method to define your button->command mappings. Buttons can be
-   * // * created by instantiating a {@link GenericHID} or one of its subclasses
-   * // * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and
-   * then // * passing it to a {@link
-   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   * 
-   * private void configureButtonBindings() { }
-   */
+  public double driver2OneImmediateButtonConfig(double nullSpeed, double speed) {
+    if (driverController2.getBButtonPressed()) {
+      Robot.stm.setSTM_Motor(speed);
+      long i = 0;
+      long j = 0;
+      while (j < 40) {
+        while (i < 3500000)
+          i++;
+        while (i != 0)
+          i--;
+        j++;
+      }
+      Robot.stm.setSTM_Motor(nullSpeed);
+    }
+    return nullSpeed;
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -117,6 +124,51 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new Move(2, .5, .5);
+    // Start Motors
+
+    Robot.driveTrain.setLeftMotors(Constants.LD * -0.7);
+    Robot.driveTrain.setRightMotors(Constants.RD * -0.7);
+    // Loop to turn
+    long l = 0;
+    long p = 0;
+    while (l < 5) {
+      while (p < 3500000)
+        p++;
+      while (p != 0)
+        p--;
+      l++;
+    }
+    // Set Drive to zero
+    Robot.driveTrain.setLeftMotors(0);
+    Robot.driveTrain.setRightMotors(0);
+    /*
+     * Robot.driveTrain.setLeftMotors(Constants.LD * -0.5);
+     * Robot.driveTrain.setRightMotors(Constants.RD * 0.5); // Loop to turn /* long
+     * i = 0; long j = 0; while (j < 3) { while (i < 3500000) i++; while (i != 0)
+     * i--; j++; } // Set Drive to zero Robot.driveTrain.setLeftMotors(0);
+     * Robot.driveTrain.setRightMotors(0);
+     */
+    // Adjust To aim
+    // Start Motors
+    /*
+     * Robot.driveTrain.setLeftMotors(.95 * 0.5); Robot.driveTrain.setRightMotors(.7
+     * * 0.5); //Loop to drive (ADJUST THIS TIME)
+     * 
+     * long i = 0; long j = 0; while (j < 3) { while (i < 3500000) i++; while (i !=
+     * 0) i--; j++; } //Set Drive to zero Robot.driveTrain.setLeftMotors(0);
+     * Robot.driveTrain.setRightMotors(0);
+     */
+
+    // Shoot
+    /*
+     * Robot.shooter.setShooterMotor(Constants.SHOOTER_SPEED); long x = 0; long y =
+     * 0; while (x < 2) { while (y < 3500000) y++; while (y != 0) y--; x++; }
+     * Robot.intake.setIntakeMotorDown(Constants.INTAKE_SPEED);
+     * Robot.intake.setIntakeMotorUp(-Constants.INTAKE_SPEED); long a = 0; long b =
+     * 0; while (a < 6) { while (b < 3500000) b++; while (b != 0) b--; a++; }
+     * Robot.shooter.setShooterMotor(0); Robot.intake.setIntakeMotorDown(0);
+     * Robot.intake.setIntakeMotorUp(0);
+     */
+    return new Drive(0, 0);
   }
 }

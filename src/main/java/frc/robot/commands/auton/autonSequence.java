@@ -5,24 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.auton;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Robot;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 
 /* Class still in development */
-public class MoveSequence extends SequentialCommandGroup {
+public class autonSequence extends SequentialCommandGroup {
   /**
    * Creates a new MoveSequence.
    */
-  public MoveSequence() {
+  public autonSequence() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     // super(new Move(2, 0.5, 0.5), new Move(5, -0.7, -0.7), new Move(10, -1, 1));
-    super(new Move(5, -0.3, 0.3), new Move(3, -0.4, 0.4));
-
+    super(Robot.m_robotContainer.tCmd(1, new Drive(.2, -.2)));
   }
 }

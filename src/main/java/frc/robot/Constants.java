@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+//ximport com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeSerializer;
+
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants. This class should not be used for any other
@@ -46,26 +50,30 @@ public final class Constants {
 	public static final int BUTTON_Y = 4;
 	public static final int LEFT_BUTTON = 5;
 	public static final int RIGHT_BUTTON = 6;
-	public static final int LEFT_TRIGGER = 2;
-	public static final int RIGHT_TRIGGER = 3;
+	public static final Hand LEFT_TRIGGER = Hand.kLeft;
+	public static final Hand RIGHT_TRIGGER = Hand.kRight;
 
 	// Camera Assignment
 	public static final int CAMERA_USB = 0;
 
 	// Colors______________________________R____G____B__
-	public static final int[] CYAN = { 0, 255, 255 };
-	public static final int[] MAGENTA = { 255, 0, 0 };
-	public static final int[] YELLOW = { 255, 255, 0 };
-	public static final int[] BLACK = { 0, 0, 0 };
 
-	// Fixed MotorSpeeds
-	public static final double SHOOTER_SPEED = 0.8;
-	public static final double INTAKE_SPEED = 0.4;
-	public static final double DRIVE_MAX_SPEED = 1;
-	public static final double STM_SPEED = 0.2;
+	public static final int[][] CYAN = new int[3][11]; // { 0, 255, 255 };
+	public static final int[][] MAGENTA = new int[3][11]; // { 255, 0, 0 };
+	public static final int[][] YELLOW = new int[3][11]; // { 255, 255, 0 };
+	public static final int[][] BLACK = new int[3][11]; // { 0, 0, 0 };
+
+	// Fixyged MotorSpeeds
+	public static final double SHOOTER_SPEED = 1;
+	public static final double INTAKE_SPEED = 0.9;
+	public static final double DRIVE_MAX_SPEED = 0.9;
+	public static final double STM_SPEED = 1;
 	public static final double CLIMB_SPEED = 1;
 	public static final double STOP = 0;
 
 	// Fixed Variables
+	public static final double LD = .85;
+	public static final double RD = .9;
+
 
 }

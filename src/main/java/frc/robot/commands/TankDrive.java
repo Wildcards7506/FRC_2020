@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */  
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -27,14 +27,18 @@ public class TankDrive extends CommandBase {
   public void execute() {
     // initializes and declares joystick values from XboxController1
     double rightStickX = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_X);
-    double rightStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_Y);
-
+    double leftStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.LEFT_STICK_Y);
     // changes direction of drive when LB in XboxController is pressed
-    double driveDirection = Robot.m_robotContainer.driver1OneButtonConfig(Constants.LEFT_BUTTON, 1, -1);
+    double driveThrottle = Robot.m_robotContainer.driver1OneButtonConfig(Constants.LEFT_BUTTON, 1, 0.25);
+    
 
     // set the speed of the motors
-    double rightSpeed = ( 1* rightStickY + rightStickX * 1) * Constants.DRIVE_MAX_SPEED * driveDirection;
-    double leftSpeed = (1 * rightStickY - rightStickX * 1) * Constants.DRIVE_MAX_SPEED * driveDirection;
+    double slowDown = Robot.m_robotContainer.driver1OneButtonConfig(Constants.RIGHT_BUTTON, 1, 0.9);
+    // forward and reverse
+    double rightSpeed = (Constants.RD * (leftStickY - rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle * retardmode;
+    double leftSpeed = (Constants.LD * (leftStickY + rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle * slowDown;
+    // turning right joystick
+
     Robot.driveTrain.setRightMotors(rightSpeed);
     Robot.driveTrain.setLeftMotors(leftSpeed);
 
