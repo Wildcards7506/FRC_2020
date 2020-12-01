@@ -34,6 +34,7 @@ public final class Constants {
 	public static final int MOTOR_9 = 9;
 	public static final int MOTOR_10 = 10;
 	public static final int MOTOR_11 = 11;
+	public static final int MOTOR_12 = 12;
 
 	// DriverController Assignments
 	public static final int DRIVER_CONTROLLER_1 = 0;
