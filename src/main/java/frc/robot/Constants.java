@@ -31,14 +31,14 @@ public final class Constants {
 	public static final int MOTOR_6 = 6; // Shooter
 	public static final int MOTOR_7 = 7; // Intake
 	public static final int MOTOR_8 = 8; // Intake
-	public static final int MOTOR_9 = 9; // Drive Train
-	public static final int MOTOR_10 = 10; // Drive Train
-	public static final int MOTOR_11 = 11; // Drive Train
+	public static final int MOTOR_9 = 9;
+	public static final int MOTOR_10 = 10;
+	public static final int MOTOR_11 = 11;
 	public static final int MOTOR_12 = 12; // Climb
 	public static final int MOTOR_13 = 13;
-	public static final int MOTOR_14 = 14;
-	public static final int MOTOR_15 = 15;
-	public static final int MOTOR_16 = 16;
+	public static final int MOTOR_14 = 14; // Drive Train
+	public static final int MOTOR_15 = 15; // Drive Train
+	public static final int MOTOR_16 = 16; // Drive Train
 
 	// DriverController Assignments
 	public static final int DRIVER_CONTROLLER_1 = 0;
