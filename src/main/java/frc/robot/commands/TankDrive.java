@@ -35,7 +35,7 @@ public class TankDrive extends CommandBase {
     // set the speed of the motors
     double slowDown = Robot.m_robotContainer.driver1OneButtonConfig(Constants.RIGHT_BUTTON, 1, 0.9);
     // forward and reverse
-    double rightSpeed = (Constants.RD * (leftStickY - rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle * retardmode;
+    double rightSpeed = (Constants.RD * (leftStickY - rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle;
     double leftSpeed = (Constants.LD * (leftStickY + rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle * slowDown;
     // turning right joystick
 
