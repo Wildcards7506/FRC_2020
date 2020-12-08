@@ -16,14 +16,14 @@ import frc.robot.commands.ShooterCom;
 
 public class Shooter extends SubsystemBase {
   /* Declares and initializes motor */
-  private final VictorSPX shooterMotor6 = new VictorSPX(Constants.MOTOR_6);
+  private final VictorSPX shooterMotor12 = new VictorSPX(Constants.MOTOR_12);
 
   /*
    * This method sets the speed of the motor (returns a double ranging from -1 to
    * 1)
    */
   public void setShooterMotor(final double speed) {
-    shooterMotor6.set(ControlMode.PercentOutput, -speed);
+    shooterMotor12.set(ControlMode.PercentOutput, -speed);
   }
 
   @Override

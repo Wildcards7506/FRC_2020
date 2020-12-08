@@ -17,7 +17,7 @@ import frc.robot.commands.ClimbCom;
 public class Climb extends SubsystemBase {
   /* Declares and initializes motor */
   private final VictorSPX climbMotor4 = new VictorSPX(Constants.MOTOR_4);
-  private final VictorSPX climbMotor12 = new VictorSPX(Constants.MOTOR_12);
+  private final VictorSPX climbMotor13 = new VictorSPX(Constants.MOTOR_13);
 
   /*
    * This method sets the speed of the motor (returns a double ranging from -1 to
@@ -25,7 +25,7 @@ public class Climb extends SubsystemBase {
    */
   public void setClimbMotor(final double speed) {
     climbMotor4.set(ControlMode.PercentOutput, -Math.abs(speed));
-    climbMotor12.set(ControlMode.PercentOutput, -Math.abs(speed));
+    climbMotor13.set(ControlMode.PercentOutput, -Math.abs(speed));
   }
 
   @Override

@@ -17,14 +17,14 @@ import frc.robot.commands.STMCom;
 /* Class still in development */
 public class STM extends SubsystemBase {
   /* Declares and initializes the motor */
-  private final VictorSPX STM_Motor5 = new VictorSPX(Constants.MOTOR_5);
+  private final VictorSPX STM_Motor10 = new VictorSPX(Constants.MOTOR_10);
 
   /*
    * This method sets the speed of the motor (returns a double ranging from -1 to
    * 1)
    */
   public void setSTM_Motor(final double speed) {
-    STM_Motor5.set(ControlMode.PercentOutput, speed);
+    STM_Motor10.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
