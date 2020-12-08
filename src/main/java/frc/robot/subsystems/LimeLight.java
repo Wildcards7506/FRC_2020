@@ -9,12 +9,22 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+/* LimeLight specific Imports*/
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 public class LimeLight extends SubsystemBase {
   /**
    * Creates a new LimeLight.
    */
   public LimeLight() {
-
+    //read values periodically
+    /* tx and ty are angles offset from crosshair */
+    double Limex = tx.getDouble(0.0);
+    double Limey = ty.getDouble(0.0);
+    double Limearea = ta.getDouble(0.0);
   }
 
   @Override
