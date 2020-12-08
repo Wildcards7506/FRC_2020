@@ -26,7 +26,11 @@ public class Climb extends SubsystemBase {
    * 1)
    */
   public void setClimbMotor(final double speed) {
+<<<<<<< HEAD
+    climbMotor4.set(ControlMode.PercentOutput, Math.abs(speed));
+=======
     climbMotor4.set(ControlMode.PercentOutput, -Math.abs(speed));
+>>>>>>> 13fc8e51c16582b039c1d663f3f5ffc987d4e0c1
     climbMotor13.set(ControlMode.PercentOutput, -Math.abs(speed));
   }
 
