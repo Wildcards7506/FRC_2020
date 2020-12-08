@@ -16,10 +16,10 @@ import frc.robot.commands.IntakeCom;
 
 public class Intake extends SubsystemBase {
   /* Declares and initializes motor */
-  private final VictorSPX intakeMotor5 = new VictorSPX(Constants.Motor_5);
-  private final VictorSPX intakeMotor6 = new VictorSPX(Constants.Motor_6);
-  private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_7);
-  private final VictorSPX intakeMotor8 = new VictorSPX(Constants.MOTOR_8);
+  private final VictorSPX intakeMotor5 = new VictorSPX(Constants.MOTOR_5); // Trigger Spool
+  private final VictorSPX intakeMotor6 = new VictorSPX(Constants.MOTOR_6); // Upper Intake
+  private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_7); // Front Intake
+  private final VictorSPX intakeMotor8 = new VictorSPX(Constants.MOTOR_8); // Intake Rotation
   /*
 
    * This method sets the speed of the motor (returns a double ranging from -1 to
