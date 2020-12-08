@@ -22,9 +22,9 @@ public class LimeLight extends SubsystemBase {
   public LimeLight() {
     //read values periodically
     /* tx and ty are angles offset from crosshair */
-    double Limex = tx.getDouble(0.0);
-    double Limey = ty.getDouble(0.0);
-    double Limearea = ta.getDouble(0.0);
+    //double Limex = tx.getDouble(0.0);
+    //double Limey = ty.getDouble(0.0);
+    //double Limearea = ta.getDouble(0.0);
   }
 
   @Override
