@@ -45,6 +45,19 @@ public class RobotContainer {
   }
 
   /*
+   * This method treats a joystick in XboxController 1 as a button (returns one of
+   * three doubles depending on the position of the joystick)
+   */
+  public double getDriver1RawAxis(int axis, double nullSpeed, double speed) {
+    // if-statement is used to counteract false positives from the joystick
+    if (driverController1.getRawAxis(axis) > 0.1)
+      return speed;
+    else if (driverController1.getRawAxis(axis) < -0.1)
+      return -speed;
+    return nullSpeed;
+  }
+
+  /*
    * This method treats a trigger in XboxController 1 as a button (returns one of
    * two doubles depending on the position of the trigger)
    */
@@ -67,11 +80,19 @@ public class RobotContainer {
   }
 
   /*
-   * The following three methods perform the same tasks as the previous three with
+   * The following four methods perform the same tasks as the previous four with
    * the exception that they get the values from XboxController 2
    */
   public double getDriver2RawAxis(int axis) {
     return driverController2.getRawAxis(axis);
+  }
+
+  public double getDriver2RawAxis(int axis, double nullSpeed, double speed) {
+    if (driverController2.getRawAxis(axis) > 0.1)
+      return speed;
+    else if (driverController2.getRawAxis(axis) < -0.1)
+      return -speed;
+    return nullSpeed;
   }
 
   public double getDriver2Trigger(Hand trigger, double nullSpeed, double speed) {
