@@ -80,7 +80,15 @@ public class RobotContainer {
   }
 
   /*
-   * The following four methods perform the same tasks as the previous four with
+   * This method is used to get the value of a button in XboxController 1 (returns
+   * a boolean)
+   */
+  public boolean getDriver1ButtonPressed(int button) {
+    return driverController1.getRawButtonPressed(button);
+  }
+
+  /*
+   * The following five methods perform the same tasks as the previous five with
    * the exception that they get the values from XboxController 2
    */
   public double getDriver2RawAxis(int axis) {
@@ -107,6 +115,10 @@ public class RobotContainer {
     return 0;
   }
 
+  public boolean getDriver2ButtonPressed(int button) {
+    return driverController2.getRawButtonPressed(button);
+  }
+
   public Command tCmd(double time, Command command) {
     double startTime = Timer.getFPGATimestamp();
 
@@ -115,23 +127,6 @@ public class RobotContainer {
     }
     // return getClass(command).isFinished();
     return null;
-  }
-
-  public double driver2OneImmediateButtonConfig(double nullSpeed, double speed) {
-    if (driverController2.getBButtonPressed()) {
-      Robot.stm.setSTM_Motor(speed);
-      long i = 0;
-      long j = 0;
-      while (j < 40) {
-        while (i < 3500000)
-          i++;
-        while (i != 0)
-          i--;
-        j++;
-      }
-      Robot.stm.setSTM_Motor(nullSpeed);
-    }
-    return nullSpeed;
   }
 
   /**
