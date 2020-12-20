@@ -45,50 +45,45 @@ public class RobotContainer {
   }
 
   /*
-   * This method is used to get the x or y axis of a joystick in XboxController 2
-   * (returns a double ranging from -1 to 1)
+   * This method treats a trigger in XboxController 1 as a button (returns one of
+   * two doubles depending on the position of the trigger)
+   */
+  public double getDriver1Trigger(Hand trigger, double nullSpeed, double speed) {
+    // if-statement is used to counteract false positives from the trigger
+    if (driverController1.getTriggerAxis(trigger) > 0.1)
+      return speed;
+    return nullSpeed;
+  }
+
+  /*
+   * This method is used to get the value of a trigger in XboxController 1
+   * (returns a double ranging from 0.1 to 1)
+   */
+  public double getDriver1Trigger(Hand trigger) {
+    // if-statement is used to counteract false positives from the trigger
+    if (driverController1.getTriggerAxis(trigger) > 0.1)
+      return driverController1.getTriggerAxis(trigger);
+    return 0;
+  }
+
+  /*
+   * The following three methods perform the same tasks as the previous three with
+   * the exception that they get the values from XboxController 2
    */
   public double getDriver2RawAxis(int axis) {
     return driverController2.getRawAxis(axis);
   }
 
-  /*
-   * This method is used to set the speed on a motor or set of motors depending on
-   * what assigned button in XboxController2 is being pressed (doubles nullSpeed,
-   * speed1, and speed2 can be assigned a value between -1 and 1)
-   */
-  public double driver2ButtontrigggerConfig(int button, Hand trigger, double nullSpeed, double speed1, double speed2) {
-    // if button1 is pressed
-    if (driverController2.getRawButton(button))
-      return speed1;
-
-    // if button2 is pressed
-    if (driverController2.getTriggerAxis(trigger) > 0.5)
-      return speed2;
-    // if no button is pressed
+  public double getDriver2Trigger(Hand trigger, double nullSpeed, double speed) {
+    if (driverController2.getTriggerAxis(trigger) > 0.1)
+      return speed;
     return nullSpeed;
   }
 
-  /*
-   * Same thing as driver2TowButtonConfig but just with one button in
-   * XboxController2 (doubles nullSpeed and speed can be assigned a value between
-   * -1 and 1)
-   */
-  public double driver2OneButtonConfig(int button, double nullSpeed, double speed) {
-    // if button is pressed
-    if (driverController2.getRawButton(button))
-      return speed;
-    // if button is not pressed
-    return nullSpeed;
-  }
-
-  /* Same thing as driver2OneButtonConfig but for XboxController1 */
-  public double driver1OneButtonConfig(int button, double nullSpeed, double speed) {
-    // if button is pressed
-    if (driverController1.getRawButton(button))
-      return speed;
-    // if button is not pressed
-    return nullSpeed;
+  public double getDriver2Trigger(Hand trigger) {
+    if (driverController2.getTriggerAxis(trigger) > 0.1)
+      return driverController2.getTriggerAxis(trigger);
+    return 0;
   }
 
   public Command tCmd(double time, Command command) {

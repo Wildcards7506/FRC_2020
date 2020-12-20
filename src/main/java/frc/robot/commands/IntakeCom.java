@@ -31,7 +31,7 @@ public class IntakeCom extends CommandBase {
         Constants.RIGHT_TRIGGER, Constants.STOP, Constants.INTAKE_SPEED, -Constants.INTAKE_SPEED);
 
     // set the speed of the motor top intake motor
-    Robot.intake.setIntakeMotorUp(motorSpeed);
+    Robot.intake.setVerticalIntake(motorSpeed);
 
     // initializes and declares motor speed basedXboxController2's L and R Triggers
     // values
@@ -39,7 +39,7 @@ public class IntakeCom extends CommandBase {
         Constants.LEFT_TRIGGER, Constants.STOP, -Constants.INTAKE_SPEED * 2, Constants.INTAKE_SPEED * 2);
 
     // set the speed of the bottom intake motor
-    Robot.intake.setIntakeMotorDown(motorSpeed2);
+    Robot.intake.setHorizontalIntake(motorSpeed2);
 
   }
 
@@ -47,8 +47,8 @@ public class IntakeCom extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     // stops the motor
-    Robot.intake.setIntakeMotorUp(Constants.STOP);
-    Robot.intake.setIntakeMotorDown(Constants.STOP);
+    Robot.intake.setHorizontalIntake(Constants.STOP);
+    Robot.intake.setVerticalIntake(Constants.STOP);
   }
 
   /* Returns true when the command should end. */

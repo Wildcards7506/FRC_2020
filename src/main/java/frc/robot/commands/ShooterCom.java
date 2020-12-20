@@ -26,7 +26,7 @@ public class ShooterCom extends CommandBase {
   @Override
   public void execute() {
     // initializes and declares motor speed basedXboxController2's A button value
-    double motorSpeed = -Constants.SHOOTER_SPEED * 0;
+    double motorSpeed = -Constants.SHOOTER_SPEED;
 
     // set the speed of the motor
     Robot.shooter.setShooterMotor(motorSpeed);
