@@ -104,13 +104,13 @@ public class RobotContainer {
   }
 
   public double getDriver2Trigger(Hand trigger, double nullSpeed, double speed) {
-    if (driverController2.getTriggerAxis(trigger) > 0.1)
+    if (driverController2.getTriggerAxis(trigger) > -0.9)
       return speed;
     return nullSpeed;
   }
 
   public double getDriver2Trigger(Hand trigger) {
-    if (driverController2.getTriggerAxis(trigger) > 0.1)
+    if (driverController2.getTriggerAxis(trigger) > -0.9)
       return driverController2.getTriggerAxis(trigger);
     return 0;
   }

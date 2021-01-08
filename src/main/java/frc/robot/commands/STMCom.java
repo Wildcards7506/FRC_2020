@@ -58,7 +58,7 @@ public class STMCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    m_speed = Robot.m_robotContainer.driver2OneImmediateButtonConfig(0, 0.5);
+    //m_speed = Robot.m_robotContainer.driver2OneImmediateButtonConfig(0, 0.5);
       Robot.stm.setSTM_Motor(m_speed);
   }
 
