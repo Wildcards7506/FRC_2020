@@ -27,6 +27,14 @@ public class IntakeCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
+    int POV = Robot.m_robotContainer.getDriver2POV();
+
+    if (POV == 180) {
+      Robot.intake.setTriggerSpool(-Constants.SPOOL_SPEED);
+    } else if (POV == 0) {
+      Robot.intake.setTriggerSpool(Constants.SPOOL_SPEED);
+    }
+
     boolean LB = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
     boolean RB = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
     double horizontalSpeed, verticalSpeed;
