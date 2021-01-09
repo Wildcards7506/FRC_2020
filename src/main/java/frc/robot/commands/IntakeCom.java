@@ -29,17 +29,22 @@ public class IntakeCom extends CommandBase {
   public void execute() {
     boolean LB = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
     boolean RB = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
-    double verticalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
-        Constants.INTAKE_SPEED);
-    double horizontalSpeed = verticalSpeed;
-    if (LB)
+    double horizontalSpeed, verticalSpeed;
+    if (LB) {
       horizontalSpeed = Constants.INTAKE_SPEED;
-    if (RB)
+    } else {
+      horizontalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
+          Constants.INTAKE_SPEED);
+    }
+    if (RB) {
       verticalSpeed = Constants.INTAKE_SPEED;
+    } else {
+      verticalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
+          Constants.INTAKE_SPEED);
+    }
 
     Robot.intake.setVerticalIntake(verticalSpeed);
     Robot.intake.setHorizontalIntake(horizontalSpeed);
-
   }
 
   /* Called once the command ends or is interrupted. */
