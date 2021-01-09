@@ -26,9 +26,22 @@ public class ShooterCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    double speed = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", Constants.STOP,
-        Constants.SHOOTER_SPEED);
+    double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", Constants.STOP, 1);
+
+    double speed, verticalSpeed, horizontalSpeed;
+    if (trigger == 1) {
+      speed = Constants.SHOOTER_SPEED;
+      verticalSpeed = Constants.INTAKE_SPEED * Robot.m_robotContainer.pulse(Constants.INTAKE_PULSE);
+      horizontalSpeed = verticalSpeed;
+    } else {
+      speed = 0;
+      verticalSpeed = 0;
+      horizontalSpeed = 0;
+    }
+
     Robot.shooter.setShooterMotor(speed);
+    Robot.intake.setVerticalIntake(verticalSpeed);
+    Robot.intake.setHorizontalIntake(horizontalSpeed);
   }
 
   /* Called once the command ends or is interrupted. */

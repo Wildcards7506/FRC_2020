@@ -27,7 +27,7 @@ public class Intake extends SubsystemBase {
    */
   public void setVerticalIntake(final double speed) {
     intakeMotor6.set(ControlMode.PercentOutput, -speed);
-    intakeMotor8.set(ControlMode.PercentOutput, -speed);
+    intakeMotor5.set(ControlMode.PercentOutput, -speed);
   }
 
   public void setHorizontalIntake(final double speed) {
@@ -35,7 +35,7 @@ public class Intake extends SubsystemBase {
   }
 
   public void setTriggerSpool(final double speed) {
-    intakeMotor5.set(ControlMode.PercentOutput, -speed);
+    intakeMotor8.set(ControlMode.PercentOutput, -speed);
   }
 
   @Override

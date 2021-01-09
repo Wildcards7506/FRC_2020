@@ -32,6 +32,7 @@ public class STMCom extends CommandBase {
   double m_time, m_speed;
 
   public STMCom(int time, double speed) {
+    
     // makes sure that the motor is not moving initially
 
     // gets color values from colorSensor

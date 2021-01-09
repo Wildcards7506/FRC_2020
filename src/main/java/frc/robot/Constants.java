@@ -73,9 +73,10 @@ public final class Constants {
 	public static final int[][] BLACK = new int[3][11]; // { 0, 0, 0 };
 
 	// Fixyged MotorSpeeds
-	public static final double SHOOTER_SPEED = 1;
+	public static final double SHOOTER_SPEED = -1;
 	public static final double INTAKE_SPEED = 0.9;
 	public static final double SPOOL_SPEED = 0.2;
+	public static final double INTAKE_PULSE = 1.1;
 	public static final double DRIVE_MAX_SPEED = 0.9;
 	public static final double STM_SPEED = 1;
 	public static final double CLIMB_SPEED = 1;
