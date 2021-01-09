@@ -113,7 +113,7 @@ public class RobotContainer {
     }
     return 0;
   }
- 
+
   public boolean getDriver2Button(int button) {
     return driverController2.getRawButton(button);
   }
@@ -122,14 +122,17 @@ public class RobotContainer {
     return driverController2.getPOV();
   }
 
-  public boolean timedExecution(double time, Command command) {
-    double startTime = Timer.getFPGATimestamp();
+  public double pulse(double pulseLength) {
+    double seconds = Timer.getFPGATimestamp();
+    double a = seconds % pulseLength;
 
-    if (Timer.getFPGATimestamp() - startTime < time) {
-      return true;
+    double flip = 0;
+    if (a == 0 && flip == 0) {
+      flip = 1;
+    } else if (a == 0 && flip == 1) {
+      flip = 0;
     }
-    // return getClass(command).isFinished();
-    return false;
+    return flip;
   }
 
   /**

@@ -47,7 +47,7 @@ public class IntakeCom extends CommandBase {
           Constants.INTAKE_SPEED);
     }
     if (RB) {
-      verticalSpeed = Constants.INTAKE_SPEED;
+      verticalSpeed = Constants.INTAKE_SPEED * Robot.m_robotContainer.pulse(10);
     } else {
       verticalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
           Constants.INTAKE_SPEED);
