@@ -71,7 +71,7 @@ public class RobotContainer {
    * a boolean)
    */
   public boolean getDriver1Button(int button) {
-    return driverController1.getRawButtonPressed(button);
+    return driverController1.getRawButton(button);
   }
 
   public double getDriver1POV() {
@@ -115,7 +115,7 @@ public class RobotContainer {
   }
  
   public boolean getDriver2Button(int button) {
-    return driverController2.getRawButtonPressed(button);
+    return driverController2.getRawButton(button);
   }
 
   public Command tCmd(double time, Command command) {
