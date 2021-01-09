@@ -27,20 +27,15 @@ public class IntakeCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    double verticalSpeed, horizontalSpeed;
-    boolean LB = Robot.m_robotContainer.getDriver2ButtonPressed(Constants.LEFT_BUTTON);
-    boolean RB = Robot.m_robotContainer.getDriver2ButtonPressed(Constants.RIGHT_BUTTON);
-
-    if (LB) {
+    boolean LB = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
+    boolean RB = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
+    double verticalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
+        Constants.INTAKE_SPEED);
+    double horizontalSpeed = verticalSpeed;
+    if (LB)
       horizontalSpeed = Constants.INTAKE_SPEED;
-    } else {
-      horizontalSpeed = Constants.STOP;
-    }
-    if (RB) {
+    if (RB)
       verticalSpeed = Constants.INTAKE_SPEED;
-    } else {
-      verticalSpeed = Constants.STOP;
-    }
 
     Robot.intake.setVerticalIntake(verticalSpeed);
     Robot.intake.setHorizontalIntake(horizontalSpeed);

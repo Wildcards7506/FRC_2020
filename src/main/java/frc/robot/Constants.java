@@ -45,11 +45,15 @@ public final class Constants {
 	public static final int DRIVER_CONTROLLER_1 = 0;
 	public static final int DRIVER_CONTROLLER_2 = 1;
 
-	// JBT Assignments
+	// Control Axis (Joysticks and Triggers)
 	public static final int LEFT_STICK_Y = 1;
 	public static final int RIGHT_STICK_Y = 5;
 	public static final int LEFT_STICK_X = 0;
 	public static final int RIGHT_STICK_X = 4;
+	public static final int LEFT_TRIGGER = 2;
+	public static final int RIGHT_TRIGGER = 3;
+
+	// Control Buttons
 	public static final int PAD_X = 2;
 	public static final int PAD_y = 3;
 	public static final int BUTTON_A = 1;
@@ -58,9 +62,6 @@ public final class Constants {
 	public static final int BUTTON_Y = 4;
 	public static final int LEFT_BUTTON = 5;
 	public static final int RIGHT_BUTTON = 6;
-	public static final Hand LEFT_TRIGGER = Hand.kLeft;
-	public static final Hand RIGHT_TRIGGER = Hand.kRight;
-
 	// Camera Assignment
 	public static final int CAMERA_USB = 0;
 
@@ -82,6 +83,5 @@ public final class Constants {
 	// Fixed Variables
 	public static final double LD = .85;
 	public static final double RD = .9;
-
 
 }

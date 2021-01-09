@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.commands.auton.Drive;
@@ -26,56 +25,44 @@ public class RobotContainer {
   private static XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
   private static XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
 
-  /* This method is used to print XboxController values */
-  public String controlValues(int j1, int j2, int b1, int b2, int b3, int b4, int b5, int b6, int j3) {
-    return "JY: " + (int) (-getDriver1RawAxis(j1) * 100) + " | JX: " + (int) (getDriver1RawAxis(j2) * 100) + " | A: "
-        + driverController2.getRawButton(b1) + " | B: " + driverController2.getRawButton(b2) + " | X: "
-        + driverController2.getRawButton(b3) + " | Y: " + driverController2.getRawButton(b4) + " | LB: "
-        + driverController2.getRawButton(b5) + " | RB: " + driverController2.getRawButton(b6) + " | Elevator: "
-        + (int) (-getDriver2RawAxis(j3) * 100);
-
-  }
-
   /*
-   * This method is used to get the x or y axis of a joystick in XboxController 1
-   * (returns a double ranging from -1 to 1)
+   * This method is used to get an axis of XboxController 1 (returns a double
+   * ranging from -1 to 1) **YOU MUST SPECIFY WHETHER IT IS A JOYSTICK OR A
+   * TRIGGER**
    */
-  public double getDriver1RawAxis(int axis) {
-    return driverController1.getRawAxis(axis);
+  public double getDriver1Axis(int axis, String type) {
+    double axisValue = driverController1.getRawAxis(axis);
+    if (type.contains("joystick")) {
+      // if-statement is used to counteract false positives from the axis
+      if (Math.abs(axisValue) > 0.1)
+        return axisValue;
+      return 0;
+    } else if (type.contains("trigger")) {
+      if (axisValue > -0.9)
+        return axisValue;
+      return 0;
+    }
+    return 0;
   }
 
   /*
-   * This method treats a joystick in XboxController 1 as a button (returns one of
+   * This method treats an axis of XboxController 1 as a button (returns one of
    * three doubles depending on the position of the joystick)
    */
-  public double getDriver1RawAxis(int axis, double nullSpeed, double speed) {
-    // if-statement is used to counteract false positives from the joystick
-    if (driverController1.getRawAxis(axis) > 0.1)
-      return speed;
-    else if (driverController1.getRawAxis(axis) < -0.1)
-      return -speed;
-    return nullSpeed;
-  }
-
-  /*
-   * This method treats a trigger in XboxController 1 as a button (returns one of
-   * two doubles depending on the position of the trigger)
-   */
-  public double getDriver1Trigger(Hand trigger, double nullSpeed, double speed) {
-    // if-statement is used to counteract false positives from the trigger
-    if (driverController1.getTriggerAxis(trigger) > 0.1)
-      return speed;
-    return nullSpeed;
-  }
-
-  /*
-   * This method is used to get the value of a trigger in XboxController 1
-   * (returns a double ranging from 0.1 to 1)
-   */
-  public double getDriver1Trigger(Hand trigger) {
-    // if-statement is used to counteract false positives from the trigger
-    if (driverController1.getTriggerAxis(trigger) > 0.1)
-      return driverController1.getTriggerAxis(trigger);
+  public double getDriver1Axis(int axis, String type, double nullSpeed, double speed) {
+    double axisValue = driverController1.getRawAxis(axis);
+    if (type.contains("joystick")) {
+      // if-statement is used to counteract false positives from the axis
+      if (axisValue > 0.1)
+        return speed;
+      else if (axisValue < -0.1)
+        return -speed;
+      return nullSpeed;
+    } else if (type.contains("trigger")) {
+      if (axisValue > -0.9)
+        return axisValue;
+      return 0;
+    }
     return 0;
   }
 
@@ -83,39 +70,51 @@ public class RobotContainer {
    * This method is used to get the value of a button in XboxController 1 (returns
    * a boolean)
    */
-  public boolean getDriver1ButtonPressed(int button) {
+  public boolean getDriver1Button(int button) {
     return driverController1.getRawButtonPressed(button);
+  }
+
+  public double getDriver1POV() {
+    return driverController1.getPOV();
   }
 
   /*
    * The following five methods perform the same tasks as the previous five with
    * the exception that they get the values from XboxController 2
    */
-  public double getDriver2RawAxis(int axis) {
-    return driverController2.getRawAxis(axis);
-  }
-
-  public double getDriver2RawAxis(int axis, double nullSpeed, double speed) {
-    if (driverController2.getRawAxis(axis) > 0.1)
-      return speed;
-    else if (driverController2.getRawAxis(axis) < -0.1)
-      return -speed;
-    return nullSpeed;
-  }
-
-  public double getDriver2Trigger(Hand trigger, double nullSpeed, double speed) {
-    if (driverController2.getTriggerAxis(trigger) > -0.9)
-      return speed;
-    return nullSpeed;
-  }
-
-  public double getDriver2Trigger(Hand trigger) {
-    if (driverController2.getTriggerAxis(trigger) > -0.9)
-      return driverController2.getTriggerAxis(trigger);
+  public double getDriver2Axis(int axis, String type) {
+    double axisValue = driverController2.getRawAxis(axis);
+    if (type.contains("joystick")) {
+      // if-statement is used to counteract false positives from the axis
+      if (Math.abs(axisValue) > 0.1)
+        return axisValue;
+      return 0;
+    } else if (type.contains("trigger")) {
+      if (axisValue > -0.9)
+        return axisValue;
+      return 0;
+    }
     return 0;
   }
 
-  public boolean getDriver2ButtonPressed(int button) {
+  public double getDriver2Axis(int axis, String type, double nullSpeed, double speed) {
+    double axisValue = driverController2.getRawAxis(axis);
+    if (type.contains("joystick")) {
+      // if-statement is used to counteract false positives from the axis
+      if (axisValue > 0.1)
+        return speed;
+      else if (axisValue < -0.1)
+        return -speed;
+      return nullSpeed;
+    } else if (type.contains("trigger")) {
+      if (axisValue > -0.9)
+        return axisValue;
+      return 0;
+    }
+    return 0;
+  }
+
+  public boolean getDriver2Button(int button) {
     return driverController2.getRawButtonPressed(button);
   }
 

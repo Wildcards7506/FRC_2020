@@ -23,8 +23,6 @@ public class STMCom extends CommandBase {
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
-  private static XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
-  
   /* Declares and initializes instanceVariables */
   double[] m_initialColor = new double[3];
   Timer mTimer = new Timer();
@@ -40,26 +38,23 @@ public class STMCom extends CommandBase {
     m_initialColor[1] = detectColor.green;
     m_initialColor[2] = detectColor.blue;
 
-    
-    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.stm);
   }
-
 
   // * Called when the command is initially scheduled. */
   @Override
   public void initialize() {
     mTimer.start();
-    
+
     Robot.stm.setSTM_Motor(m_speed);
   }
 
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    //m_speed = Robot.m_robotContainer.driver2OneImmediateButtonConfig(0, 0.5);
-      Robot.stm.setSTM_Motor(m_speed);
+    // m_speed = Robot.m_robotContainer.driver2OneImmediateButtonConfig(0, 0.5);
+    Robot.stm.setSTM_Motor(m_speed);
   }
 
   // Called once the command ends or is interrupted.
