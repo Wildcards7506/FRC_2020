@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */  
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -26,14 +26,25 @@ public class TankDrive extends CommandBase {
   @Override
   public void execute() {
     // initializes and declares joystick values from XboxController1
-    double rightStickX = Robot.m_robotContainer.getDriver1RawAxis(Constants.RIGHT_STICK_X);
-    double leftStickY = Robot.m_robotContainer.getDriver1RawAxis(Constants.LEFT_STICK_Y);
+    double rightStickX = Robot.m_robotContainer.getDriver1Axis(Constants.RIGHT_STICK_X, "joystick");
+    double leftStickY = Robot.m_robotContainer.getDriver1Axis(Constants.LEFT_STICK_Y, "joystick");
     // changes direction of drive when LB in XboxController is pressed
-    double driveThrottle = Robot.m_robotContainer.driver1OneButtonConfig(Constants.LEFT_BUTTON, 1, 0.25);
-    
+    boolean LB = Robot.m_robotContainer.getDriver1Button(Constants.LEFT_BUTTON);
+    double driveThrottle;
+    if (LB) {
+      driveThrottle = 0.25;
+    } else {
+      driveThrottle = 1;
+    }
 
     // set the speed of the motors
-    double slowDown = Robot.m_robotContainer.driver1OneButtonConfig(Constants.RIGHT_BUTTON, 1, 0.9);
+    boolean RB = Robot.m_robotContainer.getDriver1Button(Constants.LEFT_BUTTON);
+    double slowDown;
+    if (RB) {
+      slowDown = 0.9;
+    } else {
+      slowDown = 1;
+    }
     // forward and reverse
     double rightSpeed = (Constants.RD * (leftStickY - rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle;
     double leftSpeed = (Constants.LD * (leftStickY + rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle * slowDown;
@@ -41,11 +52,6 @@ public class TankDrive extends CommandBase {
 
     Robot.driveTrain.setRightMotors(rightSpeed);
     Robot.driveTrain.setLeftMotors(leftSpeed);
-
-    // Prints XboxController values on dashboard
-    System.out.println(Robot.m_robotContainer.controlValues(Constants.RIGHT_STICK_Y, Constants.RIGHT_STICK_X,
-        Constants.BUTTON_A, Constants.BUTTON_B, Constants.BUTTON_X, Constants.BUTTON_Y, Constants.LEFT_BUTTON,
-        Constants.RIGHT_BUTTON, Constants.RIGHT_STICK_Y));
   }
 
   /* Called once the command ends or is interrupted. */

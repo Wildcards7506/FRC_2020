@@ -23,41 +23,45 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  */
 public final class Constants {
 	// MotorController Assignments
-	public static final int MOTOR_1 = 1; // Drive Train L
-	public static final int MOTOR_2 = 2; // Drive Train L
-	public static final int MOTOR_3 = 3; // Drive Train L
-	public static final int MOTOR_4 = 4; // Climb L
-	public static final int MOTOR_5 = 5; // Trigger Spool
-	public static final int MOTOR_6 = 6; // Upper Intake
-	public static final int MOTOR_7 = 7; // Front Intake
-	public static final int MOTOR_8 = 8; // Intake Rotation
+	public static final int MOTOR_1 = 1;
+	public static final int MOTOR_2 = 2;
+	public static final int MOTOR_3 = 3;
+	public static final int MOTOR_4 = 4;
+	public static final int MOTOR_5 = 5;
+	public static final int MOTOR_6 = 6;
+	public static final int MOTOR_7 = 7;
+	public static final int MOTOR_8 = 8;
 	public static final int MOTOR_9 = 9;
-	public static final int MOTOR_10 = 10; // STM
+	public static final int MOTOR_10 = 10;
 	public static final int MOTOR_11 = 11;
-	public static final int MOTOR_12 = 12; // Shooter
-	public static final int MOTOR_13 = 13; // Climb R
-	public static final int MOTOR_14 = 14; // Drive Train R
-	public static final int MOTOR_15 = 15; // Drive Train R
-	public static final int MOTOR_16 = 16; // Drive Train R
+
+	public static final int MOTOR_12 = 12;
+	public static final int MOTOR_13 = 13;
+	public static final int MOTOR_14 = 14;
+	public static final int MOTOR_15 = 15;
+	public static final int MOTOR_16 = 16;
 
 	// DriverController Assignments
 	public static final int DRIVER_CONTROLLER_1 = 0;
 	public static final int DRIVER_CONTROLLER_2 = 1;
 
-	// JBT Assignments
+	// Control Axis (Joysticks and Triggers)
 	public static final int LEFT_STICK_Y = 1;
 	public static final int RIGHT_STICK_Y = 5;
 	public static final int LEFT_STICK_X = 0;
 	public static final int RIGHT_STICK_X = 4;
+	public static final int LEFT_TRIGGER = 2;
+	public static final int RIGHT_TRIGGER = 3;
+
+	// Control Buttons
+	public static final int PAD_X = 2;
+	public static final int PAD_y = 3;
 	public static final int BUTTON_A = 1;
 	public static final int BUTTON_B = 2;
 	public static final int BUTTON_X = 3;
 	public static final int BUTTON_Y = 4;
 	public static final int LEFT_BUTTON = 5;
 	public static final int RIGHT_BUTTON = 6;
-	public static final Hand LEFT_TRIGGER = Hand.kLeft;
-	public static final Hand RIGHT_TRIGGER = Hand.kRight;
-
 	// Camera Assignment
 	public static final int CAMERA_USB = 0;
 
@@ -79,6 +83,5 @@ public final class Constants {
 	// Fixed Variables
 	public static final double LD = .85;
 	public static final double RD = .9;
-
 
 }
