@@ -33,6 +33,8 @@ public class IntakeCom extends CommandBase {
       Robot.intake.setTriggerSpool(-Constants.SPOOL_SPEED);
     } else if (POV == 0) {
       Robot.intake.setTriggerSpool(Constants.SPOOL_SPEED);
+    } else if (POV == -1) {
+      Robot.intake.setTriggerSpool(Constants.STOP);
     }
 
     boolean LB = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
