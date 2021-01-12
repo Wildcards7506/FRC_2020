@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
@@ -22,12 +21,9 @@ public class STMCom extends CommandBase {
   /* Declares and initializes the colorSensor */
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-
-  private static XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
   
   /* Declares and initializes instanceVariables */
   double[] m_initialColor = new double[3];
-  Timer mTimer = new Timer();
 
   double m_time, m_speed;
 
@@ -51,7 +47,7 @@ public class STMCom extends CommandBase {
   // * Called when the command is initially scheduled. */
   @Override
   public void initialize() {
-    mTimer.start();
+    double seconds = Timer.getFPGATimestamp();
     
     Robot.stm.setSTM_Motor(m_speed);
   }

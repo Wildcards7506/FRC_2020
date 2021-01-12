@@ -163,6 +163,8 @@ public class RobotContainer {
     return flip;
   }
 
+  public boolean timer()
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
@@ -174,6 +176,8 @@ public class RobotContainer {
     Robot.driveTrain.setLeftMotors(Constants.LD * -0.7);
     Robot.driveTrain.setRightMotors(Constants.RD * -0.7);
     // Loop to turn
+
+
     long l = 0;
     long p = 0;
     while (l < 5) {
