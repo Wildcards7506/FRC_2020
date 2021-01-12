@@ -186,34 +186,7 @@ public class RobotContainer {
     // Set Drive to zero
     Robot.driveTrain.setLeftMotors(0);
     Robot.driveTrain.setRightMotors(0);
-    /*
-     * Robot.driveTrain.setLeftMotors(Constants.LD * -0.5);
-     * Robot.driveTrain.setRightMotors(Constants.RD * 0.5); // Loop to turn /* long
-     * i = 0; long j = 0; while (j < 3) { while (i < 3500000) i++; while (i != 0)
-     * i--; j++; } // Set Drive to zero Robot.driveTrain.setLeftMotors(0);
-     * Robot.driveTrain.setRightMotors(0);
-     */
-    // Adjust To aim
-    // Start Motors
-    /*
-     * Robot.driveTrain.setLeftMotors(.95 * 0.5); Robot.driveTrain.setRightMotors(.7
-     * * 0.5); //Loop to drive (ADJUST THIS TIME)
-     * 
-     * long i = 0; long j = 0; while (j < 3) { while (i < 3500000) i++; while (i !=
-     * 0) i--; j++; } //Set Drive to zero Robot.driveTrain.setLeftMotors(0);
-     * Robot.driveTrain.setRightMotors(0);
-     */
 
-    // Shoot
-    /*
-     * Robot.shooter.setShooterMotor(Constants.SHOOTER_SPEED); long x = 0; long y =
-     * 0; while (x < 2) { while (y < 3500000) y++; while (y != 0) y--; x++; }
-     * Robot.intake.setIntakeMotorDown(Constants.INTAKE_SPEED);
-     * Robot.intake.setIntakeMotorUp(-Constants.INTAKE_SPEED); long a = 0; long b =
-     * 0; while (a < 6) { while (b < 3500000) b++; while (b != 0) b--; a++; }
-     * Robot.shooter.setShooterMotor(0); Robot.intake.setIntakeMotorDown(0);
-     * Robot.intake.setIntakeMotorUp(0);
-     */
     return new Drive(0, 0);
   }
 }
