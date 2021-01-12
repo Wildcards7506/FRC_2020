@@ -142,8 +142,7 @@ public class RobotContainer {
   }
 
   /*
-   * This method is used to pulse a motor (returns
-   * an integer)
+   * This method is used to pulse a motor (returns an integer)
    */
   public int pulse(double pulseLength) {
     double seconds = Timer.getFPGATimestamp();
@@ -163,7 +162,14 @@ public class RobotContainer {
     return flip;
   }
 
-  public boolean timer()
+  public boolean timer(double init, double duration) {
+    double seconds = Timer.getFPGATimestamp();
+    double timePassed = init - seconds;
+    if (timePassed > seconds) {
+      return true;
+    }
+    return false;
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -176,7 +182,6 @@ public class RobotContainer {
     Robot.driveTrain.setLeftMotors(Constants.LD * -0.7);
     Robot.driveTrain.setRightMotors(Constants.RD * -0.7);
     // Loop to turn
-
 
     long l = 0;
     long p = 0;
