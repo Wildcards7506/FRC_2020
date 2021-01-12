@@ -20,7 +20,6 @@ import frc.robot.commands.auton.Drive;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-
   /* This initializes XboxControllers */
   private static XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
   private static XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
@@ -32,38 +31,40 @@ public class RobotContainer {
    */
   public double getDriver1Axis(int axis, String type) {
     double axisValue = driverController1.getRawAxis(axis);
-    if (type.contains("joystick")) {
-      // if-statement is used to counteract false positives from the axis
-      if (Math.abs(axisValue) > 0.1)
-        return axisValue;
-      return 0;
-    } else if (type.contains("trigger")) {
-      if (axisValue > -0.9)
-        return axisValue;
-      return 0;
+    switch (type) {
+      // if-statements are used to counteract false positives from the axis
+      case "joystick":
+        if (Math.abs(axisValue) > 0.1)
+          return axisValue;
+        return 0;
+      case "trigger":
+        if (axisValue > -0.9)
+          return axisValue;
+        return 0;
     }
     return 0;
   }
 
   /*
    * This method treats an axis of XboxController 1 as a button (returns one of
-   * three doubles depending on the position of the joystick)
+   * three or two doubles depending on the position of the joystick)
    */
   public double getDriver1Axis(int axis, String type, double nullSpeed, double speed) {
     double axisValue = driverController1.getRawAxis(axis);
-    if (type.contains("joystick")) {
-      // if-statement is used to counteract false positives from the axis
-      if (axisValue > 0.1)
-        return speed;
-      else if (axisValue < -0.1)
-        return -speed;
-      return nullSpeed;
-    } else if (type.contains("trigger")) {
-      if (axisValue > -0.9)
-        return axisValue;
-      return 0;
+    switch (type) {
+      // if-statements are used to counteract false positives from the axis
+      case "joystick":
+        if (axisValue > 0.1)
+          return speed;
+        else if (axisValue < -0.1)
+          return -speed;
+        return nullSpeed;
+      case "trigger":
+        if (axisValue > -0.9)
+          return axisValue;
+        return nullSpeed;
     }
-    return 0;
+    return nullSpeed;
   }
 
   /*
@@ -74,6 +75,18 @@ public class RobotContainer {
     return driverController1.getRawButton(button);
   }
 
+  /*
+   * This method is used to check if a button was pressed in XboxController 1
+   * (returns a boolean)
+   */
+  public boolean getDriver1ButtonPressed(int button) {
+    return driverController1.getRawButtonPressed(button);
+  }
+
+  /*
+   * This method is used to get the value of the pad in XboxController 1 (returns
+   * one of the following integers: 0, 45, 90, 135, 180, 225, 270, 315, -1)
+   */
   public int getDriver1POV() {
     return driverController1.getPOV();
   }
@@ -84,56 +97,69 @@ public class RobotContainer {
    */
   public double getDriver2Axis(int axis, String type) {
     double axisValue = driverController2.getRawAxis(axis);
-    if (type.contains("joystick")) {
-      // if-statement is used to counteract false positives from the axis
-      if (Math.abs(axisValue) > 0.1)
-        return axisValue;
-      return 0;
-    } else if (type.contains("trigger")) {
-      if (axisValue > -0.9)
-        return axisValue;
-      return 0;
+    switch (type) {
+      // if-statements are used to counteract false positives from the axis
+      case "joystick":
+        if (Math.abs(axisValue) > 0.1)
+          return axisValue;
+        return 0;
+      case "trigger":
+        if (axisValue > -0.9)
+          return axisValue;
+        return 0;
     }
     return 0;
   }
 
   public double getDriver2Axis(int axis, String type, double nullSpeed, double speed) {
     double axisValue = driverController2.getRawAxis(axis);
-    if (type.contains("joystick")) {
-      // if-statement is used to counteract false positives from the axis
-      if (axisValue > 0.1)
-        return speed;
-      else if (axisValue < -0.1)
-        return -speed;
-      return nullSpeed;
-    } else if (type.contains("trigger")) {
-      if (axisValue > -0.9)
-        return axisValue;
-      return 0;
+    switch (type) {
+      // if-statements are used to counteract false positives from the axis
+      case "joystick":
+        if (axisValue > 0.1)
+          return speed;
+        else if (axisValue < -0.1)
+          return -speed;
+        return nullSpeed;
+      case "trigger":
+        if (axisValue > -0.9)
+          return axisValue;
+        return nullSpeed;
     }
-    return 0;
+    return nullSpeed;
   }
 
   public boolean getDriver2Button(int button) {
     return driverController2.getRawButton(button);
   }
 
+  public boolean getDriver2ButtonPressed(int button) {
+    return driverController2.getRawButtonPressed(button);
+  }
+
   public int getDriver2POV() {
     return driverController2.getPOV();
   }
 
-  public double pulse(double pulseLength) {
+  /*
+   * This method is used to pulse a motor (returns
+   * an integer)
+   */
+  public int pulse(double pulseLength) {
     double seconds = Timer.getFPGATimestamp();
-    int a = (int)(seconds % pulseLength);
-
-    double flip = 0;
-    if (a == 0 && flip == 0) {
-      flip = 1;
-    } else if (a == 0 && flip == 1) {
-      flip = 0;
+    int a = (int) (seconds % pulseLength);
+    int flip = 0;
+    switch (flip) {
+      case 1:
+        if (a == 0)
+          flip = 0;
+        break;
+      case 0:
+        if (a == 0)
+          flip = 1;
+        break;
     }
     System.out.println("flip : " + flip);
-    //System.out.println("a : " + a);
     return flip;
   }
 

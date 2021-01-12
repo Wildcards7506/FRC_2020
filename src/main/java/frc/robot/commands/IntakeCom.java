@@ -29,12 +29,16 @@ public class IntakeCom extends CommandBase {
   public void execute() {
     int POV = Robot.m_robotContainer.getDriver2POV();
 
-    if (POV == 180) {
-      Robot.intake.setTriggerSpool(-Constants.SPOOL_SPEED);
-    } else if (POV == 0) {
-      Robot.intake.setTriggerSpool(Constants.SPOOL_SPEED);
-    } else if (POV == -1) {
-      Robot.intake.setTriggerSpool(Constants.STOP);
+    switch (POV) {
+      case 180:
+        Robot.intake.setTriggerSpool(-Constants.SPOOL_SPEED);
+        break;
+      case 0:
+        Robot.intake.setTriggerSpool(Constants.SPOOL_SPEED);
+        break;
+      case -1:
+        Robot.intake.setTriggerSpool(Constants.STOP);
+        break;
     }
 
     boolean LB = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);

@@ -26,8 +26,7 @@ public class ShooterCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", Constants.STOP, 1);
-
+    double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
     double speed, verticalSpeed, horizontalSpeed;
     if (trigger == 1) {
       speed = Constants.SHOOTER_SPEED;
