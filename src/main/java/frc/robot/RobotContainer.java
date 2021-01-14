@@ -147,7 +147,7 @@ public class RobotContainer {
   public int pulse(double pulseLength) {
     double seconds = Timer.getFPGATimestamp();
     int a = (int) (seconds % pulseLength);
-    int flip = 0;
+    int flip = 1;
     switch (flip) {
       case 1:
         if (a == 0)
