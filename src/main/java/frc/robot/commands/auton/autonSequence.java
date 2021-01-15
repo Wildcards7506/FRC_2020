@@ -22,7 +22,30 @@ public class autonSequence extends SequentialCommandGroup {
   public autonSequence() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    // super(new Move(2, 0.5, 0.5), new Move(5, -0.7, -0.7), new Move(10, -1, 1));
+    // super(
+      //BARREL
+          //Loop D5
+          //new Fwd(), new RTurn(), new Fwd(), new RTurn(), new Fwd(), new RTurn(), new Fwd(),
+          //Loop B8
+          //new RTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), 
+          //Loop D10
+          //new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn()
+      //SLALOM
+          //Long Loop In
+          //new Fwd(), new LTurn(), new Fwd(), new RTurn(), new Fwd(),
+          //Small Box
+          //new Rturn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(),
+          //Long Loop Out   
+          //new Rturn(), new Fwd(), new RTurn(), new Fwd(), new LTurn(), new Fwd()
+      //Bounce Path
+          //Spike 1
+          //new Fwd(), new RTurn(), new Rev(), new Fwd(), new LTurn(), new Fwd(), new RTurn(), new Fwd(), 
+          //Spike 2
+          //new RTurn(), new Fwd(), new LTurn(), new Fwd(), new Rev(), new RTurn(), new Fwd(),
+          //Spike 3
+          //new LTurn(), new Fwd(), new Rev(), new RTurn(), new Fwd()
+          
+          //);
     super();
   }
 }
