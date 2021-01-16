@@ -23,6 +23,7 @@ public class RobotContainer {
   /* This initializes XboxControllers */
   private static XboxController driverController1 = new XboxController(Constants.DRIVER_CONTROLLER_1);
   private static XboxController driverController2 = new XboxController(Constants.DRIVER_CONTROLLER_2);
+  private static Timer timer = new Timer();
 
   /*
    * This method is used to get an axis of XboxController 1 (returns a double
@@ -147,7 +148,7 @@ public class RobotContainer {
   public int pulse(double pulseLength) {
     double seconds = Timer.getFPGATimestamp();
     int a = (int) (seconds % pulseLength);
-    int flip = 1;
+    int flip = 0;
     switch (flip) {
       case 1:
         if (a == 0)
@@ -162,10 +163,28 @@ public class RobotContainer {
     return flip;
   }
 
+  // public int pulse(double pulseLength) {
+  //   int flip = 0;
+  //   // if timer hasn't started or has been reset, then start timer.
+  //   if (timer.get() == 0) {
+  //     timer.start();
+  //   }
+  //   // if pulselength has passed, switch flip and reset timer.
+  //   if (timer.hasElapsed(pulseLength)) {
+  //     if (flip == 0) {
+  //       flip = 1;
+  //     } else {
+  //       flip = 0;
+  //     }
+  //     timer.reset();
+  //   }
+  //   return flip;
+  // }
+
   public boolean timer(double init, double duration) {
     double seconds = Timer.getFPGATimestamp();
     double timePassed = init - seconds;
-    if (timePassed > seconds) {
+    if (timePassed > duration) {
       return true;
     }
     return false;

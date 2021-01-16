@@ -78,7 +78,7 @@ public final class Constants {
 	public static final double SPOOL_SPEED = 0.2;
 	public static final double INTAKE_PULSE = 2;
 	public static final double DRIVE_MAX_SPEED = 0.9;
-	public static final double STM_SPEED = 1;
+	public static final double STM_SPEED = 0.5;
 	public static final double CLIMB_SPEED = 1;
 	public static final double STOP = 0;
 
