@@ -38,6 +38,8 @@ public class ShooterCom extends CommandBase {
       horizontalSpeed = 0;
     }
 
+    System.out.println(Robot.shooter.getShooterMotor());
+
     Robot.shooter.setShooterMotor(speed);
     Robot.intake.setVerticalIntake(verticalSpeed);
     Robot.intake.setHorizontalIntake(horizontalSpeed);

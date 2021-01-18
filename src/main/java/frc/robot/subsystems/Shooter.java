@@ -26,6 +26,15 @@ public class Shooter extends SubsystemBase {
     shooterMotor12.set(ControlMode.PercentOutput, -speed);
   }
 
+  public String getShooterMotor() {
+    double busVoltage = shooterMotor12.getBusVoltage();
+    double outputPercent = shooterMotor12.getMotorOutputPercent();
+    double outputVoltage = shooterMotor12.getMotorOutputVoltage();
+    String str = "BusVoltage: " + busVoltage + "\nMotorOutputPercent: " + outputPercent + "\nMotorOutputVoltage: "
+        + outputVoltage;
+    return str;
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
