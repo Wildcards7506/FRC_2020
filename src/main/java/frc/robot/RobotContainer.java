@@ -145,41 +145,41 @@ public class RobotContainer {
   /*
    * This method is used to pulse a motor (returns an integer)
    */
-  // public int pulse(double pulseLength) {
-  //   double seconds = Timer.getFPGATimestamp();
-  //   int a = (int) (seconds % pulseLength);
-  //   int flip = 0;
-  //   switch (flip) {
-  //     case 1:
-  //       if (a == 0)
-  //         flip = 0;
-  //       break;
-  //     case 0:
-  //       if (a == 0)
-  //         flip = 1;
-  //       break;
-  //   }
-  //   System.out.println("flip : " + flip);
-  //   return flip;
-  // }
-
   public int pulse(double pulseLength) {
+    double seconds = Timer.getFPGATimestamp();
+    int a = (int) (seconds % pulseLength);
     int flip = 0;
-    // if timer hasn't started or has been reset, then start timer.
-    if (timer.get() == 0) {
-      timer.start();
+    switch (flip) {
+      case 1:
+        if (a == 0)
+          flip = 0;
+        break;
+      case 0:
+        if (a == 0)
+          flip = 1;
+        break;
     }
-    // if pulselength has passed, switch flip and reset timer.
-    if (timer.hasElapsed(pulseLength)) {
-      if (flip == 0) {
-        flip = 1;
-      } else {
-        flip = 0;
-      }
-      timer.reset();
-    }
+    System.out.println("flip : " + flip);
     return flip;
   }
+
+  // public int pulse(double pulseLength) {
+  //   int flip = 0;
+  //   // if timer hasn't started or has been reset, then start timer.
+  //   if (timer.get() == 0) {
+  //     timer.start();
+  //   }
+  //   // if pulselength has passed, switch flip and reset timer.
+  //   if (timer.hasElapsed(pulseLength)) {
+  //     if (flip == 0) {
+  //       flip = 1;
+  //     } else {
+  //       flip = 0;
+  //     }
+  //     timer.reset();
+  //   }
+  //   return flip;
+  // }
 
   public boolean timer(double init, double duration) {
     double seconds = Timer.getFPGATimestamp();

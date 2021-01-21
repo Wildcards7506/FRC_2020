@@ -5,14 +5,32 @@
 package frc.robot.commands.auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
+import frc.robot.Robot;
+import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.MotorSafety;
+import edu.wpi.first.wpilibj.Timer;
 
 public class autoCmd extends CommandBase {
+  private static Timer timer = new Timer();
+
   /** Creates a new autoCmd. */
   public autoCmd() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(new DriveTrain());
   }
 
-  public void Fwd() {
+  public void Fwd(double time) {
+    if (timer.get() == 0) {
+      timer.start();
+    }
+    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED);
+    if (timer.hasElapsed(time)) {
+      Robot.driveTrain.setLeftMotors(0);
+      Robot.driveTrain.setRightMotors(0);
+      timer.reset();
+    }
   }
 
   public void Rev() {
