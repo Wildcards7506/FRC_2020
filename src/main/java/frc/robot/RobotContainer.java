@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.commands.auton.Drive;
+import frc.robot.commands.auton.autonSequence;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -196,25 +197,26 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // Start Motors
+    // // Start Motors
 
-    Robot.driveTrain.setLeftMotors(Constants.LD * -0.7);
-    Robot.driveTrain.setRightMotors(Constants.RD * -0.7);
-    // Loop to turn
+    // Robot.driveTrain.setLeftMotors(Constants.LD * -0.7);
+    // Robot.driveTrain.setRightMotors(Constants.RD * -0.7);
+    // // Loop to turn
 
-    long l = 0;
-    long p = 0;
-    while (l < 5) {
-      while (p < 3500000)
-        p++;
-      while (p != 0)
-        p--;
-      l++;
-    }
-    // Set Drive to zero
-    Robot.driveTrain.setLeftMotors(0);
-    Robot.driveTrain.setRightMotors(0);
+    // long l = 0;
+    // long p = 0;
+    // while (l < 5) {
+    //   while (p < 3500000)
+    //     p++;
+    //   while (p != 0)
+    //     p--;
+    //   l++;
+    // }
+    // // Set Drive to zero
+    // Robot.driveTrain.setLeftMotors(0);
+    // Robot.driveTrain.setRightMotors(0);
 
-    return new Drive(0, 0);
+    // return new Drive(0, 0);
+    return new autonSequence();
   }
 }
