@@ -19,16 +19,26 @@ public class LimeLight extends SubsystemBase {
   /**
    * Creates a new LimeLight.
    */
+  private NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  private NetworkTableEntry tx = table.getEntry("tx");
+  private NetworkTableEntry ty = table.getEntry("ty");
+  private NetworkTableEntry ta = table.getEntry("ta");
+
   public LimeLight() {
-    //read values periodically
-    /* tx and ty are angles offset from crosshair */
-    //double Limex = tx.getDouble(0.0);
-    //double Limey = ty.getDouble(0.0);
-    //double Limearea = ta.getDouble(0.0);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+
+    // read values periodically
+    double limeX = tx.getDouble(0.0);
+    double limeY = ty.getDouble(0.0);
+    double limeArea = ta.getDouble(0.0);
+
+    // post to smart dashboard periodically
+    SmartDashboard.putNumber("LimelightX", limeX);
+    SmartDashboard.putNumber("LimelightY", limeY);
+    SmartDashboard.putNumber("LimelightArea", limeArea);
   }
 }

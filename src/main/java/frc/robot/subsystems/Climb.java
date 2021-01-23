@@ -1,6 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* Open Source Software - may be modifidd .
+ed and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
@@ -17,19 +18,24 @@ import frc.robot.commands.ClimbCom;
 public class Climb extends SubsystemBase {
   /* Declares and initializes motor */
   private final VictorSPX climbMotor4 = new VictorSPX(Constants.MOTOR_4);
+<<<<<<< HEAD
+=======
+  private final VictorSPX climbMotor9 = new VictorSPX(Constants.MOTOR_9);
+  private final VictorSPX climbMotor11 = new VictorSPX(Constants.MOTOR_11);
+>>>>>>> ae28e718a0c963d49020ad6ab51e7a597307c97c
   private final VictorSPX climbMotor13 = new VictorSPX(Constants.MOTOR_13);
 
   /*
    * This method sets the speed of the motor (returns a double ranging from -1 to
    * 1)
    */
-  public void setClimbMotor(final double speed) {
-    climbMotor4.set(ControlMode.PercentOutput, -Math.abs(speed));
-    climbMotor13.set(ControlMode.PercentOutput, -Math.abs(speed));
+  public void setClimb(final double speed) {
+    climbMotor4.set(ControlMode.PercentOutput, -speed);
+    climbMotor13.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
-  public void periodic() {
+  public void periodic() { 
     // This method will be called once per scheduler run
     setDefaultCommand(new ClimbCom());
   }

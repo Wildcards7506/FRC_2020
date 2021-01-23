@@ -20,23 +20,24 @@ public class ClimbCom extends CommandBase {
   /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
+    Robot.climb.setClimb(Constants.STOP);
   }
 
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    // initializes and declares joystick value from XboxController2
-    double rightStickY = Robot.m_robotContainer.getDriver2RawAxis(Constants.RIGHT_STICK_Y);
-    
-    // set the speed of the motor
-    Robot.climb.setClimbMotor((int) (Constants.CLIMB_SPEED * rightStickY * 1.99));
+    // initializes and declares the speed for climbing
+    double speed = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_STICK_Y, "joystick",Constants.STOP,
+        Constants.CLIMB_SPEED);
+    // sets the speed pf climb
+    Robot.climb.setClimb(speed);
   }
 
   /* Called once the command ends or is interrupted. */
   @Override
   public void end(boolean interrupted) {
-    //stops the motor
-    Robot.climb.setClimbMotor(Constants.STOP);
+    // stops the motor
+    Robot.climb.setClimb(Constants.STOP);
   }
 
   /* Returns true when the command should end. */

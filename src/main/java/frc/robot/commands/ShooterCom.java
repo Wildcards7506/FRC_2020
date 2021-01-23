@@ -20,17 +20,29 @@ public class ShooterCom extends CommandBase {
   /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
+    Robot.shooter.setShooterMotor(Constants.STOP);
   }
 
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    // initializes and declares motor speed basedXboxController2's A button value
-    double motorSpeed = -Constants.SHOOTER_SPEED * 0;
+    double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
+    double speed, verticalSpeed, horizontalSpeed;
+    if (trigger == 1) {
+      speed = Constants.SHOOTER_SPEED;
+      verticalSpeed = Constants.INTAKE_SPEED * Robot.m_robotContainer.pulse(Constants.INTAKE_PULSE);
+      horizontalSpeed = verticalSpeed;
+    } else {
+      speed = 0;
+      verticalSpeed = 0;
+      horizontalSpeed = 0;
+    }
 
-    // set the speed of the motor
-    Robot.shooter.setShooterMotor(motorSpeed);
-    ;
+    System.out.println(Robot.shooter.getShooterMotor());
+
+    Robot.shooter.setShooterMotor(speed);
+    Robot.intake.setVerticalIntake(verticalSpeed);
+    Robot.intake.setHorizontalIntake(horizontalSpeed);
   }
 
   /* Called once the command ends or is interrupted. */

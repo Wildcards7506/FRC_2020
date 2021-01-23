@@ -20,35 +20,52 @@ public class IntakeCom extends CommandBase {
   /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
+    Robot.intake.setHorizontalIntake(Constants.STOP);
+    Robot.intake.setVerticalIntake(Constants.STOP);
   }
 
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    // initializes and declares motor speed basedXboxController2's LB and RB button
-    // values
-    double motorSpeed = Robot.m_robotContainer.driver2ButtontrigggerConfig(Constants.RIGHT_BUTTON,
-        Constants.RIGHT_TRIGGER, Constants.STOP, Constants.INTAKE_SPEED, -Constants.INTAKE_SPEED);
+    int POV = Robot.m_robotContainer.getDriver2POV();
 
-    // set the speed of the motor top intake motor
-    Robot.intake.setIntakeMotorUp(motorSpeed);
+    switch (POV) {
+      case 180:
+        Robot.intake.setTriggerSpool(-Constants.SPOOL_SPEED);
+        break;
+      case 0:
+        Robot.intake.setTriggerSpool(Constants.SPOOL_SPEED);
+        break;
+      case -1:
+        Robot.intake.setTriggerSpool(Constants.STOP);
+        break;
+    }
 
-    // initializes and declares motor speed basedXboxController2's L and R Triggers
-    // values
-    double motorSpeed2 = Robot.m_robotContainer.driver2ButtontrigggerConfig(Constants.LEFT_BUTTON,
-        Constants.LEFT_TRIGGER, Constants.STOP, -Constants.INTAKE_SPEED * 2, Constants.INTAKE_SPEED * 2);
+    boolean LB = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
+    boolean RB = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
+    double horizontalSpeed, verticalSpeed;
+    if (LB) {
+      horizontalSpeed = Constants.INTAKE_SPEED;
+    } else {
+      horizontalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
+          Constants.INTAKE_SPEED);
+    }
+    if (RB) {
+      verticalSpeed = Constants.INTAKE_SPEED * Robot.m_robotContainer.pulse(Constants.INTAKE_PULSE);
+    } else {
+      verticalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
+          Constants.INTAKE_SPEED);
+    }
 
-    // set the speed of the bottom intake motor
-    Robot.intake.setIntakeMotorDown(motorSpeed2);
-
+    Robot.intake.setVerticalIntake(verticalSpeed);
+    Robot.intake.setHorizontalIntake(horizontalSpeed);
   }
 
   /* Called once the command ends or is interrupted. */
   @Override
   public void end(boolean interrupted) {
-    // stops the motor
-    Robot.intake.setIntakeMotorUp(Constants.STOP);
-    Robot.intake.setIntakeMotorDown(Constants.STOP);
+    Robot.intake.setHorizontalIntake(Constants.STOP);
+    Robot.intake.setVerticalIntake(Constants.STOP);
   }
 
   /* Returns true when the command should end. */
