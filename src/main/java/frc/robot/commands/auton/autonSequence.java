@@ -27,7 +27,7 @@ public class autonSequence extends SequentialCommandGroup {
           //Loop D5
           autoCmd.Fwd(2.4); autoCmd.RTurn(); autoCmd.Fwd(.97); autoCmd.RTurn(); autoCmd.Fwd(1); autoCmd.RTurn(); autoCmd.Fwd(1);          
           //Loop B8
-          autoCmd.RTurn(); autoCmd.Fwd(1); //autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); 
+          autoCmd.RTurn(); autoCmd.LFwd(2.8); autoCmd.LTurn(); autoCmd.Fwd(1.1); autoCmd.LTurn(); autoCmd.Fwd(1); autoCmd.LTurn(); autoCmd.Fwd(2);
           //Loop D10
           //autoCmd.LTurn(1); autoCmd.Fwd(3); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(6); autoCmd.LTurn(1);
       //SLALOM
