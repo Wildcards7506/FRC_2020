@@ -21,16 +21,15 @@ public class autoCmd extends CommandBase {
   }
 
   public void Fwd(double time) {
-    if (timer.get() == 0) {
-      timer.start();
-    }
+    timer.reset();
+    timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED);
     Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED);
-    if (timer.hasElapsed(time)) {
+    timer.delay(time);
+
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
-      timer.reset();
-    }
+      timer.stop();
   }
 
   public void Rev() {
