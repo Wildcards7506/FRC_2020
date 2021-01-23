@@ -25,25 +25,25 @@ public class autonSequence extends SequentialCommandGroup {
     // super(
       //BARREL
           //Loop D5
-          autoCmd.Fwd(3), autoCmd.RTurn(1), autoCmd.Fwd(1), autoCmd.RTurn(1), autoCmd.Fwd(1), autoCmd.RTurn(1), autoCmd.Fwd(1),
+          autoCmd.Fwd(3); autoCmd.RTurn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
           //Loop B8
-          autoCmd.RTurn(1), autoCmd.Fwd(3), autoCmd.LTurn(1), autoCmd.Fwd(1), autoCmd.LTurn(1), autoCmd.Fwd(1), autoCmd.LTurn(1), autoCmd.Fwd(1), 
+          autoCmd.RTurn(1); autoCmd.Fwd(3); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); 
           //Loop D10
-          autoCmd.LTurn(1), autoCmd.Fwd(3), autoCmd.LTurn(1), autoCmd.Fwd(1), autoCmd.LTurn(1), autoCmd.Fwd(6), autoCmd.LTurn(1)
+          autoCmd.LTurn(1); autoCmd.Fwd(3); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(6); autoCmd.LTurn(1);
       //SLALOM
           //Long Loop In
-          //new Fwd(), new LTurn(), new Fwd(), new RTurn(), new Fwd(),
+          //new Fwd(); new LTurn(); new Fwd(); new RTurn(); new Fwd();
           //Small Box
-          //new Rturn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(),
+          //new Rturn(); new Fwd(); new LTurn(); new Fwd(); new LTurn(); new Fwd(); new LTurn(); new Fwd(); new LTurn(); new Fwd();
           //Long Loop Out   
-          //new Rturn(), new Fwd(), new RTurn(), new Fwd(), new LTurn(), new Fwd()
+          //new Rturn(); new Fwd(); new RTurn(); new Fwd(); new LTurn(); new Fwd();
       //Bounce Path
           //Spike 1
-          //new Fwd(), new RTurn(), new Rev(), new Fwd(), new LTurn(), new Fwd(), new RTurn(), new Fwd(), 
+          //new Fwd(); new RTurn(); new Rev(); new Fwd(); new LTurn(); new Fwd(); new RTurn(); new Fwd(); 
           //Spike 2
-          //new RTurn(), new Fwd(), new LTurn(), new Fwd(), new Rev(), new RTurn(), new Fwd(),
+          //new RTurn(); new Fwd(); new LTurn(); new Fwd(); new Rev(); new RTurn(); new Fwd();
           //Spike 3
-          //new LTurn(), new Fwd(), new Rev(), new RTurn(), new Fwd()
+          //new LTurn(); new Fwd(); new Rev(); new RTurn(); new Fwd();
           
           //);
     super(new Drive(0.5, 0.5));

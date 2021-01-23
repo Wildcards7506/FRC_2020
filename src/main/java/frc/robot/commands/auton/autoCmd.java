@@ -20,7 +20,7 @@ public class autoCmd extends CommandBase {
     addRequirements(new DriveTrain());
   }
 
-  public void Fwd(double time) {
+  public static void Fwd(double time) {
     timer.reset();
     timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED);
@@ -44,7 +44,7 @@ public class autoCmd extends CommandBase {
       timer.stop();
   }
 
-  public void RTurn(double time) {
+  public static void RTurn(double time) {
     timer.reset();
     timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED);
@@ -56,7 +56,7 @@ public class autoCmd extends CommandBase {
       timer.stop();
   }
 
-  public void LTurn(double time) {
+  public static void LTurn(double time) {
     timer.reset();
     timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED * -1);

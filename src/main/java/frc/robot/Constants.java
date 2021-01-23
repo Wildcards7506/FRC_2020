@@ -23,22 +23,6 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  */
 public final class Constants {
 	// MotorController Assignments
-<<<<<<< HEAD
-	public static final int MOTOR_1 = 1; // Drive Train
-	public static final int MOTOR_2 = 2; // Drive Train
-	public static final int MOTOR_3 = 3; // Drive Train
-	public static final int MOTOR_4 = 4; // Climb
-	public static final int MOTOR_5 = 5; // STM
-	public static final int MOTOR_6 = 6; // Shooter
-	public static final int MOTOR_7 = 7; // Intake
-	public static final int MOTOR_8 = 8; // Intake
-	public static final int MOTOR_10 = 10;
-	public static final int MOTOR_12 = 12; //Climb
-	public static final int MOTOR_13 = 13;
-	public static final int MOTOR_14 = 14; // Drive Train
-	public static final int MOTOR_15 = 15; // Drive Train
-	public static final int MOTOR_16 = 16; // Drive Train
-=======
 	public static final int MOTOR_1 = 1;
 	public static final int MOTOR_2 = 2;
 	public static final int MOTOR_3 = 3;
@@ -56,7 +40,6 @@ public final class Constants {
 	public static final int MOTOR_14 = 14;
 	public static final int MOTOR_15 = 15;
 	public static final int MOTOR_16 = 16;
->>>>>>> ae28e718a0c963d49020ad6ab51e7a597307c97c
 
 	// DriverController Assignments
 	public static final int DRIVER_CONTROLLER_1 = 0;
