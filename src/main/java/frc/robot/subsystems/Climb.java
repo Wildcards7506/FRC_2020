@@ -17,8 +17,6 @@ import frc.robot.commands.ClimbCom;
 public class Climb extends SubsystemBase {
   /* Declares and initializes motor */
   private final VictorSPX climbMotor4 = new VictorSPX(Constants.MOTOR_4);
-  private final VictorSPX climbMotor9 = new VictorSPX(Constants.MOTOR_9);
-  private final VictorSPX climbMotor11 = new VictorSPX(Constants.MOTOR_13);
   private final VictorSPX climbMotor13 = new VictorSPX(Constants.MOTOR_13);
 
   /*
