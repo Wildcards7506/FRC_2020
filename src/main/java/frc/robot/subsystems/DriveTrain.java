@@ -28,9 +28,9 @@ public class DriveTrain extends SubsystemBase {
    * -1 to 1)
    */
   public void setLeftMotors(final double speed) {
-    motorLeft1.set(ControlMode.PercentOutput, -speed);
-    motorLeft2.set(ControlMode.PercentOutput, -speed);
-    motorLeft3.set(ControlMode.PercentOutput, -speed);
+    motorLeft1.set(ControlMode.PercentOutput, speed);
+    motorLeft2.set(ControlMode.PercentOutput, speed);
+    motorLeft3.set(ControlMode.PercentOutput, speed);
   }
 
   /*
@@ -38,9 +38,9 @@ public class DriveTrain extends SubsystemBase {
    * -1 to 1)
    */
   public void setRightMotors(final double speed) {
-    motorRight14.set(ControlMode.PercentOutput, speed);
-    motorRight15.set(ControlMode.PercentOutput, speed);
-    motorRight16.set(ControlMode.PercentOutput, speed);
+    motorRight14.set(ControlMode.PercentOutput, -speed);
+    motorRight15.set(ControlMode.PercentOutput, -speed);
+    motorRight16.set(ControlMode.PercentOutput, -speed);
   }
 
   @Override
