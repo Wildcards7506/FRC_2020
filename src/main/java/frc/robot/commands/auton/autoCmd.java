@@ -32,14 +32,40 @@ public class autoCmd extends CommandBase {
       timer.stop();
   }
 
-  public void Rev() {
+  public void Rev(double time) {
+    timer.reset();
+    timer.start();
+    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED * -1);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * -1);
+    timer.delay(time);
+
+      Robot.driveTrain.setLeftMotors(0);
+      Robot.driveTrain.setRightMotors(0);
+      timer.stop();
   }
 
-  public void RTurn() {
+  public void RTurn(double time) {
+    timer.reset();
+    timer.start();
+    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * -1);
+    timer.delay(time);
+
+      Robot.driveTrain.setLeftMotors(0);
+      Robot.driveTrain.setRightMotors(0);
+      timer.stop();
   }
 
-  public void LTurn() {
-  }
+  public void LTurn(double time) {
+    timer.reset();
+    timer.start();
+    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED * -1);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED);
+    timer.delay(time);
+
+      Robot.driveTrain.setLeftMotors(0);
+      Robot.driveTrain.setRightMotors(0);
+      timer.stop();}
 
   // Called when the command is initially scheduled.
   @Override
