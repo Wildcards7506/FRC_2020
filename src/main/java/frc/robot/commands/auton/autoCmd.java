@@ -28,8 +28,8 @@ public class autoCmd extends CommandBase {
     Timer.delay(time);
     System.out.println("Fwd Complete");
     
-    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*-.7);
-    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*-1);
+    //Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*-.7);
+    //Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*-1);
     Timer.delay(.3);
     System.out.println("Stop Complete");
 
@@ -51,8 +51,8 @@ public class autoCmd extends CommandBase {
     Timer.delay(time);
     System.out.println("Fwd Complete");
     
-    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*-.7);
-    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*-1);
+    //Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*-.7);
+    //Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*-1);
     Timer.delay(.3);
     System.out.println("Stop Complete");
 
@@ -77,9 +77,9 @@ public class autoCmd extends CommandBase {
   public static void RTurn() {
     timer.reset();
     timer.start();
-    //Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED * -1);
+    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED * -1);
     Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED);
-    Timer.delay(.57);
+    Timer.delay(.25);
 
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
@@ -91,7 +91,7 @@ public class autoCmd extends CommandBase {
     timer.reset();
     timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED);
-    //Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * -1);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * -1);
     Timer.delay(.47);
 
       Robot.driveTrain.setLeftMotors(0);
