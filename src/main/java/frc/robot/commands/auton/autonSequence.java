@@ -25,11 +25,11 @@ public class autonSequence extends SequentialCommandGroup {
     // super(
       //BARREL
           //Loop D5
-          //new Fwd(), new RTurn(), new Fwd(), new RTurn(), new Fwd(), new RTurn(), new Fwd(),
+          autoCmd.Fwd(3), autoCmd.RTurn(1), autoCmd.Fwd(1), autoCmd.RTurn(1), autoCmd.Fwd(1), autoCmd.RTurn(1), autoCmd.Fwd(1),
           //Loop B8
-          //new RTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), 
+          autoCmd.RTurn(1), autoCmd.Fwd(3), autoCmd.LTurn(1), autoCmd.Fwd(1), autoCmd.LTurn(1), autoCmd.Fwd(1), autoCmd.LTurn(1), autoCmd.Fwd(1), 
           //Loop D10
-          //new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn(), new Fwd(), new LTurn()
+          autoCmd.LTurn(1), autoCmd.Fwd(3), autoCmd.LTurn(1), autoCmd.Fwd(1), autoCmd.LTurn(1), autoCmd.Fwd(6), autoCmd.LTurn(1)
       //SLALOM
           //Long Loop In
           //new Fwd(), new LTurn(), new Fwd(), new RTurn(), new Fwd(),
