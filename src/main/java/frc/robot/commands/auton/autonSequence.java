@@ -32,18 +32,18 @@ public class autonSequence extends SequentialCommandGroup {
           autoCmd.LTurn(1); autoCmd.Fwd(3); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(6); autoCmd.LTurn(1);
       //SLALOM
           //Long Loop In
-          //new Fwd(); new LTurn(); new Fwd(); new RTurn(); new Fwd();
+          //autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
           //Small Box
-          //new Rturn(); new Fwd(); new LTurn(); new Fwd(); new LTurn(); new Fwd(); new LTurn(); new Fwd(); new LTurn(); new Fwd();
+          //autoCmd.Rturn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1);
           //Long Loop Out   
-          //new Rturn(); new Fwd(); new RTurn(); new Fwd(); new LTurn(); new Fwd();
-      //Bounce Path
+          //autoCmd.Rturn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1);
+      //BOUNCE
           //Spike 1
-          //new Fwd(); new RTurn(); new Rev(); new Fwd(); new LTurn(); new Fwd(); new RTurn(); new Fwd(); 
+          //autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Rev(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1); 
           //Spike 2
-          //new RTurn(); new Fwd(); new LTurn(); new Fwd(); new Rev(); new RTurn(); new Fwd();
+          //autoCmd.RTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.Rev(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
           //Spike 3
-          //new LTurn(); new Fwd(); new Rev(); new RTurn(); new Fwd();
+          //autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.Rev(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
           
           //);
     //super(new Drive(0.5, 0.5));
