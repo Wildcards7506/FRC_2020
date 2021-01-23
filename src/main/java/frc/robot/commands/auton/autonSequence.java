@@ -46,6 +46,6 @@ public class autonSequence extends SequentialCommandGroup {
           //new LTurn(); new Fwd(); new Rev(); new RTurn(); new Fwd();
           
           //);
-    super(new Drive(0.5, 0.5));
+    //super(new Drive(0.5, 0.5));
   }
 }
