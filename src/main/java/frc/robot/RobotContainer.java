@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.commands.auton.Drive;
+import frc.robot.commands.auton.HomeAuton;
 import frc.robot.commands.auton.autonSequence;
 
 /**
@@ -217,6 +218,6 @@ public class RobotContainer {
     // Robot.driveTrain.setRightMotors(0);
 
     // return new Drive(0, 0);
-    return new autonSequence();
+    return new HomeAuton();
   }
 }
