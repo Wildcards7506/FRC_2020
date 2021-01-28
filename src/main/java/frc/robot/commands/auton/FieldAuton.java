@@ -15,8 +15,9 @@ public class FieldAuton extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     
-    
-    
+    //Go Forward by like 3 feet and turn Gight
+    autoCmd.Fwd(0.7); autoCmd.Rturn();
+  
 
   }
 }
