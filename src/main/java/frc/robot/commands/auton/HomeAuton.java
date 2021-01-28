@@ -15,11 +15,11 @@ import frc.robot.Robot;
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 
 /* Class still in development */
-public class autonSequence extends SequentialCommandGroup {
+public class HomeAuton extends SequentialCommandGroup {
   /**
    * Creates a new MoveSequence.
    */
-  public autonSequence() {
+  public HomeAuton() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     // super(
