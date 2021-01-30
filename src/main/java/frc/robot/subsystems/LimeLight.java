@@ -24,13 +24,13 @@ public class LimeLight extends SubsystemBase {
    * Creates a new LimeLight.
    */
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-  NetworkTableEntry tx = table.getEntry("tx");
-  NetworkTableEntry ty = table.getEntry("ty");
-  NetworkTableEntry ta = table.getEntry("ta");
-  NetworkTableEntry tv = table.getEntry("tv");
-  NetworkTableEntry ledMode = table.getEntry("ledMode");
+  NetworkTableEntry tx;
+  NetworkTableEntry ty;
+  NetworkTableEntry ta;
+  NetworkTableEntry tv;
+  NetworkTableEntry ledMode;
 
-  private final Spark spark = new Spark(0);
+  //private final Spark spark = new Spark(0);
 
   public double Detecto() {
     if (tv.getDouble(0.0) == 1) {
@@ -40,10 +40,20 @@ public class LimeLight extends SubsystemBase {
     return 0.0;
   }
 
+  public double getTX()
+  {
+    return tx.getDouble(0.0);
+  }
   @Override
   public void periodic() {
+    //update from table
+    tx = table.getEntry("tx");
+    ty = table.getEntry("ty");
+    ta = table.getEntry("ta");
+    tv = table.getEntry("tv");
+    ledMode = table.getEntry("ledMode");
     // This method will be called once per scheduler run
-    //ledMode.setNumber(2);
+    ledMode.setNumber(0);
     // read values periodically
     double limeV = tv.getDouble(0.0);
     double limeX = tx.getDouble(0.0);
@@ -57,7 +67,7 @@ public class LimeLight extends SubsystemBase {
     SmartDashboard.putNumber("LimelightArea", limeArea);
     // pwm.setRaw(255);
     // pwm.setSpeed(50);
-    spark.set(1);
+    //spark.set(1);
 
     
     

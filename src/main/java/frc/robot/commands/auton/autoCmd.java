@@ -8,11 +8,15 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj.MotorSafety;
+
+//import org.graalvm.compiler.core.common.alloc.Trace;
+
 import edu.wpi.first.wpilibj.Timer;
+import frc.robot.subsystems.LimeLight;
 
 public class autoCmd extends CommandBase {
   private static Timer timer = new Timer();
+  private static LimeLight limelight = new LimeLight();
 
   /** Creates a new autoCmd. */
   public autoCmd() {
@@ -36,6 +40,29 @@ public class autoCmd extends CommandBase {
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
       timer.stop();
+  }
+
+  public static void trackFwd()
+  {
+    timer.reset();
+    timer.start();
+    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.1);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.1);
+    while(true)
+    {
+      if(Math.abs(limelight.getTX()) >= 5)
+      {
+        if(limelight.getTX() > 5)
+        {
+          Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.05);
+        } else if(limelight.getTX() < -5)
+        {
+          Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * .05);
+        }
+      }
+      //Timer.delay(.01);
+    }
+    //timer.stop();
   }
 
   public static void LFwd(double time) {
@@ -106,8 +133,7 @@ public class autoCmd extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
