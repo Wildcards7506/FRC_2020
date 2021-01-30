@@ -17,34 +17,33 @@ import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.Spark;
 
 public class LimeLight extends SubsystemBase {
   /**
    * Creates a new LimeLight.
    */
-  private NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-  private NetworkTableEntry tx = table.getEntry("tx");
-  private NetworkTableEntry ty = table.getEntry("ty");
-  private NetworkTableEntry ta = table.getEntry("ta");
-  private NetworkTableEntry tv = table.getEntry("tv");
-  private NetworkTableEntry ledMode = table.getEntry("ledMode");
+  NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  NetworkTableEntry tx = table.getEntry("tx");
+  NetworkTableEntry ty = table.getEntry("ty");
+  NetworkTableEntry ta = table.getEntry("ta");
+  NetworkTableEntry tv = table.getEntry("tv");
+  NetworkTableEntry ledMode = table.getEntry("ledMode");
 
-  private final PWM pwm = new PWM(0);
-  
-  public LimeLight() {
+  private final Spark spark = new Spark(0);
 
-  }
-  public double Detecto(){
+  public double Detecto() {
     if (tv.getDouble(0.0) == 1) {
-    ledMode.setNumber(2); return tx.getDouble(0.0); }
+      ledMode.setNumber(2);
+      return tx.getDouble(0.0);
+    }
     return 0.0;
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-
+    //ledMode.setNumber(2);
     // read values periodically
     double limeV = tv.getDouble(0.0);
     double limeX = tx.getDouble(0.0);
@@ -56,8 +55,11 @@ public class LimeLight extends SubsystemBase {
     SmartDashboard.putNumber("LimelightX", limeX);
     SmartDashboard.putNumber("LimelightY", limeY);
     SmartDashboard.putNumber("LimelightArea", limeArea);
-    //pwm.setRaw(255);
-    //pwm.setSpeed(50);
-    pwm.setPosition(90);
+    // pwm.setRaw(255);
+    // pwm.setSpeed(50);
+    spark.set(1);
+
+    
+    
   }
 }

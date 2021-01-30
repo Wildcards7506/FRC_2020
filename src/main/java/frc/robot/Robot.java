@@ -16,6 +16,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.STM;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.LimeLight;
 
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
   public static Climb climb = new Climb();
   public static Camera camera = new Camera();
   public static STM stm = new STM();
+  public static LimeLight Limelight = new LimeLight();
 
   /**
    * This function is run when the robot is first started up and should be used
