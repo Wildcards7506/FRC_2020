@@ -53,30 +53,30 @@ public class STMCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    color = m_colorSensor.getColor();
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A))
-      button = 'a';
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B))
-      button = 'b';
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_X))
-      button = 'x';
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_Y))
-      button = 'y';
+    // color = m_colorSensor.getColor();
+    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A))
+    //   button = 'a';
+    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B))
+    //   button = 'b';
+    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_X))
+    //   button = 'x';
+    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_Y))
+    //   button = 'y';
 
-    switch (button) {
-      case 'a':
-        STM_Spin(Color.kGreen);
-        break;
-      case 'b':
-        STM_Spin(Color.kRed);
-        break;
-      case 'x':
-        STM_Spin(Color.kCyan);
-        break;
-      case 'y':
-        STM_Spin(Color.kYellow);
-        break;
-    }
+    // switch (button) {
+    //   case 'a':
+    //     STM_Spin(Color.kGreen);
+    //     break;
+    //   case 'b':
+    //     STM_Spin(Color.kRed);
+    //     break;
+    //   case 'x':
+    //     STM_Spin(Color.kCyan);
+    //     break;
+    //   case 'y':
+    //     STM_Spin(Color.kYellow);
+    //     break;
+    // }
   }
 
   // Called once the command ends or is interrupted.

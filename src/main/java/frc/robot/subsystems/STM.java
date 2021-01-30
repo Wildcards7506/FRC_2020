@@ -30,6 +30,6 @@ public class STM extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    setDefaultCommand(new STMCom());
+    //setDefaultCommand(new STMCom());
   }
 }
