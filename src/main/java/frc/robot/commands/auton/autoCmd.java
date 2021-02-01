@@ -42,13 +42,13 @@ public class autoCmd extends CommandBase {
       timer.stop();
   }
 
-  public static void trackFwd()
+  public static void trackFwd(double time)
   {
     timer.reset();
     timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.1);
     Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.1);
-    while(true)
+    while(timer.get() < time)
     {
       if(Math.abs(limelight.getTX()) >= 5)
       {
@@ -60,9 +60,10 @@ public class autoCmd extends CommandBase {
           Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * .05);
         }
       }
-      //Timer.delay(.01);
     }
-    //timer.stop();
+    Robot.driveTrain.setLeftMotors(0);
+    Robot.driveTrain.setRightMotors(0);
+    timer.stop();
   }
 
   public static void LFwd(double time) {

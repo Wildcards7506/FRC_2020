@@ -23,7 +23,7 @@ public class LimeLight extends SubsystemBase {
   /**
    * Creates a new LimeLight.
    */
-  NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  NetworkTable table;
   NetworkTableEntry tx;
   NetworkTableEntry ty;
   NetworkTableEntry ta;
@@ -44,9 +44,11 @@ public class LimeLight extends SubsystemBase {
   {
     return tx.getDouble(0.0);
   }
+
   @Override
   public void periodic() {
-    //update from table
+    //update table, then update from updated table
+    table = NetworkTableInstance.getDefault().getTable("limelight");
     tx = table.getEntry("tx");
     ty = table.getEntry("ty");
     ta = table.getEntry("ta");

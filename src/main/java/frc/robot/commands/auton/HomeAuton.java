@@ -24,7 +24,7 @@ public class HomeAuton extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     // super(
       //BARREL
-          autoCmd.trackFwd();
+          autoCmd.trackFwd(5);
 
           //new autoCmd;
           //Loop D5
