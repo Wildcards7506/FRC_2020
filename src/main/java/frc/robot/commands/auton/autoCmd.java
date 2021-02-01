@@ -50,17 +50,18 @@ public class autoCmd extends CommandBase {
     while(true)
     { 
       limelight.updateData();
-      if(Math.abs(limelight.getTX()) >= 5)
+      if(Math.abs(limelight.getTX()) > 5)
       {
         if(limelight.getTX() > 5)
         {
           Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*0);
         }else if(limelight.getTX() < -5)
         {
-          Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * 0);
+          Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*0);
         }
       }else
       {
+        Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
         Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
       }
     }
