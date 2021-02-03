@@ -13,10 +13,12 @@ import frc.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.subsystems.LimeLight;
+import edu.wpi.first.wpilibj.Spark;
 
 public class autoCmd extends CommandBase {
   private static Timer timer = new Timer();
   private static LimeLight limelight = new LimeLight();
+  // private final Spark spark = new Spark(0);
 
   /** Creates a new autoCmd. */
   public autoCmd() {
@@ -47,7 +49,7 @@ public class autoCmd extends CommandBase {
     timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
     Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
-    while(true)
+    while(timer.get() < time)
     { 
       limelight.updateData();
       if(Math.abs(limelight.getTX()) > 5)
@@ -59,15 +61,26 @@ public class autoCmd extends CommandBase {
         {
           Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*0);
         }
+      }else if(limelight.getTV() == 0){
+        Robot.driveTrain.setLeftMotors(0);
+        Robot.driveTrain.setRightMotors(0);
+        timer.stop();
+        while(limelight.getTV() == 0)
+        {
+          //spark.set(1);
+        }
+        Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
+        Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
+        timer.start();
       }else
       {
         Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
         Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
       }
     }
-    //Robot.driveTrain.setLeftMotors(0);
-    //Robot.driveTrain.setRightMotors(0);
-    //timer.stop();
+    Robot.driveTrain.setLeftMotors(0);
+    Robot.driveTrain.setRightMotors(0);
+    timer.stop();
   }
 
   public static void LFwd(double time) {
