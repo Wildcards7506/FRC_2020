@@ -13,6 +13,7 @@ import frc.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.subsystems.LimeLight;
+import edu.wpi.first.wpilibj.Spark;
 
 public class autoCmd extends CommandBase {
   private static Timer timer = new Timer();
@@ -63,6 +64,17 @@ public class autoCmd extends CommandBase {
           System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
           Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
         }
+      }else if(Robot.Limelight.getTV() == 0){
+        Robot.driveTrain.setLeftMotors(0);
+        Robot.driveTrain.setRightMotors(0);
+        timer.stop();
+        while(Robot.Limelight.getTV() == 0)
+        {
+          //spark.set(1);
+        }
+        Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
+        Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
+        timer.start();
       }else
       {
         Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.5);

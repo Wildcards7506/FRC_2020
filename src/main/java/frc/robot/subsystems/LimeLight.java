@@ -30,7 +30,11 @@ public class LimeLight extends SubsystemBase {
   double txDouble;
   NetworkTableEntry ledMode;
 
+<<<<<<< HEAD
   
+=======
+  // private final Spark spark = new Spark(0);
+>>>>>>> 522c92054902bf795cffa84b6b10f19b93156b67
 
   public double Detecto() {
     if (tv.getDouble(0.0) == 1) {
@@ -40,6 +44,7 @@ public class LimeLight extends SubsystemBase {
     return 0.0;
   }
 
+<<<<<<< HEAD
   public void TurretTurn(double speed){
       spark.set(speed);
   }
@@ -47,6 +52,10 @@ public class LimeLight extends SubsystemBase {
   public void updateData()
   {
     //update table, then update from updated table
+=======
+  public void updateData() {
+    // update table, then update from updated table
+>>>>>>> 522c92054902bf795cffa84b6b10f19b93156b67
     table = NetworkTableInstance.getDefault().getTable("limelight");
     tx = table.getEntry("tx");
     ty = table.getEntry("ty");
@@ -67,21 +76,28 @@ public class LimeLight extends SubsystemBase {
     SmartDashboard.putNumber("LimelightArea", limeArea);
   }
 
-  public double getTX()
-  {
+  public double getTX() {
     return txDouble;
   }
 
+  public double getTV(){
+    return tv.getDouble(0.0);
+  }
   @Override
   public void periodic() {
-    updateData();
     // This method will be called once per scheduler run
+<<<<<<< HEAD
     //ledMode.setNumber(0);
      //pwm.setRaw(255);
      //pwm.setSpeed(50);
     //spark.set(.5);
+=======
+    updateData();
+    ledMode.setNumber(0);
+    // pwm.setRaw(255);
+    // pwm.setSpeed(50);
+    // spark.set(1);
+>>>>>>> 522c92054902bf795cffa84b6b10f19b93156b67
 
-    
-    
   }
 }
