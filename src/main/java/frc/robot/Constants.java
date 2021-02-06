@@ -83,7 +83,7 @@ public final class Constants {
 	public static final double STOP = 0;
 
 	// Fixed Variables
-	public static final double LD = .85;
+	public static final double LD = .63;
 	public static final double RD = .9;
 
 }

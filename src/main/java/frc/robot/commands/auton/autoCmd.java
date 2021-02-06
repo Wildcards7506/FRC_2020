@@ -49,19 +49,18 @@ public class autoCmd extends CommandBase {
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
     Timer.delay(3);
+    
     while(true)
     { 
       Robot.Limelight.updateData();
       if(Math.abs(Robot.Limelight.getTX()) >  1)
       {
-        if(Robot.Limelight.getTX() > 1)
+        if(Robot.Limelight.getTX() > 0)
         {
-          System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
           Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)*.34));
 
-        }else if(Robot.Limelight.getTX() < -1)
+        }else if(Robot.Limelight.getTX() < 0)
         {
-          System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
           Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
         }
       }else if(Robot.Limelight.getTV() == 0){
@@ -89,8 +88,6 @@ public class autoCmd extends CommandBase {
   public static void LCircle(double time) {
     timer.reset();
     timer.start();
-    //Start Turret
-    Robot.Limelight.TurretTurn(1);
     //Start Motors
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
@@ -98,6 +95,7 @@ public class autoCmd extends CommandBase {
     while(true)
     { 
       Robot.Limelight.updateData();
+      Robot.Limelight.turretTurn(1.0);
       if(Math.abs(Robot.Limelight.getTX()) >  1)
       {
         if(Robot.Limelight.getTX() > 1)
@@ -125,7 +123,7 @@ public class autoCmd extends CommandBase {
     timer.reset();
     timer.start();
     //Start Turret
-    Robot.Limelight.TurretTurn(-1);
+    Robot.Limelight.turretTurn(-1.0);
     //Start Motors
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);

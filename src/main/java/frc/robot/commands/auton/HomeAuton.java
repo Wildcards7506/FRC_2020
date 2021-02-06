@@ -24,7 +24,14 @@ public class HomeAuton extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     // super(
       //BARREL
-          autoCmd.LCircle(5);
+          autoCmd.trackFwd(5);
+          //Barrel D5
+          //TA between 3 - 3.8
+
+          //Barrel B8
+          //TA betweel 8.9 - 10
+
+          //
 
           //new autoCmd;
           //Loop D5

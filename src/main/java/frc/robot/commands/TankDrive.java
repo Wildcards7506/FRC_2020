@@ -30,24 +30,24 @@ public class TankDrive extends CommandBase {
     double leftStickY = Robot.m_robotContainer.getDriver1Axis(Constants.LEFT_STICK_Y, "joystick");
     // changes direction of drive when LB in XboxController is pressed
     boolean LB = Robot.m_robotContainer.getDriver1Button(Constants.LEFT_BUTTON);
-    double driveThrottle;
-    if (LB) {
-      driveThrottle = 0.25;
+    boolean RB = Robot.m_robotContainer.getDriver1Button(Constants.RIGHT_BUTTON);
+    double TurnL;
+    double TurnR;
+    if (LB) { 
+      TurnL = 0.25;
     } else {
-      driveThrottle = 1;
+      TurnL = 1;
     }
 
-    // set the speed of the motors
-    boolean RB = Robot.m_robotContainer.getDriver1Button(Constants.LEFT_BUTTON);
-    double slowDown;
     if (RB) {
-      slowDown = 0.7;
+      TurnR = 0.25;
     } else {
-      slowDown = 1;
+      TurnR = 1;
     }
+
     // forward and reverse
-    double rightSpeed = (Constants.RD * (leftStickY - rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle;
-    double leftSpeed = (Constants.LD * (leftStickY + rightStickX)) * Constants.DRIVE_MAX_SPEED * driveThrottle * slowDown;
+    double rightSpeed = (Constants.RD * (leftStickY-(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnL);
+    double leftSpeed = (Constants.LD * (leftStickY+(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnR);
     // turning right joystick
 
     Robot.driveTrain.setRightMotors(rightSpeed);
