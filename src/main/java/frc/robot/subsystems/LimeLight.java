@@ -76,7 +76,7 @@ public class LimeLight extends SubsystemBase {
   public void turretTurn(double speed)
   {
     spark.set(speed);
-    System.out.println("Encoder Position:" + encoder.getRaw());
+    System.out.println("Encoder Position:" + encoder.getDistance());
   }
   @Override
   public void periodic() {
