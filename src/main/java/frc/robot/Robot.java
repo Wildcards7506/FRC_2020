@@ -18,6 +18,7 @@ import frc.robot.subsystems.STM;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.LimeLight;
 
+import frc.robot.commands.auton.autoCmd;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import edu.wpi.cscore.CvSink;
@@ -46,6 +47,8 @@ public class Robot extends TimedRobot {
   public static Camera camera = new Camera();
   public static STM stm = new STM();
   public static LimeLight Limelight = new LimeLight();
+
+  //public static autoCmd autocmd = new autoCmd();
 
   /**
    * This function is run when the robot is first started up and should be used

@@ -20,9 +20,8 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Spark;
 
 public class LimeLight extends SubsystemBase {
-  /**
-   * Creates a new LimeLight.
-   */
+  private final Spark spark = new Spark(0);
+  // Creates a new LimeLight.
   NetworkTable table;
   NetworkTableEntry tx;
   NetworkTableEntry ty;
@@ -31,7 +30,7 @@ public class LimeLight extends SubsystemBase {
   double txDouble;
   NetworkTableEntry ledMode;
 
-  //private final Spark spark = new Spark(0);
+  
 
   public double Detecto() {
     if (tv.getDouble(0.0) == 1) {
@@ -39,6 +38,10 @@ public class LimeLight extends SubsystemBase {
       return tx.getDouble(0.0);
     }
     return 0.0;
+  }
+
+  public void TurretTurn(double speed){
+      spark.set(speed);
   }
 
   public void updateData()
@@ -73,10 +76,10 @@ public class LimeLight extends SubsystemBase {
   public void periodic() {
     updateData();
     // This method will be called once per scheduler run
-    ledMode.setNumber(0);
-    // pwm.setRaw(255);
-    // pwm.setSpeed(50);
-    //spark.set(1);
+    //ledMode.setNumber(0);
+     //pwm.setRaw(255);
+     //pwm.setSpeed(50);
+    //spark.set(.5);
 
     
     

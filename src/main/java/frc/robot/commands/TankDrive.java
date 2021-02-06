@@ -41,7 +41,7 @@ public class TankDrive extends CommandBase {
     boolean RB = Robot.m_robotContainer.getDriver1Button(Constants.LEFT_BUTTON);
     double slowDown;
     if (RB) {
-      slowDown = 0.9;
+      slowDown = 0.7;
     } else {
       slowDown = 1;
     }

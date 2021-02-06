@@ -6,10 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.TankDrive;
@@ -28,9 +26,9 @@ public class DriveTrain extends SubsystemBase {
    * -1 to 1)
    */
   public void setLeftMotors(final double speed) {
-    motorLeft1.set(ControlMode.PercentOutput, -speed*0.8);
-    motorLeft2.set(ControlMode.PercentOutput, -speed*0.8);
-    motorLeft3.set(ControlMode.PercentOutput, -speed*0.8);
+    motorLeft1.set(ControlMode.PercentOutput, -speed);
+    motorLeft2.set(ControlMode.PercentOutput, -speed);
+    motorLeft3.set(ControlMode.PercentOutput, -speed);
   }
 
   /*
