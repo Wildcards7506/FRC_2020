@@ -23,6 +23,11 @@ import edu.wpi.first.wpilibj.Encoder;
 public class LimeLight extends SubsystemBase {
   private final Spark spark = new Spark(0);
   private final Encoder encoder = new Encoder(0,1);
+  private final double kDriveTick = 1.0/128*6*Math.PI/12;
+
+  public static final double kDistancePerRevolution = 18.84;  // guestimate from your code
+    public static final double kPulsesPerRevolution = 1024;     // for an AS5145B Magnetic Encoder
+    public static final double kDistancePerPulse = kDistancePerRevolution / kPulsesPerRevolution;
 
   // Creates a new LimeLight.
   NetworkTable table;
@@ -34,14 +39,6 @@ public class LimeLight extends SubsystemBase {
   NetworkTableEntry ledMode;
 
   // private final Spark spark = new Spark(0);
-
-  public double Detecto() {
-    if (tv.getDouble(0.0) == 1) {
-      ledMode.setNumber(2);
-      return tx.getDouble(0.0);
-    }
-    return 0.0;
-  }
 
   public void updateData() {
     // update table, then update from updated table
@@ -73,11 +70,30 @@ public class LimeLight extends SubsystemBase {
     return tv.getDouble(0.0);
   }
 
+  public double getDist() {
+    double dist = 0.0;
+    int targetHeight = 82; // Goal Height is 82 inches to the bottom of the hexagon.
+    int limelightHeight = 30; //The expected final height of the limelight is 30 inches. This may change.
+    dist = (targetHeight - limelightHeight) / Math.atan(Math.toRadians(5));
+    return dist;
+  }
+
   public void turretTurn(double speed)
   {
+    //encoder.setDistancePerPulse(kDistancePerPulse);
+    //encoder.reset();
+
     spark.set(speed);
     System.out.println("Encoder Position:" + encoder.getDistance());
+    if(encoder.getStopped())
+      System.out.println("stopped");
   }
+
+  public double getEncoderDistance()
+  {
+    return encoder.getDistance();
+  }
+
   @Override
   public void periodic() {
     updateData();
@@ -87,5 +103,9 @@ public class LimeLight extends SubsystemBase {
      //pwm.setSpeed(50);
     //spark.set(.5);
 
+  }
+
+  public void resetEncoder() {
+    encoder.reset();
   }
 }

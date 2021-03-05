@@ -12,11 +12,13 @@ import frc.robot.subsystems.DriveTrain;
 //import org.graalvm.compiler.core.common.alloc.Trace;
 
 import edu.wpi.first.wpilibj.Timer;
-import frc.robot.subsystems.LimeLight;
 import edu.wpi.first.wpilibj.Spark;
 
 public class autoCmd extends CommandBase {
   private static Timer timer = new Timer();
+  final double kP = 0.5;
+  final double kI = 0.5;
+  final double kD = 0.5;
   //private static Robot.Limelight Robot.Limelight = new Robot.Limelight();
 
   /** Creates a new autoCmd. */
@@ -25,34 +27,21 @@ public class autoCmd extends CommandBase {
     addRequirements(new DriveTrain());
   }
 
-  public static void Fwd(double time) {
-    timer.reset();
-    timer.start();
-    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*0.5);
-    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*0.55);
-    Timer.delay(time);
-    System.out.println("Fwd Complete");
-    
-    //Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*-.7);
-    //Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*-1);
-    Timer.delay(.3);
-    System.out.println("Stop Complete");
-
-      Robot.driveTrain.setLeftMotors(0);
-      Robot.driveTrain.setRightMotors(0);
-      timer.stop();
-  }
-  public static void trackFwd(double time)
+  public static void trackFwd(double Distance)
   {
     timer.reset();
     timer.start();
+    Robot.Limelight.resetEncoder();
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
+    //Go forward to pick up target initially
     Timer.delay(3);
-    
-    while(true)
+
+    //While the robot is not in its target position, drive to the target
+    while(Distance > Robot.Limelight.getDist())
     { 
       Robot.Limelight.updateData();
+      //If the robot is off course, Use PID Control to correct
       if(Math.abs(Robot.Limelight.getTX()) >  1)
       {
         if(Robot.Limelight.getTX() > 0)
@@ -64,6 +53,7 @@ public class autoCmd extends CommandBase {
           Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
         }
       }else if(Robot.Limelight.getTV() == 0){
+        //Stop Motors if target lost
         Robot.driveTrain.setLeftMotors(0);
         Robot.driveTrain.setRightMotors(0);
         timer.stop();
@@ -74,25 +64,22 @@ public class autoCmd extends CommandBase {
         Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
         Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
         timer.start();
-      }else
-      {
+      }else{
+        //Target is centered. Go forward.
         Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.5);
         Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
       }
     }
-    //Robot.driveTrain.setLeftMotors(0);
-    //Robot.driveTrain.setRightMotors(0);
-    //timer.stop();
   }
 
-  public static void LCircle(double time) {
+  public static void LCircle() {
     timer.reset();
     timer.start();
     //Start Motors
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
     Timer.delay(3);
-    while(true)
+    while(Robot.Limelight.getEncoderDistance() < 90)
     { 
       Robot.Limelight.updateData();
       Robot.Limelight.turretTurn(1.0);
@@ -100,12 +87,12 @@ public class autoCmd extends CommandBase {
       {
         if(Robot.Limelight.getTX() > 1)
         {
-          System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
+          //System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
           Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)*.34));
 
         }else if(Robot.Limelight.getTX() < -1)
         {
-          System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
+          //System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
           Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
         }
       }else
@@ -114,12 +101,13 @@ public class autoCmd extends CommandBase {
         Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
       }
     }
-    //Robot.driveTrain.setLeftMotors(0);
-    //Robot.driveTrain.setRightMotors(0);
-    //timer.stop();
+    Robot.driveTrain.setLeftMotors(0);
+    Robot.driveTrain.setRightMotors(0);
+    Robot.Limelight.resetEncoder();
+    timer.stop();
   }
 
-  public static void RCircle(double time) {
+  public static void RCircle() {
     timer.reset();
     timer.start();
     //Start Turret
@@ -128,19 +116,19 @@ public class autoCmd extends CommandBase {
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
     Timer.delay(3);
-    while(true)
+    while(Robot.Limelight.getEncoderDistance() > -90)
     { 
       Robot.Limelight.updateData();
       if(Math.abs(Robot.Limelight.getTX()) >  1)
       {
         if(Robot.Limelight.getTX() > 1)
         {
-          System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
+          //System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
           Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)*.34));
 
         }else if(Robot.Limelight.getTX() < -1)
         {
-          System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
+          //System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
           Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
         }
       }else
@@ -149,25 +137,57 @@ public class autoCmd extends CommandBase {
         Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
       }
     }
-    //Robot.driveTrain.setLeftMotors(0);
-    //Robot.driveTrain.setRightMotors(0);
-    //timer.stop();
+    Robot.driveTrain.setLeftMotors(0);
+    Robot.driveTrain.setRightMotors(0);
+    Robot.Limelight.resetEncoder();
+    timer.stop();
   }
 
 
-  public void Rev(double time) {
+  public static void trackRev(double Distance) { // THIS IS INCOMPLETE
     timer.reset();
     timer.start();
-    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*-1);
-    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*-1);
-    Timer.delay(time);
+    Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
+    Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
+    //Go forward to pick up target initially
+    Timer.delay(3);
 
-      Robot.driveTrain.setLeftMotors(0);
-      Robot.driveTrain.setRightMotors(0);
-      timer.stop();
+    //While the robot is not in its target position, drive to the target
+    while(Distance>Robot.Limelight.getDist())
+    { 
+      Robot.Limelight.updateData();
+      //If the robot is off course, Use PID Control to correct
+      if(Math.abs(Robot.Limelight.getTX()) >  1)
+      {
+        if(Robot.Limelight.getTX() > 0)
+        {
+          Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)*.34));
+
+        }else if(Robot.Limelight.getTX() < 0)
+        {
+          Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
+        }
+      }else if(Robot.Limelight.getTV() == 0){
+        //Stop Motors if target lost
+        Robot.driveTrain.setLeftMotors(0);
+        Robot.driveTrain.setRightMotors(0);
+        timer.stop();
+        while(Robot.Limelight.getTV() == 0)
+        {
+          //spark.set(1);
+        }
+        Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
+        Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
+        timer.start();
+      }else{
+        //Target is centered. Go forward.
+        Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.5);
+        Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
+      }
+    }
   }
 
-  public static void RTurn() {
+  public static void teardrop() { // THIS IS INCOMPLETE. Method should be to turn the turret at a variable speed to achieve a teardrop shape
     timer.reset();
     timer.start();
     Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED * -1);
@@ -179,18 +199,6 @@ public class autoCmd extends CommandBase {
       Timer.delay(1);
       timer.stop();
   }
-
-  public static void LTurn() {
-    timer.reset();
-    timer.start();
-    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED);
-    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * -1);
-    Timer.delay(.47);
-
-      Robot.driveTrain.setLeftMotors(0);
-      Robot.driveTrain.setRightMotors(0);
-      Timer.delay(1);
-      timer.stop();}
 
   // Called when the command is initially scheduled.
   @Override

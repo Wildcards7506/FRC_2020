@@ -10,6 +10,7 @@ package frc.robot.commands.auton;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Robot;
 
+
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
@@ -24,22 +25,22 @@ public class HomeAuton extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     // super(
       //BARREL
-          autoCmd.trackFwd(5);
+          /*autoCmd.trackFwd(34); // Go forward from start to D5 Circle
+          autoCmd.LCircle(); //Complete circle around D5
+          autoCmd.trackFwd(34); //Go forward to B8 Circle
+          autoCmd.RCircle(); //Complete Circle around B8
+          autoCmd.teardrop(); //Loop around D10
+          autoCmd.trackRev(30); //Exit course away from goal */
+          
+          autoCmdManual.trackFwd(2.45); autoCmdManual.slowDown();
+          //autoCmdManual.trackRight(4); autoCmdManual.slowDown();
+          //autoCmdManual.trackFwd(2.5); autoCmdManual.slowDown();
           //Barrel D5
           //TA between 3 - 3.8
 
           //Barrel B8
           //TA betweel 8.9 - 10
 
-          //
-
-          //new autoCmd;
-          //Loop D5
-          //autoCmd.Fwd(2.8); autoCmd.RTurn(); autoCmd.Fwd(1.03); autoCmd.RTurn(); autoCmd.Fwd(1); autoCmd.RTurn(); autoCmd.Fwd(8);          
-          //Loop B8
-          //autoCmd.RTurn(); autoCmd.LFwd(2.8); autoCmd.LTurn(); autoCmd.Fwd(1.1); autoCmd.LTurn(); autoCmd.Fwd(1); autoCmd.LTurn(); autoCmd.Fwd(2);
-          //Loop D10
-          //autoCmd.LTurn(1); autoCmd.Fwd(3); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(6); autoCmd.LTurn(1);
       //SLALOM
           //Long Loop In
           //autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
@@ -56,6 +57,5 @@ public class HomeAuton extends SequentialCommandGroup {
           //autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.Rev(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
           
           //);
-    //super(new Drive(0.5, 0.5));
   }
 }
