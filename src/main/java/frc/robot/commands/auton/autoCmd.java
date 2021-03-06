@@ -12,6 +12,9 @@ import frc.robot.subsystems.DriveTrain;
 //import org.graalvm.compiler.core.common.alloc.Trace;
 
 import edu.wpi.first.wpilibj.Timer;
+
+import java.text.DecimalFormat;
+
 import edu.wpi.first.wpilibj.Spark;
 
 public class autoCmd extends CommandBase {
@@ -27,30 +30,39 @@ public class autoCmd extends CommandBase {
     addRequirements(new DriveTrain());
   }
 
-  public static void trackFwd(double Distance)
+  public static void trackFwd(double runTime)
   {
     timer.reset();
     timer.start();
     Robot.Limelight.resetEncoder();
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
+    System.out.println("Pause");
+    //Timer.delay(2);
+    //System.out.println("Start");
+    //DecimalFormat df = new DecimalFormat("###.##");
+    //double Distance = Double.parseDouble(df.format(Robot.Limelight.getTA()));
+    //System.out.println(Distance);
     //Go forward to pick up target initially
-    Timer.delay(3);
 
+    //System.out.println(Distance + " " + Target);
     //While the robot is not in its target position, drive to the target
-    while(Distance > Robot.Limelight.getDist())
+    System.out.println(timer.getFPGATimestamp());
+    while(timer.getFPGATimestamp() < runTime)
     { 
       Robot.Limelight.updateData();
+      //Distance = Double.parseDouble(df.format(Robot.Limelight.getTA()));
       //If the robot is off course, Use PID Control to correct
       if(Math.abs(Robot.Limelight.getTX()) >  1)
       {
         if(Robot.Limelight.getTX() > 0)
         {
           Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)*.34));
-
+         // System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
         }else if(Robot.Limelight.getTX() < 0)
         {
           Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
+          //System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
         }
       }else if(Robot.Limelight.getTV() == 0){
         //Stop Motors if target lost
@@ -70,6 +82,7 @@ public class autoCmd extends CommandBase {
         Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
       }
     }
+    System.out.println("Time's Up!");
   }
 
   public static void LCircle() {
@@ -111,13 +124,12 @@ public class autoCmd extends CommandBase {
     timer.reset();
     timer.start();
     //Start Turret
-    Robot.Limelight.turretTurn(-1.0);
+    Robot.Limelight.resetEncoder();
+    Robot.Limelight.turretTurn(0);//0.17);
     //Start Motors
-    Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
-    Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
-    Timer.delay(3);
     while(Robot.Limelight.getEncoderDistance() > -90)
     { 
+      //System.out.println(Robot.Limelight.getEncoderDistance());
       Robot.Limelight.updateData();
       if(Math.abs(Robot.Limelight.getTX()) >  1)
       {
@@ -137,10 +149,7 @@ public class autoCmd extends CommandBase {
         Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
       }
     }
-    Robot.driveTrain.setLeftMotors(0);
-    Robot.driveTrain.setRightMotors(0);
-    Robot.Limelight.resetEncoder();
-    timer.stop();
+    //timer.stop();
   }
 
 

@@ -16,12 +16,7 @@ import frc.robot.commands.ShooterCom;
 
 public class Shooter extends SubsystemBase {
   /* Declares and initializes motor */
-  private final VictorSPX shooterMotor12 = new VictorSPX(Constants.MOTOR_12);
-
-  /*
-   * This method sets the speed of the motor (returns a double ranging from -1 to
-   * 1)
-   */
+  /*private final VictorSPX shooterMotor12 = new VictorSPX(Constants.MOTOR_9);
   public void setShooterMotor(final double speed) {
     shooterMotor12.set(ControlMode.PercentOutput, -speed);
   }
@@ -39,5 +34,5 @@ public class Shooter extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     setDefaultCommand(new ShooterCom());
-  }
+  }*/
 }

@@ -17,7 +17,7 @@ public class Camera extends SubsystemBase {
 
   /* This method starts the camera */
   public Camera() {
-    server.startAutomaticCapture(Constants.CAMERA_USB);
+    //server.startAutomaticCapture(Constants.CAMERA_USB);
   }
 
   @Override

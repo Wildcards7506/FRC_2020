@@ -18,11 +18,12 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 
 public class LimeLight extends SubsystemBase {
   private final Spark spark = new Spark(0);
-  private final Encoder encoder = new Encoder(0,1);
+  private final Encoder encoder = new Encoder(0,1,true, EncodingType.k4X);
   private final double kDriveTick = 1.0/128*6*Math.PI/12;
 
   public static final double kDistancePerRevolution = 18.84;  // guestimate from your code
@@ -65,6 +66,9 @@ public class LimeLight extends SubsystemBase {
   public double getTX() {
     return txDouble;
   }
+  public double getTA() {
+    return ta.getDouble(0.0);
+  }
 
   public double getTV(){
     return tv.getDouble(0.0);
@@ -74,7 +78,8 @@ public class LimeLight extends SubsystemBase {
     double dist = 0.0;
     int targetHeight = 82; // Goal Height is 82 inches to the bottom of the hexagon.
     int limelightHeight = 30; //The expected final height of the limelight is 30 inches. This may change.
-    dist = (targetHeight - limelightHeight) / Math.atan(Math.toRadians(5));
+    dist = 1;
+    //(targetHeight - limelightHeight) / Math.atan(Math.toRadians(5));
     return dist;
   }
 
@@ -84,9 +89,9 @@ public class LimeLight extends SubsystemBase {
     //encoder.reset();
 
     spark.set(speed);
-    System.out.println("Encoder Position:" + encoder.getDistance());
-    if(encoder.getStopped())
-      System.out.println("stopped");
+    //System.out.println("Encoder Position:" + encoder.getDistance());
+    //if(encoder.getStopped())
+      //System.out.println("stopped");
   }
 
   public double getEncoderDistance()

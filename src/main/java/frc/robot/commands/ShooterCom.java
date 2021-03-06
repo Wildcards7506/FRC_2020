@@ -20,7 +20,7 @@ public class ShooterCom extends CommandBase {
   /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
-    Robot.shooter.setShooterMotor(Constants.STOP);
+    //Robot.shooter.setShooterMotor(Constants.STOP);
   }
 
   /* Called every time the scheduler runs while the command is scheduled. */
@@ -38,9 +38,9 @@ public class ShooterCom extends CommandBase {
       horizontalSpeed = 0;
     }
 
-    System.out.println(Robot.shooter.getShooterMotor());
+    //System.out.println(Robot.shooter.getShooterMotor());
 
-    Robot.shooter.setShooterMotor(speed);
+    //Robot.shooter.setShooterMotor(speed);
     Robot.intake.setVerticalIntake(verticalSpeed);
     Robot.intake.setHorizontalIntake(horizontalSpeed);
   }
@@ -49,7 +49,7 @@ public class ShooterCom extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     // stops motor
-    Robot.shooter.setShooterMotor(Constants.STOP);
+    //Robot.shooter.setShooterMotor(Constants.STOP);
   }
 
   // Returns true when the command should end.

@@ -32,9 +32,9 @@ public class autoCmdManual extends CommandBase {
   public static void trackFwd(double runTime) {
       timer.reset();
       timer.start();
-      Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED);
-      Timer.delay(0.3);
-      speedUp(-Constants.DRIVE_MAX_SPEED * .34,-Constants.DRIVE_MAX_SPEED * .5);
+      //Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED);
+      //Timer.delay(0.1);
+      speedUp(-Constants.DRIVE_MAX_SPEED * .33,-Constants.DRIVE_MAX_SPEED * .5);
       // Go forward to pick up target initially
       Timer.delay(runTime);
       
@@ -45,10 +45,31 @@ public class autoCmdManual extends CommandBase {
   public static void trackRight(double runTime) {
     timer.reset();
     timer.start();
-    speedUp(-Constants.DRIVE_MAX_SPEED * .23,-Constants.DRIVE_MAX_SPEED * .5);
-    // Go forward to pick up target initially
+    Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED * .27);
+    Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED * .55);
     Timer.delay(runTime);
+    //while(Robot.Limelight.getTV() == 0 && Robot.Limelight.getTA() >1)
+      //Timer.delay(.1);
+    // Go forward to pick up target initially
+    Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED * 0);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * 0);
+    Timer.delay(0.3);
+    Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED * .5);
+    Timer.delay(0.2);
+    Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED * 0);
+    Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED * 0);
   
+}
+
+public static void trackLeft(double runTime) {
+  timer.reset();
+  timer.start();
+  speedUp(-Constants.DRIVE_MAX_SPEED * .5,-Constants.DRIVE_MAX_SPEED * .23);
+  // Go forward to pick up target initially
+  Timer.delay(runTime);
+  Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*0.1);
+  Timer.delay(0.2);
+
 }
 
   public static void slowDown()
