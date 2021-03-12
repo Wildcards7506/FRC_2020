@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
-	// MotorController Assignments
+	// MotorController / Solenoid Assignments
 	public static final int MOTOR_1 = 1;
 	public static final int MOTOR_2 = 2;
 	public static final int MOTOR_3 = 3;
@@ -40,6 +40,9 @@ public final class Constants {
 	public static final int MOTOR_14 = 14;
 	public static final int MOTOR_15 = 15;
 	public static final int MOTOR_16 = 16;
+
+	public static final int PNEUMATIC_1 = 17;
+	public static final int PNEUMATIC_2 = 18;
 
 	// DriverController Assignments
 	public static final int DRIVER_CONTROLLER_1 = 0;
