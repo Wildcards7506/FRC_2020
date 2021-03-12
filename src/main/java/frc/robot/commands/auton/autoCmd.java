@@ -36,7 +36,7 @@ public class autoCmd extends CommandBase {
     timer.start();
     Robot.Limelight.resetEncoder();
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
-    Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
+    Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.7);
     System.out.println("Pause");
     //Timer.delay(2);
     //System.out.println("Start");

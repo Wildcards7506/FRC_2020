@@ -22,54 +22,86 @@ public class HomeAuton extends SequentialCommandGroup {
    */
   public HomeAuton() {
     // Add your commands in the super() call, e.g.
-    // super(new FooCommand(), new BarCommand());
-    // super(
-      //BARREL
-          //autoCmd.trackFwd(30); // Go forward from start to D5 Circle
-          //System.out.println("Fwd Stopped at: " + Robot.Limelight.getTA());
-          //autoCmdManual.slowDown();
-          //System.out.println("slow");
-          //autoCmdManual.trackRight(4);
-          //System.out.println("turn");
+    Barrel();
+    //Slalom();
 
-          //autoCmd.trackFwd(6.5); // Go forward from start to D5 Circle
-          //System.out.println("Fwd" + Robot.Limelight.getTA());
-          //autoCmdManual.slowDown();
-          //System.out.println("slow");
-          //autoCmdManual.trackLeft(1.3);
-          //System.out.println("turn");
-
-
-          //autoCmd.LCircle(); //Complete circle around D5
-          //autoCmd.trackFwd(34); //Go forward to B8 Circle
-          //autoCmd.RCircle(); //Complete Circle around B8
-          //autoCmd.teardrop(); //Loop around D10
-          //autoCmd.trackRev(30); //Exit course away from goal 
-          
-          autoCmdManual.trackFwd(1.9); autoCmdManual.slowDown();
-          autoCmdManual.trackRight(3); autoCmdManual.slowDown();
-          //autoCmdManual.trackFwd(2.5); autoCmdManual.slowDown();
-          //Barrel D5
-          //TA between 3 - 3.8
-
-          //Barrel B8
-          //TA betweel 8.9 - 10
-
-      //SLALOM
-          //Long Loop In
-          //autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
-          //Small Box
-          //autoCmd.Rturn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1);
-          //Long Loop Out   
-          //autoCmd.Rturn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1);
-      //BOUNCE
-          //Spike 1
-          //autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Rev(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.RTurn(1); autoCmd.Fwd(1); 
-          //Spike 2
-          //autoCmd.RTurn(1); autoCmd.Fwd(1); autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.Rev(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
-          //Spike 3
-          //autoCmd.LTurn(1); autoCmd.Fwd(1); autoCmd.Rev(1); autoCmd.RTurn(1); autoCmd.Fwd(1);
-          
-          //);
   }
+
+  public void Barrel(){
+    autoCmdManual.Forward(1.63,0.44); //Forward out of the gate
+    autoCmdManual.Right(0.2); // Box D5
+    autoCmdManual.Forward(0.5,0.4);
+    autoCmdManual.Right(0.2);
+    autoCmdManual.Forward(0.7,0.4);
+    autoCmdManual.Right(0.17);
+    autoCmdManual.Forward(0.5,0.5);
+    autoCmdManual.Right(0.25); 
+    
+    autoCmdManual.Forward(1.1,0.55); //Forward to B8
+    
+    autoCmdManual.Left(0.3); //Box B8
+    autoCmdManual.Forward(0.5,0.4);
+    autoCmdManual.Left(0.2);
+    autoCmdManual.Forward(0.8,0.4);
+    autoCmdManual.Left(0.17);
+    autoCmdManual.Forward(1.5,0.4);
+    
+    autoCmdManual.Left(0.5); //Box D10
+    autoCmdManual.Forward(0.6,0.4);
+    autoCmdManual.Left(0.23);
+    autoCmdManual.Forward(5,0.43);
+    
+    //autoCmdManual.Forward(100); // Leaving Barrel
+    }
+    
+    /*public void Slalom(){
+    autoCmdManual.Forward(1); //Forward out of the gate, Start at 45 Degrees
+    
+    autoCmdManual.Right(45); // Long run 1
+    autoCmdManual.Forward(1);
+    
+    autoCmdManual.Right(90); //Box D10
+    autoCmdManual.Forward(1);
+    autoCmdManual.Left(90);
+    autoCmdManual.Forward(1);
+    autoCmdManual.Left(90);
+    autoCmdManual.Forward(1);
+    autoCmdManual.Left(90);
+    autoCmdManual.Forward(1);
+    autoCmdManual.Left(90);
+    autoCmdManual.Forward(1);
+    
+    autoCmdManual.Right(90); //Long run 2
+    autoCmdManual.Forward(1);
+    autoCmdManual.Right(45);
+    
+    autoCmdManual.Forward(100); // Leaving Slalom
+    }
+    
+    public void Bounce(){
+    autoCmdManual.Forward(1); //Target A3
+    autoCmdManual.Left(90);
+    autoCmdManual.Forward(1); //touch
+    autoCmdManual.Backward(1);
+    autoCmdManual.bLeft(45);
+    autoCmdManual.Backward(1);
+    autoCmdManual.bRight(45);
+    autoCmdManual.Backward(1);
+    
+    autoCmdManual.bLeft(90); //Target A6
+    autoCmdManual.Backward(1);
+    autoCmdManual.bLeft(90); 
+    autoCmdManual.Backward(1); //touch
+    autoCmdManual.Forward(1);
+    
+    autoCmdManual.Left(90); //Target A9
+    autoCmdManual.Forward(1);
+    autoCmdManual.Left(90); 
+    autoCmdManual.Forward(1); //touch
+    autoCmdManual.Backward(1);
+    autoCmdManual.bLeft(90); 
+    autoCmdManual.Backward(1); // Exit Bounce
+    
+    }*/
 }
+

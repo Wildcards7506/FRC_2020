@@ -41,6 +41,18 @@ public class DriveTrain extends SubsystemBase {
     motorRight16.set(ControlMode.PercentOutput, speed);
   }
 
+  public void brakeLeftMotors() {
+    motorLeft1.set(ControlMode.PercentOutput, 0.2);
+    motorLeft2.set(ControlMode.PercentOutput, -0.2);
+    motorLeft3.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void brakeRightMotors() {
+    motorRight14.set(ControlMode.PercentOutput, 0.2);
+    motorRight15.set(ControlMode.PercentOutput, -0.2);
+    motorRight16.set(ControlMode.PercentOutput, 0);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
