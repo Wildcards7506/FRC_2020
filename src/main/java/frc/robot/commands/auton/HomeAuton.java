@@ -28,23 +28,23 @@ public class HomeAuton extends SequentialCommandGroup {
   }
 
   public void Barrel(){
-    autoCmdManual.Forward(1.63,0.44); //Forward out of the gate
-    autoCmdManual.Right(0.2); // Box D5
+    autoCmdManual.Forward(1.6,0.46); //Forward out of the gate
+    autoCmdManual.Right(0.24); // Box D5
     autoCmdManual.Forward(0.5,0.4);
-    autoCmdManual.Right(0.2);
-    autoCmdManual.Forward(0.7,0.4);
-    autoCmdManual.Right(0.17);
+    autoCmdManual.Right(0.22);
+    autoCmdManual.Forward(0.73,0.4);
+    autoCmdManual.Right(0.27);
     autoCmdManual.Forward(0.5,0.5);
-    autoCmdManual.Right(0.25); 
+    autoCmdManual.Right(0.4); 
     
-    autoCmdManual.Forward(1.1,0.55); //Forward to B8
+    autoCmdManual.Forward(.97,0.55); //Forward to B8
     
     autoCmdManual.Left(0.3); //Box B8
-    autoCmdManual.Forward(0.5,0.4);
+    autoCmdManual.Forward(0.63,0.4);
     autoCmdManual.Left(0.2);
-    autoCmdManual.Forward(0.8,0.4);
-    autoCmdManual.Left(0.17);
-    autoCmdManual.Forward(1.5,0.4);
+    autoCmdManual.Forward(.9,0.4);
+    autoCmdManual.Left(0.19);
+    autoCmdManual.Forward(1.5,0.44);
     
     autoCmdManual.Left(0.5); //Box D10
     autoCmdManual.Forward(0.6,0.4);
