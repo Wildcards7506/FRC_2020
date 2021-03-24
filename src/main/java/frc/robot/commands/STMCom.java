@@ -21,25 +21,18 @@ public class STMCom extends CommandBase {
   /* Declares and initializes the colorSensor */
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-  private static Timer timer = new Timer();
-
-  Color color = m_colorSensor.getColor();
-  int rotations = 0;
-  char button = 'n';
-  /* Declares and initializes instanceVariables */
-  double[] m_initialColor = new double[3];
+  private Color color = m_colorSensor.getColor();
 
   public void STM_Spin(Color colour) {
-    rotations = 0;
+    int rotations = 0;
     Robot.stm.setSTM_Motor(Constants.STM_SPEED);
     if (color == colour)
-      rotations += 1;
+      rotations++;
     Timer.delay(0.5); // prevent robot from detecting the color we are looking for immmediately after
                       // already detecting it
     if (rotations > 3) {
       Robot.stm.setSTM_Motor(Constants.STOP);
       rotations = 0;
-      button = 'n';
     }
   }
 
@@ -53,30 +46,15 @@ public class STMCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    // color = m_colorSensor.getColor();
-    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A))
-    //   button = 'a';
-    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B))
-    //   button = 'b';
-    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_X))
-    //   button = 'x';
-    // if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_Y))
-    //   button = 'y';
-
-    // switch (button) {
-    //   case 'a':
-    //     STM_Spin(Color.kGreen);
-    //     break;
-    //   case 'b':
-    //     STM_Spin(Color.kRed);
-    //     break;
-    //   case 'x':
-    //     STM_Spin(Color.kCyan);
-    //     break;
-    //   case 'y':
-    //     STM_Spin(Color.kYellow);
-    //     break;
-    // }
+    color = m_colorSensor.getColor();
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A))
+      STM_Spin(Color.kGreen);
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B))
+      STM_Spin(Color.kRed);
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_X))
+      STM_Spin(Color.kCyan);
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_Y))
+      STM_Spin(Color.kYellow);
   }
 
   // Called once the command ends or is interrupted.
