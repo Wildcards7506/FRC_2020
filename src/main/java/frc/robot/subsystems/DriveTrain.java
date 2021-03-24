@@ -8,6 +8,8 @@
 package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.TankDrive;
@@ -20,6 +22,8 @@ public class DriveTrain extends SubsystemBase {
   private final VictorSPX motorRight14 = new VictorSPX(Constants.MOTOR_14);
   private final VictorSPX motorRight15 = new VictorSPX(Constants.MOTOR_15);
   private final VictorSPX motorRight16 = new VictorSPX(Constants.MOTOR_16);
+  public Encoder encoderL = new Encoder(0, 1, false,EncodingType.k4X);
+  public Encoder encoderR = new Encoder(2, 3, false, EncodingType.k4X);
 
   /*
    * This method sets the speed of the left motors (returns a double ranging from
@@ -51,6 +55,7 @@ public class DriveTrain extends SubsystemBase {
     motorRight14.set(ControlMode.PercentOutput, 0.2);
     motorRight15.set(ControlMode.PercentOutput, -0.2);
     motorRight16.set(ControlMode.PercentOutput, 0);
+
   }
 
   @Override

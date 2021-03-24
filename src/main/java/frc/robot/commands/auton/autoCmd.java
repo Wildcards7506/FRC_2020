@@ -52,30 +52,17 @@ public class autoCmd extends CommandBase {
     { 
       Robot.Limelight.updateData();
       //Distance = Double.parseDouble(df.format(Robot.Limelight.getTA()));
-      //If the robot is off course, Use PID Control to correct
-      if(Math.abs(Robot.Limelight.getTX()) >  1)
-      {
-        if(Robot.Limelight.getTX() > 0)
-        {
-          Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)*.34));
-         // System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
-        }else if(Robot.Limelight.getTX() < 0)
-        {
-          Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
-          //System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
+      if(Math.abs(Robot.Limelight.getTX()) >  1){
+        if(Robot.Limelight.getTX() > 0){
+          Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)));
+        }else if(Robot.Limelight.getTX() < 0){
+          Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)));
         }
       }else if(Robot.Limelight.getTV() == 0){
         //Stop Motors if target lost
         Robot.driveTrain.setLeftMotors(0);
         Robot.driveTrain.setRightMotors(0);
         timer.stop();
-        while(Robot.Limelight.getTV() == 0)
-        {
-          //spark.set(1);
-        }
-        Robot.driveTrain.setLeftMotors(Constants.DRIVE_MAX_SPEED*.2);
-        Robot.driveTrain.setRightMotors(Constants.DRIVE_MAX_SPEED*.2);
-        timer.start();
       }else{
         //Target is centered. Go forward.
         Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.5);
@@ -86,38 +73,7 @@ public class autoCmd extends CommandBase {
   }
 
   public static void LCircle() {
-    timer.reset();
-    timer.start();
-    //Start Motors
-    Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
-    Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
-    Timer.delay(3);
-    while(Robot.Limelight.getEncoderDistance() < 90)
-    { 
-      Robot.Limelight.updateData();
-      Robot.Limelight.turretTurn(1.0);
-      if(Math.abs(Robot.Limelight.getTX()) >  1)
-      {
-        if(Robot.Limelight.getTX() > 1)
-        {
-          //System.out.println("Setting Left to:" + ((1-Robot.Limelight.getTX()/27)*.34));
-          Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*((1-Robot.Limelight.getTX()/27)*.34));
-
-        }else if(Robot.Limelight.getTX() < -1)
-        {
-          //System.out.println("Setting Right to:" + ((1+Robot.Limelight.getTX()/27)*.5));
-          Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*((1+Robot.Limelight.getTX()/27)*.5));
-        }
-      }else
-      {
-        Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.5);
-        Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.5);
-      }
-    }
-    Robot.driveTrain.setLeftMotors(0);
-    Robot.driveTrain.setRightMotors(0);
-    Robot.Limelight.resetEncoder();
-    timer.stop();
+    
   }
 
   public static void RCircle() {

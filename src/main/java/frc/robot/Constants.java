@@ -34,7 +34,6 @@ public final class Constants {
 	public static final int MOTOR_9 = 9;
 	public static final int MOTOR_10 = 10;
 	public static final int MOTOR_11 = 11;
-
 	public static final int MOTOR_12 = 12;
 	public static final int MOTOR_13 = 13;
 	public static final int MOTOR_14 = 14;
@@ -72,12 +71,12 @@ public final class Constants {
 	public static final int[][] YELLOW = new int[3][11]; // { 255, 255, 0 };
 	public static final int[][] BLACK = new int[3][11]; // { 0, 0, 0 };
 
-	// Fixyged MotorSpeeds
+	// Fixed MotorSpeeds
 	public static final double SHOOTER_SPEED = -1;
 	public static final double INTAKE_SPEED = 0.9;
 	public static final double SPOOL_SPEED = 0.2;
 	public static final double INTAKE_PULSE = 2;
-	public static final double DRIVE_MAX_SPEED = 0.9;
+	public static final double DRIVE_MAX_SPEED = 0.7;
 	public static final double STM_SPEED = 0.5;
 	public static final double CLIMB_SPEED = 1;
 	public static final double STOP = 0;
@@ -85,5 +84,10 @@ public final class Constants {
 	// Fixed Variables
 	public static final double LD = .63;
 	public static final double RD = .9;
+	public static final double kDriveTick2Feet = 1.0 / 128 * 6 * Math.PI / 12;
+	public static final double kP = 0.5;
+  	public static final double kI = 0.5;
+  	public static final double kD = 0.5;
+	public static final double iLimit = 1;
 
 }

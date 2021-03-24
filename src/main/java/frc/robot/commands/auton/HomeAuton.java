@@ -22,63 +22,65 @@ public class HomeAuton extends SequentialCommandGroup {
    */
   public HomeAuton() {
     // Add your commands in the super() call, e.g.
-    Barrel();
+    //Barrel();
     //Slalom();
 
   }
 
   public void Barrel(){
-    autoCmdManual.Forward(1.6,0.46); //Forward out of the gate
-    autoCmdManual.Right(0.24); // Box D5
-    autoCmdManual.Forward(0.5,0.4);
-    autoCmdManual.Right(0.22);
-    autoCmdManual.Forward(0.73,0.4);
-    autoCmdManual.Right(0.27);
-    autoCmdManual.Forward(0.5,0.5);
-    autoCmdManual.Right(0.4); 
+    autoCmdManual.Forward(1.6,false); //Forward out of the gate
+    autoCmdManual.Right(0.24,false); // Box D5
+    autoCmdManual.Forward(0.5,false);
+    autoCmdManual.Right(0.22,false);
+    autoCmdManual.Forward(0.73,false);
+    autoCmdManual.Right(0.27,false);
+    autoCmdManual.Forward(0.5,false);
+    autoCmdManual.Right(0.4,false); 
     
-    autoCmdManual.Forward(.97,0.55); //Forward to B8
+    autoCmdManual.Forward(.97,false); //Forward to B8
     
-    autoCmdManual.Left(0.3); //Box B8
-    autoCmdManual.Forward(0.63,0.4);
-    autoCmdManual.Left(0.2);
-    autoCmdManual.Forward(.9,0.4);
-    autoCmdManual.Left(0.19);
-    autoCmdManual.Forward(1.5,0.44);
+    autoCmdManual.Left(0.3,false); //Box B8
+    autoCmdManual.Forward(0.63,false);
+    autoCmdManual.Left(0.2,false);
+    autoCmdManual.Forward(.9,false);
+    autoCmdManual.Left(0.19,false);
+    autoCmdManual.Forward(1.5,false);
     
-    autoCmdManual.Left(0.5); //Box D10
-    autoCmdManual.Forward(0.6,0.4);
-    autoCmdManual.Left(0.23);
-    autoCmdManual.Forward(5,0.43);
+    autoCmdManual.Left(0.5,false); //Box D10
+    autoCmdManual.Forward(0.6,false);
+    autoCmdManual.Left(0.23,false);
+    autoCmdManual.Forward(5,false);
     
     //autoCmdManual.Forward(100); // Leaving Barrel
     }
     
-    /*public void Slalom(){
-    autoCmdManual.Forward(1); //Forward out of the gate, Start at 45 Degrees
+    public void Slalom(){
+    /*autoCmdManual.Forward(.5,1); //Forward out of the gate, Start at 45 Degrees
     
-    autoCmdManual.Right(45); // Long run 1
-    autoCmdManual.Forward(1);
+    autoCmdManual.Left(.23); // Long run 1
+    autoCmdManual.Forward(.8,1);
     
-    autoCmdManual.Right(90); //Box D10
-    autoCmdManual.Forward(1);
-    autoCmdManual.Left(90);
-    autoCmdManual.Forward(1);
-    autoCmdManual.Left(90);
-    autoCmdManual.Forward(1);
-    autoCmdManual.Left(90);
-    autoCmdManual.Forward(1);
-    autoCmdManual.Left(90);
-    autoCmdManual.Forward(1);
+    autoCmdManual.Right(.34); //Box D10
+    autoCmdManual.Forward(1.45,1);
+    autoCmdManual.Right(.18);
+    autoCmdManual.Forward(.35,1);
+    autoCmdManual.Left(.5);
+    autoCmdManual.Forward(.9,1);
+    autoCmdManual.Left(.3);
+    autoCmdManual.Forward(.8,1);
+    autoCmdManual.Left(.34);
+    autoCmdManual.Forward(.82,1);
     
-    autoCmdManual.Right(90); //Long run 2
-    autoCmdManual.Forward(1);
-    autoCmdManual.Right(45);
-    
-    autoCmdManual.Forward(100); // Leaving Slalom
+    autoCmdManual.Right(.45); //Long run 2
+    autoCmdManual.Forward(1,1);*/
+    /*autoCmdManual.Right(.24);
+    autoCmdManual.Forward(.8,.4);
+    autoCmdManual.Left(.3);
+
+    autoCmdManual.Forward(100,.4);*/ // Leaving Slalom
     }
     
-    public void Bounce(){
+    /*public void Bounce(){
     autoCmdManual.Forward(1); //Target A3
     autoCmdManual.Left(90);
     autoCmdManual.Forward(1); //touch
