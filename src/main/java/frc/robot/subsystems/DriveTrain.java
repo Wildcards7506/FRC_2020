@@ -32,9 +32,21 @@ public class DriveTrain extends SubsystemBase {
    * -1 to 1)
    */
 
-   public String getEncoder()
+   public double getEncoderInchesL()
    {
-     return 6.25*Math.PI*encoderL.getDistance()/2048 + "   " + -6.25*Math.PI*encoderR.getDistance()/2048;
+     return 6.25*Math.PI*encoderL.getDistance()/2048;
+   }
+   public double getEncoderInchesR()
+   {
+     return 6.25*Math.PI*encoderR.getDistance()/2048;
+   }
+   public double getEncoderDegreesL()
+   {
+     return encoderL.getDistance()/2048;
+   }
+   public double getEncoderDegreesR()
+   {
+     return encoderR.getDistance()/2048;
    }
 
   public void setLeftMotors(final double speed) {
@@ -69,7 +81,6 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    System.out.println(getEncoder());
     setDefaultCommand(new TankDrive());
   }
 }
