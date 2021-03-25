@@ -57,11 +57,11 @@ public class ShooterCom extends CommandBase {
     }
 
     // makes sure compressor maintains pressure
-    if (Robot.shooter.compressor.getPressureSwitchValue()) {
-      Robot.shooter.compressor.start();
-    } else {
-      Robot.shooter.compressor.stop();
-    }
+    //if (Robot.shooter.compressor.getPressureSwitchValue()) {
+      //Robot.shooter.compressor.start();
+    //} else {
+      //Robot.shooter.compressor.stop();
+    //}
   }
 
   /* Called once the command ends or is interrupted. */
@@ -69,7 +69,7 @@ public class ShooterCom extends CommandBase {
   public void end(boolean interrupted) {
     // stops motor
     Robot.shooter.setShooterMotor(Constants.STOP);
-    Robot.shooter.compressor.stop();
+    //Robot.shooter.compressor.stop();
     Robot.shooter.setPneumatics(Value.kOff);
   }
 

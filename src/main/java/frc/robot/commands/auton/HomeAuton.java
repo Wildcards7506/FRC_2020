@@ -9,6 +9,7 @@ package frc.robot.commands.auton;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Robot;
+import frc.robot.subsystems.DriveTrain;
 
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -21,6 +22,7 @@ public class HomeAuton extends SequentialCommandGroup {
    * Creates a new MoveSequence.
    */
   public HomeAuton() {
+    //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
     //Barrel();
     //Slalom();

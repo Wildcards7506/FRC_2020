@@ -34,7 +34,7 @@ public class autoCmd extends CommandBase {
   {
     timer.reset();
     timer.start();
-    Robot.Limelight.resetEncoder();
+    //Robot.Limelight.resetEncoder();
     Robot.driveTrain.setLeftMotors(-Constants.DRIVE_MAX_SPEED*.34);
     Robot.driveTrain.setRightMotors(-Constants.DRIVE_MAX_SPEED*.7);
     System.out.println("Pause");
@@ -80,10 +80,10 @@ public class autoCmd extends CommandBase {
     timer.reset();
     timer.start();
     //Start Turret
-    Robot.Limelight.resetEncoder();
+    //Robot.Limelight.resetEncoder();
     Robot.Limelight.turretTurn(0);//0.17);
     //Start Motors
-    while(Robot.Limelight.getEncoderDistance() > -90)
+    //while(Robot.Limelight.getEncoderDistance() > -90)
     { 
       //System.out.println(Robot.Limelight.getEncoderDistance());
       Robot.Limelight.updateData();
