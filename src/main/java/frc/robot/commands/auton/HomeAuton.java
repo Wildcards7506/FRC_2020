@@ -56,7 +56,7 @@ public class HomeAuton extends SequentialCommandGroup {
     //autoCmdManual.Forward(100); // Leaving Barrel
     }
     
-    //Do we need to have Distance be return 6.25*Math.PI*encoderL.getDistance()/2048; like inches is?
+    //Do we need to have Distance be 'return 6.25*Math.PI*encoderL.getDistance()/2048;' like inches is?
 
     public void Slalom(){
     autoCmdManual.Forward(90,false); //Forward out of the gate, Start at 45 Degrees
