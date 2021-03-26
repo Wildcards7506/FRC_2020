@@ -31,7 +31,7 @@ public class autoCmdManual extends CommandBase {
   }
 
   public static void Forward(double distance, boolean backwards){
-    Robot.driveTrain.encoderL.reset();
+    Robot.driveTrain.encoderL.reset(); //Dont think this one is needed
     if (backwards=true){
         distance = distance *-1;
     }
