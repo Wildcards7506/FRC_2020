@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.Constants;
 
 public class TankDrive extends CommandBase {
@@ -20,6 +21,7 @@ public class TankDrive extends CommandBase {
   /* Called when the command is initially scheduled. */
   @Override
   public void initialize() {
+    
   }
 
   /* Called every time the scheduler runs while the command is scheduled. */
@@ -33,6 +35,7 @@ public class TankDrive extends CommandBase {
     boolean RB = Robot.m_robotContainer.getDriver1Button(Constants.RIGHT_BUTTON);
     double TurnL;
     double TurnR;
+
     if (LB) { 
       TurnL = 0.25;
     } else {
@@ -46,8 +49,8 @@ public class TankDrive extends CommandBase {
     }
 
     // forward and reverse
-    double rightSpeed = (Constants.RD * (leftStickY-(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnL);
-    double leftSpeed = (Constants.LD * (leftStickY+(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnR);
+    double rightSpeed = ((leftStickY-(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnL);
+    double leftSpeed = ((leftStickY+(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnR);
     // turning right joystick
 
     Robot.driveTrain.setRightMotors(rightSpeed);

@@ -79,18 +79,17 @@ public final class Constants {
 	public static final double INTAKE_SPEED = 0.9;
 	public static final double SPOOL_SPEED = 0.2;
 	public static final double INTAKE_PULSE = 2;
-	public static final double DRIVE_MAX_SPEED = 0.7;
+	public static final double DRIVE_MAX_SPEED = 0.4;
 	public static final double STM_SPEED = 0.5;
 	public static final double CLIMB_SPEED = 1;
 	public static final double STOP = 0;
 
 	// Fixed Variables
-	public static final double LD = .63;
-	public static final double RD = .9;
-	public static final double kDriveTick2Feet = 1.0 / 128 * 6 * Math.PI / 12;
-	public static final double kP = 0.5;
-  	public static final double kI = 0.5;
-  	public static final double kD = 0.5;
-	public static final double iLimit = 1;
+	public static final double kDriveTick2Feet = 6.25 / 2560 * Math.PI / 12;
+	public static final double kDriveTick2Angle = Math.PI/Math.PI*36/1000;
+	public static final double kP = 0.4;
+  	public static final double kI = 0.0;
+  	public static final double kD = 0.0;
+	public static final double iLimit = 0.2;
 
 }

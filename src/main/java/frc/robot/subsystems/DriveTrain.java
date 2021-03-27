@@ -16,14 +16,14 @@ import frc.robot.commands.TankDrive;
 
 public class DriveTrain extends SubsystemBase {
   /* Declares and initializes motors */
-  private final VictorSPX motorLeft1 = new VictorSPX(Constants.MOTOR_1);
-  private final VictorSPX motorLeft2 = new VictorSPX(Constants.MOTOR_2);
-  private final VictorSPX motorLeft3 = new VictorSPX(Constants.MOTOR_3);
-  private final VictorSPX motorRight14 = new VictorSPX(Constants.MOTOR_14);
-  private final VictorSPX motorRight15 = new VictorSPX(Constants.MOTOR_15);
-  private final VictorSPX motorRight16 = new VictorSPX(Constants.MOTOR_16);
-  public Encoder encoderL = new Encoder(0, 1, false,EncodingType.k4X);
-  public Encoder encoderR = new Encoder(2, 3, false,EncodingType.k4X);
+  public static final VictorSPX motorLeft1 = new VictorSPX(Constants.MOTOR_1);
+  public static final VictorSPX motorLeft2 = new VictorSPX(Constants.MOTOR_2);
+  public static final VictorSPX motorLeft3 = new VictorSPX(Constants.MOTOR_3);
+  public static final VictorSPX motorRight14 = new VictorSPX(Constants.MOTOR_14);
+  public static final VictorSPX motorRight15 = new VictorSPX(Constants.MOTOR_15);
+  public static final VictorSPX motorRight16 = new VictorSPX(Constants.MOTOR_16);
+  public final Encoder encoderL = new Encoder(1, 2, false,EncodingType.k4X);
+  public final Encoder encoderR = new Encoder(5, 6, true,EncodingType.k4X);
 
 
 
@@ -66,17 +66,17 @@ public class DriveTrain extends SubsystemBase {
     motorRight16.set(ControlMode.PercentOutput, speed);
   }
 
-  public void brakeLeftMotors() {
-    motorLeft1.set(ControlMode.PercentOutput, 0.2);
-    motorLeft2.set(ControlMode.PercentOutput, -0.2);
+
+public void brakeLeftMotors(final double speed) {
+    motorLeft1.set(ControlMode.PercentOutput, -speed);
+    motorLeft2.set(ControlMode.PercentOutput, speed);
     motorLeft3.set(ControlMode.PercentOutput, 0);
   }
 
-  public void brakeRightMotors() {
-    motorRight14.set(ControlMode.PercentOutput, 0.2);
-    motorRight15.set(ControlMode.PercentOutput, -0.2);
+  public void brakeRightMotors(final double speed) {
+    motorRight14.set(ControlMode.PercentOutput, -speed);
+    motorRight15.set(ControlMode.PercentOutput, speed);
     motorRight16.set(ControlMode.PercentOutput, 0);
-
   }
 
   @Override

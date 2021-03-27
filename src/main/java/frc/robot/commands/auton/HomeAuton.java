@@ -24,7 +24,7 @@ public class HomeAuton extends SequentialCommandGroup {
   public HomeAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    //Barrel();
+    Slalom();
     //Slalom();
 
   }
@@ -56,18 +56,17 @@ public class HomeAuton extends SequentialCommandGroup {
     //autoCmdManual.Forward(100); // Leaving Barrel
     }
     
-    //Do we need to have Distance be 'return 6.25*Math.PI*encoderL.getDistance()/2048;' like inches is?
-
     public void Slalom(){
-    autoCmdManual.Forward(90,false); //Forward out of the gate, Start at 45 Degrees
+
+    autoCmdManual.Forward(1.5,false); //Forward out of the gate, Start at 45 Degrees
     
-    autoCmdManual.Left(45,false); // Long run 1
-    autoCmdManual.Forward(84.85,false);
-    /*
-    autoCmdManual.Right(45); //Box D10
-    autoCmdManual.Forward(120,false);
-    autoCmdManual.Right(45);
-    autoCmdManual.Forward(.35,false);
+    autoCmdManual.Left(90,false); // Long run 1
+    autoCmdManual.Forward(3.5,false);
+    
+    autoCmdManual.Right(80,false); //Box D10
+    autoCmdManual.Forward(10.5,false);
+    autoCmdManual.Right(80,false);
+    /*autoCmdManual.Forward(.35,false);
     autoCmdManual.Left(.5);
     autoCmdManual.Forward(.9,false);
     autoCmdManual.Left(.3);
@@ -109,5 +108,7 @@ public class HomeAuton extends SequentialCommandGroup {
     autoCmdManual.Backward(1); // Exit Bounce
     
     }*/
+    
+    
 }
 
