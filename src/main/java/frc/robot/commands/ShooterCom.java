@@ -33,19 +33,19 @@ public class ShooterCom extends CommandBase {
 
     if (trigger == 1) {
       speed = Constants.SHOOTER_SPEED;
-      verticalSpeed = Constants.INTAKE_SPEED * Robot.m_robotContainer.pulse(Constants.INTAKE_PULSE);
-      horizontalSpeed = verticalSpeed;
+      //verticalSpeed = Constants.INTAKE_SPEED;// * Robot.m_robotContainer.pulse(Constants.INTAKE_PULSE);
+      //horizontalSpeed = verticalSpeed;
     } else {
       speed = 0;
-      verticalSpeed = 0;
-      horizontalSpeed = 0;
+      //verticalSpeed = 0;
+      //horizontalSpeed = 0;
     }
 
     // System.out.println(Robot.shooter.getShooterMotor());
 
     Robot.shooter.setShooterMotor(speed);
-    Robot.intake.setVerticalIntake(verticalSpeed);
-    Robot.intake.setHorizontalIntake(horizontalSpeed);
+    //Robot.intake.setVerticalIntake(verticalSpeed);
+    //Robot.intake.setHorizontalIntake(horizontalSpeed);
 
     switch (POV) {
     case 270:

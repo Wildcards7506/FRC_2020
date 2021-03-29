@@ -18,7 +18,7 @@ import frc.robot.commands.ShooterCom;
 
 public class Shooter extends SubsystemBase {
   /* Declares and initializes motor */
-  private final VictorSPX shooterMotor12 = new VictorSPX(Constants.MOTOR_9);
+  private final VictorSPX shooterMotor12 = new VictorSPX(Constants.MOTOR_4);
   //public final Compressor compressor = new Compressor(0);
   //private final DoubleSolenoid pneumatics = new DoubleSolenoid(Constants.PNEUMATIC_1, Constants.PNEUMATIC_2);
 
