@@ -67,11 +67,6 @@ public class autoCmdManual extends CommandBase {
         errorRate = (error - lastError) / dt;
 
         outputSpeed = Constants.kP * error + Constants.kI * errorSum + Constants.kD * errorRate;
-        while (Math.abs(errorRate)<0.1){
-          outputSpeed = outputSpeed - 0.001;
-          Robot.driveTrain.setLeftMotors(outputSpeed);
-        Robot.driveTrain.setRightMotors(outputSpeed);
-        }
         // output to motors
         if (backwards=true){
           outputSpeed = outputSpeed * -1;

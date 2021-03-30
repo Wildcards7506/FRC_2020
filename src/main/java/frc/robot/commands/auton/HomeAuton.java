@@ -25,6 +25,7 @@ public class HomeAuton extends SequentialCommandGroup {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
     Slalom();
+    
 
   }
 
@@ -59,31 +60,33 @@ public class HomeAuton extends SequentialCommandGroup {
 
     autoCmdManual.Forward(1.5,false); //Forward out of the gate
     
-    autoCmdManual.Left(90,false); // Long run 1
-    autoCmdManual.Forward(3.5,false);
+    autoCmdManual.Left(125,false); // Long run 1
+    autoCmdManual.Forward(3,false);
     
     autoCmdManual.Right(80,false); //Box D10
-    autoCmdManual.Forward(10.5,false);
+    autoCmdManual.Forward(8,false);
     autoCmdManual.Right(80,false);
-    autoCmdManual.Forward(5.3,false);
-    /*
-    autoCmdManual.Left(.5);
-    autoCmdManual.Forward(.9,false);
-    autoCmdManual.Left(.3);
-    autoCmdManual.Forward(.8,false);
-    autoCmdManual.Left(.34);
-    autoCmdManual.Forward(.82,false);
+    autoCmdManual.Forward(4,false);
     
-    autoCmdManual.Right(.45); //Long run 2
-    autoCmdManual.Forward(1,1);*/
-    /*autoCmdManual.Right(.24);
-    autoCmdManual.Forward(.8,.4);
-    autoCmdManual.Left(.3);
+    autoCmdManual.Left(160,false);
+    autoCmdManual.Forward(2,false);
+    autoCmdManual.Left(150,false);
+    autoCmdManual.Forward(2,false);
+    autoCmdManual.Left(175,false);
+    autoCmdManual.Forward(6,false);
+    
+    autoCmdManual.Right(70, false); //Long run 2
+    autoCmdManual.Forward(8, false);
+    autoCmdManual.Right(80, false);
 
-    autoCmdManual.Forward(100,.4);*/ // Leaving Slalom
+    autoCmdManual.Forward(3, false);
+    autoCmdManual.Left(80, false);
+    autoCmdManual.Forward(3, false);
+
     }
     
     public void Bounce(){
+    autoCmdManual.Forward(10,false);
     /*autoCmdManual.Forward(1); //Target A3
     autoCmdManual.Left(90);
     autoCmdManual.Forward(1); //touch
@@ -111,22 +114,22 @@ public class HomeAuton extends SequentialCommandGroup {
     public void SearchA(){ //Red and blue seach patten A
       //Setup centered on 12.5 feet
       autoCmdManual.Forward(22,false);
-      autoCmdManual.Right(90,false);
+      autoCmdManual.Right(150,false);
 
       autoCmdManual.Forward(10,false);
-      autoCmdManual.Right(90,false);
+      autoCmdManual.Right(150,false);
 
       autoCmdManual.Forward(15,false);
-      autoCmdManual.Right(90,false);
+      autoCmdManual.Right(150,false);
 
       autoCmdManual.Forward(7.5,false);
-      autoCmdManual.Right(90,false);
+      autoCmdManual.Right(150,false);
 
       autoCmdManual.Forward(12.5,false);
-      autoCmdManual.Right(90,false);
+      autoCmdManual.Right(150,false);
       
       autoCmdManual.Forward(5,false);
-      autoCmdManual.Right(90,false);
+      autoCmdManual.Right(150,false);
 
       autoCmdManual.Forward(15,false);
 
