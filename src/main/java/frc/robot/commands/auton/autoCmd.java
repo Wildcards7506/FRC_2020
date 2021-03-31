@@ -79,9 +79,6 @@ public class autoCmd extends CommandBase {
   public static void RCircle() {
     timer.reset();
     timer.start();
-    //Start Turret
-    //Robot.Limelight.resetEncoder();
-    Robot.Limelight.turretTurn(0);//0.17);
     //Start Motors
     //while(Robot.Limelight.getEncoderDistance() > -90)
     { 

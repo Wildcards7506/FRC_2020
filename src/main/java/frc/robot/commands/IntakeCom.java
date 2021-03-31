@@ -42,19 +42,17 @@ public class IntakeCom extends CommandBase {
     }
 
     boolean LB = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
-    boolean RB = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
+    double LeftTrigger = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_TRIGGER, "trigger", 0, 1);
     double horizontalSpeed, verticalSpeed;
     if (LB) {
       horizontalSpeed = Constants.INTAKE_SPEED;
     } else {
-      horizontalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
-          Constants.INTAKE_SPEED);
+      horizontalSpeed = 0;//Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,Constants.INTAKE_SPEED);
     }
-    if (RB) {
-      verticalSpeed = Constants.INTAKE_SPEED;// * Robot.m_robotContainer.pulse(Constants.INTAKE_PULSE);
+    if (LeftTrigger == 1) {
+      verticalSpeed = Constants.INTAKE_SPEED;
     } else {
-      verticalSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,
-          Constants.INTAKE_SPEED);
+      verticalSpeed = 0;//Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP, Constants.INTAKE_SPEED);
     }
 
     Robot.intake.setVerticalIntake(verticalSpeed);

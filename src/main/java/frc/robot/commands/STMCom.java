@@ -21,12 +21,12 @@ public class STMCom extends CommandBase {
   /* Declares and initializes the colorSensor */
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-  private Color color = m_colorSensor.getColor();
+  private Color currentColor = m_colorSensor.getColor();
 
-  public void STM_Spin(Color colour) {
+  public void STM_Spin(Color colorGoal) {
     int rotations = 0;
     Robot.stm.setSTM_Motor(Constants.STM_SPEED);
-    if (color == colour)
+    if (currentColor == colorGoal)
       rotations++;
     Timer.delay(0.5); // prevent robot from detecting the color we are looking for immmediately after
                       // already detecting it
@@ -46,7 +46,7 @@ public class STMCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    color = m_colorSensor.getColor();
+    currentColor = m_colorSensor.getColor();
     if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A))
       STM_Spin(Color.kGreen);
     if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B))

@@ -22,8 +22,6 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 
 public class LimeLight extends SubsystemBase {
-  private final Spark spark = new Spark(0);
-//  private final Encoder encoder = new Encoder(0,1,true, EncodingType.k4X);
   private final double kDriveTick = 1.0/128*6*Math.PI/12;
 
   public static final double kDistancePerRevolution = 18.84;  // guestimate from your code
@@ -82,22 +80,6 @@ public class LimeLight extends SubsystemBase {
     //(targetHeight - limelightHeight) / Math.atan(Math.toRadians(5));
     return dist;
   }
-
-  public void turretTurn(double speed)
-  {
-    //encoder.setDistancePerPulse(kDistancePerPulse);
-    //encoder.reset();
-
-    spark.set(speed);
-    //System.out.println("Encoder Position:" + encoder.getDistance());
-    //if(encoder.getStopped())
-      //System.out.println("stopped");
-  }
-
-  // public double getEncoderDistance()
-  // {
-  //   return encoder.getDistance();
-  //}
 
   @Override
   public void periodic() {
