@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.commands.auton.autoCmdManual;
 
 public class ShooterCom extends CommandBase {
   public ShooterCom() {
@@ -31,7 +32,6 @@ public class ShooterCom extends CommandBase {
     boolean trigger1 = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
     int POV = Robot.m_robotContainer.getDriver2POV();
     double speed;
-    double angleFrom;
     double shooterSpeed = 1;
 
 
@@ -80,13 +80,13 @@ public class ShooterCom extends CommandBase {
   }
 
   public void limeLightAdjust(){
-    angleFrom = Robot.Limelight.gettX() * (90 / 163); //90 deg turn is 163 deg
+    double angleFrom = Robot.Limelight.getTX() * (90 / 163); //90 deg turn is 163 deg
 
     if(angleFrom > 0){
-      Robot.autoCmdManual.Left(angleFrom * -1);
+      autoCmdManual.Left(angleFrom * -1, false);
     }
     else if (angleFrom < 0){
-      Robot.autoCmdManual.right(angleFrom);
+      autoCmdManual.Right(angleFrom, false);
     }
   }
 
