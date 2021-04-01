@@ -33,18 +33,18 @@ public class TankDrive extends CommandBase {
     double rightTrigger = Robot.m_robotContainer.getDriver1Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
 
     // forward and reverse
-    //double rightSpeed = ((leftStickY-(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED);
-    //double leftSpeed = ((leftStickY+(0.5*rightStickX)) * Constants.DRIVE_MAX_SPEED);
+    //double rightSpeed = ((leftStickY+(0.85*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnL);
+    //double leftSpeed = ((leftStickY-(0.85*rightStickX)) * Constants.DRIVE_MAX_SPEED * TurnR);
     // turning right joystick
     double rightSpeed = -(rightStickY* Constants.DRIVE_MAX_SPEED);
     double leftSpeed = -(leftStickY* Constants.DRIVE_MAX_SPEED);
 
     if(rightTrigger == 1){
-      Robot.driveTrain.setRightMotors(rightSpeed*.5);
-      Robot.driveTrain.setLeftMotors(leftSpeed*.5);
+      Robot.driveTrain.setRightMotors(-rightSpeed*.5);
+      Robot.driveTrain.setLeftMotors(-leftSpeed*.5);
     }else{
-      Robot.driveTrain.setRightMotors(rightSpeed);
-      Robot.driveTrain.setLeftMotors(leftSpeed);
+      Robot.driveTrain.setRightMotors(-rightSpeed);
+      Robot.driveTrain.setLeftMotors(-leftSpeed);
     }
   }
 

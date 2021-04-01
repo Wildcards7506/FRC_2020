@@ -87,9 +87,9 @@ public final class Constants {
 	// Fixed Variables
 	public static final double kDriveTick2Feet = 6.25 / 2560 * Math.PI / 12;
 	public static final double kDriveTick2Angle = Math.PI/Math.PI*36/1000;
-	public static final double kP = 0.4;
-  	public static final double kI = 0.0;
-  	public static final double kD = 0.0;
+	public static final double kP = 0.45;
+  	public static final double kI = 0.0001;
+  	public static final double kD = 0.1;
 	public static final double iLimit = 0.2;
 
 }

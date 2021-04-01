@@ -23,8 +23,8 @@ public class Shooter extends SubsystemBase {
   //private final DoubleSolenoid pneumatics = new DoubleSolenoid(Constants.PNEUMATIC_1, Constants.PNEUMATIC_2);
 
   public void setShooterMotor(final double speed) {
-    shooterMotor8.set(ControlMode.PercentOutput, 
-    speed);
+    shooterMotor8.set(ControlMode.PercentOutput, -speed * .73);
+    //shooterMotor8.set(ControlMode.PercentOutput, -speed);
   }
 
   public void setPneumatics(final DoubleSolenoid.Value value) {
