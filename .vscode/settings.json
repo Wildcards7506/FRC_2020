@@ -12,6 +12,5 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "wpilib.stopSimulationOnEntry": false,
-  "editor.fontSize": 12
+  "wpilib.stopSimulationOnEntry": false
 }
