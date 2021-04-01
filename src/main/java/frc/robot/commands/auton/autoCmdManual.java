@@ -80,7 +80,53 @@ public class autoCmdManual extends CommandBase {
         if (backwards==true){
           outputSpeed = outputSpeed * -.4;
       }
-      Robot.driveTrain.setLeftMotors(-outputSpeed*0.95);
+      Robot.driveTrain.setLeftMotors(-outputSpeed * .95);
+      Robot.driveTrain.setRightMotors(-outputSpeed);
+    }
+  }
+
+  public static void ForwardSearch(double distance, boolean backwards){
+    error = distance;
+    errorSum = 0;
+    lastError = 0;
+    sensorPosition = 0;
+    lastTimestamp = Timer.getFPGATimestamp();
+    System.out.println(distance);
+    Robot.driveTrain.encoderL.reset();
+    Robot.driveTrain.encoderR.reset();
+      while (distance > Math.abs(sensorPosition)){
+        SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.encoderL.getDistance());
+        SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.encoderR.getDistance());
+        SmartDashboard.putNumber("Set Point", sensorPosition);
+        SmartDashboard.putNumber("Error Rate", errorRate);
+        SmartDashboard.putNumber("Output Speed", outputSpeed);
+        SmartDashboard.putNumber("Encoder Difference", encoderDiff);
+        //System.out.println(sensorPosition);
+        // get sensor position
+        //System.out.println(Constants.kDriveTick2Feet);
+        
+          sensorPosition = Robot.driveTrain.encoderL.getDistance()*Constants.kDriveTick2Feet;
+          encSpeedLeft = Robot.driveTrain.encoderL.getDistance();
+          encSpeedRight = Robot.driveTrain.encoderR.getDistance();
+          encoderDiff = (encSpeedLeft-encSpeedRight)/encSpeedLeft;
+        // calculations
+        lastError = error;
+        error = (distance - sensorPosition)/distance;
+        dt = Timer.getFPGATimestamp() - lastTimestamp;
+
+        if (Math.abs(error) < Constants.iLimit) {
+            errorSum += error * dt;
+        }
+
+        errorRate = (error - lastError) / dt;
+
+        
+        outputSpeed = Constants.kP * error + Constants.kI * errorSum + Constants.kD * errorRate;
+        // output to motors
+        if (backwards==true){
+          outputSpeed = outputSpeed * -.4;
+      }
+      Robot.driveTrain.setLeftMotors(-outputSpeed * 1.00);
       Robot.driveTrain.setRightMotors(-outputSpeed);
     }
   }

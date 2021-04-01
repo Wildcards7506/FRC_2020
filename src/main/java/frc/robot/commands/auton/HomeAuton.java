@@ -24,7 +24,7 @@ public class HomeAuton extends SequentialCommandGroup {
   public HomeAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    Bounce();
+    SearchA();
     
 
   }
@@ -101,16 +101,16 @@ public class HomeAuton extends SequentialCommandGroup {
     
     public void SearchA(){ //Red and blue seach patten A
       //Setup centered on 12.5 feet
-      autoCmdManual.Forward(22,false);
+      autoCmdManual.ForwardSearch(16.4,true);
       autoCmdManual.Right(163,false);
 
-      /*autoCmdManual.Forward(10,false);
+      /*autoCmdManual.Forward(10,true);
       autoCmdManual.Right(163,false);
 
-      autoCmdManual.Forward(15,false);
+      autoCmdManual.Forward(15,true);
       autoCmdManual.Right(163,false);
 
-      autoCmdManual.Forward(7.5,false);
+      autoCmdManual.Forward(7.5,true);
       autoCmdManual.Right(163,false);
 
       autoCmdManual.Forward(12.5,false);
