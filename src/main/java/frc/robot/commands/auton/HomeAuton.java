@@ -87,25 +87,16 @@ public class HomeAuton extends SequentialCommandGroup {
     autoCmdManual.Forward(2, false);
     autoCmdManual.Left(176, false); //Target A3
     autoCmdManual.Forward(2.5, false); //touch
-    autoCmdManual.Forward(5.7, true);
-    autoCmdManual.Left(120, false);
-    // autoCmdManual.Backward(1);
-    // autoCmdManual.bRight(45);
-    // autoCmdManual.Backward(1);
-    
-    // autoCmdManual.bLeft(90); //Target A6
-    // autoCmdManual.Backward(1);
-    // autoCmdManual.bLeft(90); 
-    // autoCmdManual.Backward(1); //touch
-    // autoCmdManual.Forward(1);
-    
-    // autoCmdManual.Left(90); //Target A9
-    // autoCmdManual.Forward(1);
-    // autoCmdManual.Left(90); 
-    // autoCmdManual.Forward(1); //touch
-    // autoCmdManual.Backward(1);
-    // autoCmdManual.bLeft(90); 
-    // autoCmdManual.Backward(1); // Exit Bounce
+    autoCmdManual.Forward(7.6, true);
+    autoCmdManual.Left(130, false);
+    autoCmdManual.Forward(2.8, true);
+    autoCmdManual.Right(183,false);
+    autoCmdManual.Forward(8, false);//touch
+    autoCmdManual.Forward(7.5, true); //Target A6
+    autoCmdManual.Left(140, false);
+    autoCmdManual.Forward(4.5, true);
+    autoCmdManual.Right(163, false);
+    autoCmdManual.Forward(6, false);
     }
     
     public void SearchA(){ //Red and blue seach patten A
