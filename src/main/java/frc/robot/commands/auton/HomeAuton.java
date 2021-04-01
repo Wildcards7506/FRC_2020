@@ -111,22 +111,22 @@ public class HomeAuton extends SequentialCommandGroup {
     public void SearchA(){ //Red and blue seach patten A
       //Setup centered on 12.5 feet
       autoCmdManual.Forward(22,false);
-      autoCmdManual.Right(150,false);
+      autoCmdManual.Right(163,false);
 
       /*autoCmdManual.Forward(10,false);
-      autoCmdManual.Right(150,false);
+      autoCmdManual.Right(163,false);
 
       autoCmdManual.Forward(15,false);
-      autoCmdManual.Right(150,false);
+      autoCmdManual.Right(163,false);
 
       autoCmdManual.Forward(7.5,false);
-      autoCmdManual.Right(150,false);
+      autoCmdManual.Right(163,false);
 
       autoCmdManual.Forward(12.5,false);
-      autoCmdManual.Right(150,false);
+      autoCmdManual.Right(163,false);
       
       autoCmdManual.Forward(5,false);
-      autoCmdManual.Right(150,false);
+      autoCmdManual.Right(163),false);
 
       autoCmdManual.Forward(15,false);
 
