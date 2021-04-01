@@ -85,10 +85,10 @@ public class HomeAuton extends SequentialCommandGroup {
     
     public void Bounce(){
     autoCmdManual.Forward(2, false);
-    autoCmdManual.Left(163, false); //Target A3
-    autoCmdManual.Forward(1.2, false); //touch
-    autoCmdManual.Forward(4, true);
-    //autoCmdManual.Left(90, false);
+    autoCmdManual.Left(176, false); //Target A3
+    autoCmdManual.Forward(2.5, false); //touch
+    autoCmdManual.Forward(5.7, true);
+    autoCmdManual.Left(120, false);
     // autoCmdManual.Backward(1);
     // autoCmdManual.bRight(45);
     // autoCmdManual.Backward(1);

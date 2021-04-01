@@ -48,7 +48,7 @@ public class autoCmdManual extends CommandBase {
     System.out.println(distance);
     Robot.driveTrain.encoderL.reset();
     Robot.driveTrain.encoderR.reset();
-      while (distance > sensorPosition){
+      while (distance > Math.abs(sensorPosition)){
         SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.encoderL.getDistance());
         SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.encoderR.getDistance());
         SmartDashboard.putNumber("Set Point", sensorPosition);
@@ -77,9 +77,8 @@ public class autoCmdManual extends CommandBase {
         
         outputSpeed = Constants.kP * error + Constants.kI * errorSum + Constants.kD * errorRate;
         // output to motors
-        if (backwards=true){
-          outputSpeedR = outputSpeedR * -1;
-          outputSpeedL = outputSpeedL * -1;
+        if (backwards==true){
+          outputSpeed = outputSpeed * -.4;
       }
       Robot.driveTrain.setLeftMotors(-outputSpeed*0.95);
       Robot.driveTrain.setRightMotors(-outputSpeed);
