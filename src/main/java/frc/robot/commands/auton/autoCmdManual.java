@@ -17,8 +17,8 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class autoCmdManual extends CommandBase {
   private static Timer timer = new Timer();
-  public static double motorSpeedLeft;
-  public static double motorSpeedRight;
+  public static double encSpeedLeft;
+  public static double encSpeedRight;
   private static double sensorPosition;
   private static double errorSum = 0;
   private static double lastTimestamp = 0;
@@ -26,7 +26,11 @@ public class autoCmdManual extends CommandBase {
   private static double error;
   private static double errorRate;
   private static double outputSpeed;
+  private static double outputSpeedR;
+  private static double outputSpeedL;
   private static double dt;
+
+  private static double encoderDiff;
   // private static Robot.Limelight Robot.Limelight = new Robot.Limelight();
 
   /** Creates a new autoCmdManual. */
@@ -50,11 +54,15 @@ public class autoCmdManual extends CommandBase {
         SmartDashboard.putNumber("Set Point", sensorPosition);
         SmartDashboard.putNumber("Error Rate", errorRate);
         SmartDashboard.putNumber("Output Speed", outputSpeed);
+        SmartDashboard.putNumber("Encoder Difference", encoderDiff);
         //System.out.println(sensorPosition);
         // get sensor position
         //System.out.println(Constants.kDriveTick2Feet);
-        sensorPosition = Robot.driveTrain.encoderL.getDistance()*Constants.kDriveTick2Feet;
         
+          sensorPosition = Robot.driveTrain.encoderL.getDistance()*Constants.kDriveTick2Feet;
+          encSpeedLeft = Robot.driveTrain.encoderL.getDistance();
+          encSpeedRight = Robot.driveTrain.encoderR.getDistance();
+          encoderDiff = (encSpeedLeft-encSpeedRight)/encSpeedLeft;
         // calculations
         lastError = error;
         error = (distance - sensorPosition)/distance;
@@ -66,13 +74,15 @@ public class autoCmdManual extends CommandBase {
 
         errorRate = (error - lastError) / dt;
 
+        
         outputSpeed = Constants.kP * error + Constants.kI * errorSum + Constants.kD * errorRate;
         // output to motors
         if (backwards=true){
-          outputSpeed = outputSpeed * -1;
+          outputSpeedR = outputSpeedR * -1;
+          outputSpeedL = outputSpeedL * -1;
       }
-      Robot.driveTrain.setLeftMotors(outputSpeed);
-      Robot.driveTrain.setRightMotors(outputSpeed);
+      Robot.driveTrain.setLeftMotors(-outputSpeed*0.95);
+      Robot.driveTrain.setRightMotors(-outputSpeed);
     }
   }
   

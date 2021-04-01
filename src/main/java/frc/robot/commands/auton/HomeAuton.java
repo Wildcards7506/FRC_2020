@@ -24,34 +24,34 @@ public class HomeAuton extends SequentialCommandGroup {
   public HomeAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    Slalom();
+    Bounce();
     
 
   }
 
   public void Barrel(){
-    autoCmdManual.Forward(1.6,false); //Forward out of the gate
-    autoCmdManual.Right(0.24,false); // Box D5
-    autoCmdManual.Forward(0.5,false);
-    autoCmdManual.Right(0.22,false);
-    autoCmdManual.Forward(0.73,false);
-    autoCmdManual.Right(0.27,false);
-    autoCmdManual.Forward(0.5,false);
-    autoCmdManual.Right(0.4,false); 
+    autoCmdManual.Forward(8,false); //Forward out of the gate
+    autoCmdManual.Right(163,false); // Box D5
+    autoCmdManual.Forward(2,false);
+    autoCmdManual.Right(163,false);
+    autoCmdManual.Forward(2,false);
+    autoCmdManual.Right(163,false);
+    autoCmdManual.Forward(2,false);
+    autoCmdManual.Right(163,false); 
     
-    autoCmdManual.Forward(.97,false); //Forward to B8
+    autoCmdManual.Forward(8.2,false); //Forward to B8
     
-    autoCmdManual.Left(0.3,false); //Box B8
-    autoCmdManual.Forward(0.63,false);
-    autoCmdManual.Left(0.2,false);
-    autoCmdManual.Forward(.9,false);
-    autoCmdManual.Left(0.19,false);
-    autoCmdManual.Forward(1.5,false);
+    autoCmdManual.Left(160,false); //Box B8
+    autoCmdManual.Forward(2.7,false);
+    autoCmdManual.Left(163,false);
+    autoCmdManual.Forward(2,false);
+    autoCmdManual.Left(120,false);
+    autoCmdManual.Forward(7,false);
     
-    autoCmdManual.Left(0.5,false); //Box D10
-    autoCmdManual.Forward(0.6,false);
-    autoCmdManual.Left(0.23,false);
-    autoCmdManual.Forward(5,false);
+    autoCmdManual.Left(90,false); //Box D10
+    autoCmdManual.Forward(3,false);
+    autoCmdManual.Left(180,false);
+    autoCmdManual.Forward(60,false);
     
     //autoCmdManual.Forward(100); // Leaving Barrel
     }
@@ -60,55 +60,52 @@ public class HomeAuton extends SequentialCommandGroup {
 
     autoCmdManual.Forward(1.5,false); //Forward out of the gate
     
-    autoCmdManual.Left(125,false); // Long run 1
+    autoCmdManual.Left(125,false); 
     autoCmdManual.Forward(3,false);
     
-    autoCmdManual.Right(80,false); //Box D10
-    autoCmdManual.Forward(8,false);
-    autoCmdManual.Right(80,false);
+    autoCmdManual.Right(125,false); 
+    autoCmdManual.Forward(8,false); //Long 
+    autoCmdManual.Right(115,false);
+    autoCmdManual.Forward(5.4,false);
+    
+    autoCmdManual.Left(135,false);
+    autoCmdManual.Forward(3,false);
+    autoCmdManual.Left(140,false);
+    autoCmdManual.Forward(3,false);
+    autoCmdManual.Left(140,false);
     autoCmdManual.Forward(4,false);
     
-    autoCmdManual.Left(160,false);
-    autoCmdManual.Forward(2,false);
-    autoCmdManual.Left(150,false);
-    autoCmdManual.Forward(2,false);
-    autoCmdManual.Left(175,false);
-    autoCmdManual.Forward(6,false);
-    
-    autoCmdManual.Right(70, false); //Long run 2
-    autoCmdManual.Forward(8, false);
-    autoCmdManual.Right(80, false);
+    autoCmdManual.Right(130, false); 
+    autoCmdManual.Forward(9, false); //Long run 2
+    autoCmdManual.Right(140, false);
 
-    autoCmdManual.Forward(3, false);
-    autoCmdManual.Left(80, false);
-    autoCmdManual.Forward(3, false);
+    autoCmdManual.Forward(6, false);
 
     }
     
     public void Bounce(){
-    autoCmdManual.Forward(10,false);
-    /*autoCmdManual.Forward(1); //Target A3
-    autoCmdManual.Left(90);
-    autoCmdManual.Forward(1); //touch
-    autoCmdManual.Backward(1);
-    autoCmdManual.bLeft(45);
-    autoCmdManual.Backward(1);
-    autoCmdManual.bRight(45);
-    autoCmdManual.Backward(1);
+    autoCmdManual.Forward(2, false);
+    autoCmdManual.Left(163, false); //Target A3
+    autoCmdManual.Forward(1, false); //touch
+    //autoCmdManual.Forward(2, true);
+    //autoCmdManual.Left(90, false);
+    // autoCmdManual.Backward(1);
+    // autoCmdManual.bRight(45);
+    // autoCmdManual.Backward(1);
     
-    autoCmdManual.bLeft(90); //Target A6
-    autoCmdManual.Backward(1);
-    autoCmdManual.bLeft(90); 
-    autoCmdManual.Backward(1); //touch
-    autoCmdManual.Forward(1);
+    // autoCmdManual.bLeft(90); //Target A6
+    // autoCmdManual.Backward(1);
+    // autoCmdManual.bLeft(90); 
+    // autoCmdManual.Backward(1); //touch
+    // autoCmdManual.Forward(1);
     
-    autoCmdManual.Left(90); //Target A9
-    autoCmdManual.Forward(1);
-    autoCmdManual.Left(90); 
-    autoCmdManual.Forward(1); //touch
-    autoCmdManual.Backward(1);
-    autoCmdManual.bLeft(90); 
-    autoCmdManual.Backward(1); // Exit Bounce*/
+    // autoCmdManual.Left(90); //Target A9
+    // autoCmdManual.Forward(1);
+    // autoCmdManual.Left(90); 
+    // autoCmdManual.Forward(1); //touch
+    // autoCmdManual.Backward(1);
+    // autoCmdManual.bLeft(90); 
+    // autoCmdManual.Backward(1); // Exit Bounce
     }
     
     public void SearchA(){ //Red and blue seach patten A
@@ -116,7 +113,7 @@ public class HomeAuton extends SequentialCommandGroup {
       autoCmdManual.Forward(22,false);
       autoCmdManual.Right(150,false);
 
-      autoCmdManual.Forward(10,false);
+      /*autoCmdManual.Forward(10,false);
       autoCmdManual.Right(150,false);
 
       autoCmdManual.Forward(15,false);
@@ -133,11 +130,11 @@ public class HomeAuton extends SequentialCommandGroup {
 
       autoCmdManual.Forward(15,false);
 
-      autoCmdManual.Forward(25,true);
+      autoCmdManual.Forward(25,true);*/
 
     }
-    public void SearchB(){ //Red and Blue seach patten B
-      
+    public void Tester(){ //Red and Blue seach patten B
+      autoCmdManual.Forward(10,true);
     }
 }
 

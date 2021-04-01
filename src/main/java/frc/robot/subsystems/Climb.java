@@ -20,7 +20,7 @@ public class Climb extends SubsystemBase {
   private final VictorSPX climbMotor4 = new VictorSPX(Constants.MOTOR_10);
   //private final VictorSPX climbMotor9 = new VictorSPX(Constants.MOTOR_9);
   private final VictorSPX climbMotor11 = new VictorSPX(Constants.MOTOR_11);
-  private final VictorSPX climbMotor13 = new VictorSPX(Constants.MOTOR_13);
+  //private final VictorSPX climbMotor13 = new VictorSPX(Constants.MOTOR_13);
 
   /*
    * This method sets the speed of the motor (returns a double ranging from -1 to
@@ -28,7 +28,7 @@ public class Climb extends SubsystemBase {
    */
   public void setClimb(final double speed) {
     climbMotor4.set(ControlMode.PercentOutput, -speed);
-    climbMotor13.set(ControlMode.PercentOutput, speed);
+    climbMotor11.set(ControlMode.PercentOutput, speed);
   }
 
   @Override

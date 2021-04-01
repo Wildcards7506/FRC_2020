@@ -28,24 +28,20 @@ public class ShooterCom extends CommandBase {
   @Override
   public void execute() {
     double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
+    boolean trigger1 = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
     int POV = Robot.m_robotContainer.getDriver2POV();
-    double speed, verticalSpeed, horizontalSpeed;
+    double speed;
 
     if (trigger == 1) {
       speed = Constants.SHOOTER_SPEED;
-      //verticalSpeed = Constants.INTAKE_SPEED;// * Robot.m_robotContainer.pulse(Constants.INTAKE_PULSE);
-      //horizontalSpeed = verticalSpeed;
-    } else {
+    } else if (trigger1){
+      speed = -0.35;
+    }
+    else {
       speed = 0;
-      //verticalSpeed = 0;
-      //horizontalSpeed = 0;
     }
 
-    // System.out.println(Robot.shooter.getShooterMotor());
-
-    Robot.shooter.setShooterMotor(speed);
-    //Robot.intake.setVerticalIntake(verticalSpeed);
-    //Robot.intake.setHorizontalIntake(horizontalSpeed);
+    Robot.shooter.setShooterMotor(-speed);
 
     switch (POV) {
     case 270:

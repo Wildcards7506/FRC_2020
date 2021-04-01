@@ -27,8 +27,7 @@ public class ClimbCom extends CommandBase {
   @Override
   public void execute() {
     // initializes and declares the speed for climbing
-    double speed = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_STICK_Y, "joystick",Constants.STOP,
-        Constants.CLIMB_SPEED);
+    double speed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick",Constants.STOP, Constants.CLIMB_SPEED);
     // sets the speed pf climb
     Robot.climb.setClimb(speed);
   }
