@@ -30,13 +30,35 @@ public class ShooterCom extends CommandBase {
     double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
     int POV = Robot.m_robotContainer.getDriver2POV();
     double speed;
+    double angleFrom;
+    double shooterSpeed = 1;
+
 
     if (trigger == 1) {
-      speed = Constants.SHOOTER_SPEED;
+      speed = shooterSpeed;
     } else {
       speed = 0;
     }
 
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A)){
+      shooterSpeed = .2;
+      limeLightAdjust();
+    }
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B)){
+      shooterSpeed = 1;
+      limeLightAdjust();
+    }
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_Y)){
+      shooterSpeed = 1;
+      limeLightAdjust();
+    }
+    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_X)){
+      shooterSpeed = 1;
+      limeLightAdjust();
+    }
+
+
+    
     Robot.shooter.setShooterMotor(speed);
 
     switch (POV) {
@@ -54,6 +76,17 @@ public class ShooterCom extends CommandBase {
     //} else {
       //Robot.shooter.compressor.stop();
     //}
+  }
+
+  public void limeLightAdjust(){
+    angleFrom = Robot.Limelight.gettX() * (90 / 163); //90 deg turn is 163 deg
+
+    if(angleFrom > 0){
+      Robot.autoCmdManual.Left(angleFrom * -1);
+    }
+    else if (angleFrom < 0){
+      Robot.autoCmdManual.right(angleFrom);
+    }
   }
 
   /* Called once the command ends or is interrupted. */
