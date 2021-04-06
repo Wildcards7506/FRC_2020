@@ -127,7 +127,7 @@ public class autoCmdManual extends CommandBase {
           outputSpeed = outputSpeed * -.4;
       }
       Robot.driveTrain.setLeftMotors(-outputSpeed * 1.00);
-      Robot.driveTrain.setRightMotors(-outputSpeed);
+      Robot.driveTrain.setRightMotors(-outputSpeed * 0.90);
     }
   }
   

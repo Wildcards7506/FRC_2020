@@ -16,7 +16,7 @@ import frc.robot.commands.IntakeCom;
 
 public class Intake extends SubsystemBase {
   /* Declares and initializes motor */
-  private final VictorSPX intakeMotor5 = new VictorSPX(Constants.MOTOR_4);
+  private final VictorSPX intakeMotor5 = new VictorSPX(Constants.MOTOR_5);
   private final VictorSPX intakeMotor6 = new VictorSPX(Constants.MOTOR_6);
   private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_7);
   private final VictorSPX intakeMotor4 = new VictorSPX(Constants.MOTOR_4);

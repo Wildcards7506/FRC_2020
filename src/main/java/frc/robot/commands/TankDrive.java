@@ -30,8 +30,8 @@ public class TankDrive extends CommandBase {
     // initializes and declares joystick values from XboxController1
     double rightStickX = Robot.m_robotContainer.getDriver1Axis(Constants.RIGHT_STICK_X, "joystick");
     double leftStickY = Robot.m_robotContainer.getDriver1Axis(Constants.LEFT_STICK_Y, "joystick");
-    double rightTrigger = Robot.m_robotContainer.getDriver1Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
-    double leftTrigger = Robot.m_robotContainer.getDriver1Axis(Constants.LEFT_TRIGGER, "trigger", 0, 1);
+    boolean rightButton = Robot.m_robotContainer.getDriver1Button(Constants.RIGHT_BUTTON);
+    boolean leftButton = Robot.m_robotContainer.getDriver1Button(Constants.LEFT_BUTTON);
 
 
     // forward and reverse
@@ -42,10 +42,10 @@ public class TankDrive extends CommandBase {
     //double leftSpeed = -(leftStickY* Constants.DRIVE_MAX_SPEED);
 
     
-    if(rightTrigger == 1){
+    if(rightButton){
       Robot.driveTrain.setRightMotors(-rightSpeed*.5);
       Robot.driveTrain.setLeftMotors(-leftSpeed*.5);
-    }else if(leftTrigger == 1){
+    }else if(leftButton){
       Robot.driveTrain.setRightMotors(-rightSpeed/.4);
       Robot.driveTrain.setLeftMotors(-leftSpeed/.4);
     }else{

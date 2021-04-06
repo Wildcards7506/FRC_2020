@@ -8,8 +8,10 @@
 package frc.robot.commands.auton;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -21,6 +23,7 @@ public class HomeAuton extends SequentialCommandGroup {
   /**
    * Creates a new MoveSequence.
    */
+  private static Intake intake = new Intake();
   public HomeAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
@@ -85,11 +88,11 @@ public class HomeAuton extends SequentialCommandGroup {
     
     public void Bounce(){
     autoCmdManual.Forward(2, false);
-    autoCmdManual.Left(176, false); //Target A3
+    autoCmdManual.Left(200, false); //Target A3
     autoCmdManual.Forward(2.5, false); //touch
     autoCmdManual.Forward(8.1, true);
     autoCmdManual.Left(130, false);
-    autoCmdManual.Forward(2.5, true);
+    autoCmdManual.Forward(3.2, true);
     autoCmdManual.Right(183,false);
     autoCmdManual.Forward(8.5, false);//touch
     autoCmdManual.Forward(8.2, true); //Target A6
@@ -104,27 +107,30 @@ public class HomeAuton extends SequentialCommandGroup {
     
     public void SearchA(){ //Red and blue seach patten A
       //Setup centered on 12.5 feet
-      autoCmdManual.ForwardSearch(17.25,true);
-      autoCmdManual.Right(153,false);
+      intake.setHorizontalIntake(Constants.INTAKE_SPEED);
+      autoCmdManual.ForwardSearch(5, true);
+      autoCmdManual.Forward(5, true);
+      autoCmdManual.ForwardSearch(9,true);
+      autoCmdManual.Right(210,false);
 
-      autoCmdManual.Forward(5,true);
-      autoCmdManual.Right(153,false);
+      autoCmdManual.ForwardSearch(7.5,true);
+      autoCmdManual.Right(200,false);
+
+      autoCmdManual.ForwardSearch(12,true);
+      autoCmdManual.Right(195,false);
 /*
-      autoCmdManual.Forward(15,true);
+      autoCmdManual.ForwardSearch(7.5,true);
       autoCmdManual.Right(163,false);
 
-      autoCmdManual.Forward(7.5,true);
-      autoCmdManual.Right(163,false);
-
-      autoCmdManual.Forward(12.5,false);
+      autoCmdManual.ForwardSearch(12.5,false);
       autoCmdManual.Right(163,false);
       
-      autoCmdManual.Forward(5,false);
-      autoCmdManual.Right(163),false);
+      autoCmdManual.ForwardSearch(5,false);
+      autoCmdManual.RightSearch(163),false);
 
-      autoCmdManual.Forward(15,false);
+      autoCmdManual.ForwardSearch(15,false);
 
-      autoCmdManual.Forward(25,true);*/
+      autoCmdManual.ForwardSearch(25,true);*/
 
     }
     public void Tester(){ //Red and Blue seach patten B

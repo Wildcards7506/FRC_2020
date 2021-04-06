@@ -45,7 +45,7 @@ public class IntakeCom extends CommandBase {
     double LeftTrigger = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_TRIGGER, "trigger", 0, 1);
     double horizontalSpeed, verticalSpeed;
     if (LB) {
-      horizontalSpeed = Constants.INTAKE_SPEED;
+      horizontalSpeed = 0;//horizontalSpeed = Constants.INTAKE_SPEED * .7;
     } else {
       horizontalSpeed = 0;//Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,Constants.INTAKE_SPEED);
     }
