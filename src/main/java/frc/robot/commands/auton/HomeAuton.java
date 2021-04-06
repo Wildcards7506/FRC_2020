@@ -93,7 +93,7 @@ public class HomeAuton extends SequentialCommandGroup {
     autoCmdManual.Forward(8.1, true);
     autoCmdManual.Left(130, false);
     autoCmdManual.Forward(3.2, true);
-    autoCmdManual.Right(183,false);
+    autoCmdManual.Left(183,true);
     autoCmdManual.Forward(8.5, false);//touch
     autoCmdManual.Forward(8.2, true); //Target A6
     autoCmdManual.Left(140, false);
