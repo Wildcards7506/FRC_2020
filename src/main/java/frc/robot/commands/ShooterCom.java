@@ -29,33 +29,105 @@ public class ShooterCom extends CommandBase {
   @Override
   public void execute() {
     double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
-    boolean trigger1 = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
+    boolean x =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_X);
+    boolean y =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_Y);
+    boolean a =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_A);
+    boolean b =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
     int POV = Robot.m_robotContainer.getDriver2POV();
-    double speed;
-    double shooterSpeed = 1;
+    double speed = 0;
+    double shooterSpeed = 2;
+    double Kp = 0.01;
+    double tx = Robot.Limelight.getTX();
+    double headingError;
+    double steerAdjust;
+    double min = 0.1;
+    double lOut = 0;
+    double rOut = 0;
 
 
     if (trigger == 1) {
       speed = shooterSpeed;
-    } else {
-      speed = 0;
     }
 
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A)){
-      shooterSpeed = .2;
-      limeLightAdjust();
+    if (x){
+      headingError = -tx;
+      steerAdjust = 0.0;
+      if(tx>0.2)
+      {
+        steerAdjust = Kp*headingError - min;
+      }
+      else if(tx<0.2)
+      {
+        steerAdjust = Kp*headingError + min;
+      }
+
+      lOut += steerAdjust;
+      rOut -= steerAdjust;
+
+      Robot.driveTrain.setRightMotors(rOut);
+      Robot.driveTrain.setLeftMotors(lOut);
+
+      speed = 1.1;
     }
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B)){
-      shooterSpeed = 1;
-      limeLightAdjust();
+    if (y){
+      headingError = -tx;
+      steerAdjust = 0.0;
+      if(tx>0.2)
+      {
+        steerAdjust = Kp*headingError - min;
+      }
+      else if(tx<0.2)
+      {
+        steerAdjust = Kp*headingError + min;
+      }
+
+      lOut += steerAdjust;
+      rOut -= steerAdjust;
+
+      Robot.driveTrain.setRightMotors(rOut);
+      Robot.driveTrain.setLeftMotors(lOut);
+      
+      speed = 1.1;
     }
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_Y)){
-      shooterSpeed = 1;
-      limeLightAdjust();
+    if (a){
+      headingError = -tx;
+      steerAdjust = 0.0;
+      if(tx>0.2)
+      {
+        steerAdjust = Kp*headingError - min;
+      }
+      else if(tx<0.2)
+      {
+        steerAdjust = Kp*headingError + min;
+      }
+
+      lOut += steerAdjust;
+      rOut -= steerAdjust;
+
+      Robot.driveTrain.setRightMotors(rOut);
+      Robot.driveTrain.setLeftMotors(lOut);
+      
+      speed = .34;
     }
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_X)){
-      shooterSpeed = 1;
-      limeLightAdjust();
+    if (b){
+      headingError = -tx;
+      steerAdjust = 0.0;
+      if(tx>0.2)
+      {
+        steerAdjust = Kp*headingError - min;
+      }
+      else if(tx<0.2)
+      {
+        steerAdjust = Kp*headingError + min;
+      }
+
+      lOut += steerAdjust;
+      rOut -= steerAdjust;
+
+      Robot.driveTrain.setRightMotors(rOut);
+      Robot.driveTrain.setLeftMotors(lOut);
+      
+      speed = 1.0;
     }
 
 
@@ -80,14 +152,23 @@ public class ShooterCom extends CommandBase {
   }
 
   public void limeLightAdjust(){
-    double angleFrom = Robot.Limelight.getTX() * (90 / 163); //90 deg turn is 163 deg
+    double angleFrom = Robot.Limelight.getTX(); //90 deg turn is 163 deg
 
-    if(angleFrom > 0){
-      autoCmdManual.Left(angleFrom * -1, false);
+    while (Math.abs(angleFrom) > 0.5){
+      Robot.driveTrain.setLeftMotors(angleFrom/50);
+      Robot.driveTrain.setRightMotors(-angleFrom/50);
+      angleFrom = Robot.Limelight.getTX();
+      if (Math.abs(angleFrom) <0.1){
+        Robot.driveTrain.brakeLeftMotors(0.1);
+        Robot.driveTrain.brakeRightMotors(0.1);
+
+      }
     }
-    else if (angleFrom < 0){
-      autoCmdManual.Right(angleFrom, false);
-    }
+      Robot.driveTrain.brakeLeftMotors(0.1);
+      Robot.driveTrain.brakeRightMotors(0.1);
+
+    
+
   }
 
   /* Called once the command ends or is interrupted. */

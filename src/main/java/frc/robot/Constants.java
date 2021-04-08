@@ -80,7 +80,7 @@ public final class Constants {
 	public static final double SPOOL_SPEED = 0.2;
 	public static final double INTAKE_PULSE = 2;
 	public static final double DRIVE_MAX_SPEED = 0.5;
-	public static final double TURN_MAX_SPEED = 1.6;
+	public static final double TURN_MAX_SPEED = .5;
 	public static final double STM_SPEED = 0.5;
 	public static final double CLIMB_SPEED = 1;
 	public static final double STOP = 0;
@@ -89,7 +89,8 @@ public final class Constants {
 	public static final double kDriveTick2Feet = 6.25 / 2560 * Math.PI / 12;
 	public static final double kDriveTick2Angle = Math.PI/Math.PI*36/1000;
 	public static final double kP = 0.45;
-  	public static final double kI = 0.0001;
+  	public static final double kI = 0.001;
+	public static final double kITurn = 0.001;  
   	public static final double kD = 0.15;
 	public static final double iLimit = 0.2;
 

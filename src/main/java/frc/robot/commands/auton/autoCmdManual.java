@@ -80,9 +80,13 @@ public class autoCmdManual extends CommandBase {
         if (backwards==true){
           outputSpeed = outputSpeed * -.4;
       }
-      Robot.driveTrain.setLeftMotors(-outputSpeed * .95);
+      Robot.driveTrain.setLeftMotors(-outputSpeed);
       Robot.driveTrain.setRightMotors(-outputSpeed);
     }
+  }
+
+  public static void wait(double time){
+    //timer.wait(time);
   }
 
   public static void ForwardSearch(double distance, boolean backwards){
@@ -91,7 +95,7 @@ public class autoCmdManual extends CommandBase {
     lastError = 0;
     sensorPosition = 0;
     lastTimestamp = Timer.getFPGATimestamp();
-    System.out.println(distance);
+    //System.out.println(distance);
     Robot.driveTrain.encoderL.reset();
     Robot.driveTrain.encoderR.reset();
       while (distance > Math.abs(sensorPosition)){
@@ -126,8 +130,8 @@ public class autoCmdManual extends CommandBase {
         if (backwards==true){
           outputSpeed = outputSpeed * -.4;
       }
-      Robot.driveTrain.setLeftMotors(-outputSpeed * 1.00);
-      Robot.driveTrain.setRightMotors(-outputSpeed * 0.90);
+      Robot.driveTrain.setLeftMotors(-outputSpeed*.90);
+      Robot.driveTrain.setRightMotors(-outputSpeed);
     }
   }
   
@@ -158,13 +162,13 @@ public class autoCmdManual extends CommandBase {
 
         errorRate = (error - lastError) / dt;
 
-        outputSpeed = Constants.kP * error + Constants.kI * errorSum + Constants.kD * errorRate;
+        outputSpeed = Constants.kP * error + Constants.kITurn * errorSum + Constants.kD * errorRate;
         if (backwards=true){
             outputSpeed = outputSpeed * -1;
         }
         // output to motors
       Robot.driveTrain.brakeLeftMotors(0.1);
-      Robot.driveTrain.setRightMotors(outputSpeed);
+      Robot.driveTrain.setRightMotors(outputSpeed*1.5);
     }
   }
   
@@ -183,7 +187,7 @@ public class autoCmdManual extends CommandBase {
         SmartDashboard.putNumber("Set Point", sensorPosition);
         SmartDashboard.putNumber("Constant", Math.PI);
         sensorPosition = Robot.driveTrain.encoderL.get() * Constants.kDriveTick2Angle;
-
+        
         // calculations
         lastError = error;
         error = (angle - sensorPosition)/angle;
@@ -193,15 +197,16 @@ public class autoCmdManual extends CommandBase {
             errorSum += error * dt;
         }
 
+
         errorRate = (error - lastError) / dt;
         
-        outputSpeed = Constants.kP * error + Constants.kI * errorSum + Constants.kD * errorRate;
+        outputSpeed = Constants.kP * error + Constants.kITurn * errorSum + Constants.kD * errorRate;
         
         if (backwards=true){
             outputSpeed = outputSpeed * -1;
         }
         // output to motors
-      Robot.driveTrain.setLeftMotors(outputSpeed);
+      Robot.driveTrain.setLeftMotors(outputSpeed*1.5);
       Robot.driveTrain.brakeRightMotors(0.1);
     }
   }
