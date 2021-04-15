@@ -30,7 +30,7 @@ public class FieldAuton extends SequentialCommandGroup {
   public FieldAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    Test();
+    DriveFwd();
   }
 
   public void LeftShoot(){  // Left side, go forwards, shoot 
@@ -40,11 +40,11 @@ public class FieldAuton extends SequentialCommandGroup {
     //setup backwards on leftmost side
     autoCmdManual.Forward(10,true); //go back past AIL
     ShooterCom.limeLightAdjust(); //adjust
-    //shoot
+    autoCmdManual.Shoot(1,5); //shoot
     autoCmdManual.Right(250, true); //turn around 180
   }
 
-  public void Test(){ //Red and Blue seach patten B
-    autoCmdManual.Forward(5,true);
+  public void DriveFwd(){
+    autoCmdManual.Forward(10,false);
   }
 }

@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Shooter;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -230,6 +232,18 @@ public class autoCmdManual extends CommandBase {
     DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0.5);
     Timer.delay(2);
     DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0);
+  }
+
+  public static void Shoot(final double speed, int shots){
+    Robot.shooter.setShooterMotor(speed);
+    Timer.delay(2);
+    while (shots >= 0){
+      
+      //turn on intake
+
+      Timer.delay(2); //time for wheel to finish shootup
+      shots--;
+    }
   }
 
   // Called when the command is initially scheduled.
