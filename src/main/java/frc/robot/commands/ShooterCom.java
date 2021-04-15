@@ -151,7 +151,7 @@ public class ShooterCom extends CommandBase {
     //}
   }
 
-  public void limeLightAdjust(){
+  public static void limeLightAdjust(){
     double angleFrom = Robot.Limelight.getTX(); //90 deg turn is 163 deg
 
     while (Math.abs(angleFrom) > 0.5){

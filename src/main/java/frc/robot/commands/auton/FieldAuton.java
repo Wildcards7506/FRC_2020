@@ -30,20 +30,21 @@ public class FieldAuton extends SequentialCommandGroup {
   public FieldAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    DeReA();
+    Test();
   }
 
-  public void DeReA(){  // Dead Reckoning A
+  public void LeftShoot(){  // Left side, go forwards, shoot 
     intake.setHorizontalIntake(Constants.INTAKE_SPEED);
     Timer.delay(1);
     intake.setHorizontalIntake(Constants.INTAKE_SPEED * .55);
-    //start at far left wall on AIL
-    autoCmdManual.Forward(10,false); //go forward and grab balls, make sure not hit colorwheel
-    autoCmdManual.Right(375,false); //turn
-    autoCmdManual.Forward(4,false); //go to center of allience half of field
-    //ShooterCom.limeLightAdjust(); //use limelight to line up shooter
+    //setup backwards on leftmost side
+    autoCmdManual.Forward(10,true); //go back past AIL
+    ShooterCom.limeLightAdjust(); //adjust
     //shoot
-    autoCmdManual.Left(375,false); //turn around to be ready for teleop
+    autoCmdManual.Right(250, true); //turn around 180
   }
 
+  public void Test(){ //Red and Blue seach patten B
+    autoCmdManual.Forward(5,true);
+  }
 }
