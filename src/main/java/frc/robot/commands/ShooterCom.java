@@ -31,8 +31,8 @@ public class ShooterCom extends CommandBase {
     double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
     boolean x =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_X);
     boolean y =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_Y);
-    boolean a =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_A);
-    boolean b =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
+    boolean a =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_A);
+    boolean b =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_B);
     int POV = Robot.m_robotContainer.getDriver2POV();
     double speed = 0;
     double shooterSpeed = 2;
@@ -45,10 +45,12 @@ public class ShooterCom extends CommandBase {
     double rOut = 0;
 
 
-    if (trigger == 1) {
+    if (a) {
       speed = shooterSpeed;
+    } else if(b) {
+      speed = 0;
     }
-
+/*
     if (x){
       headingError = -tx;
       steerAdjust = 0.0;
@@ -128,7 +130,7 @@ public class ShooterCom extends CommandBase {
       Robot.driveTrain.setLeftMotors(lOut);
       
       speed = 1.0;
-    }
+    }*/
 
 
     
