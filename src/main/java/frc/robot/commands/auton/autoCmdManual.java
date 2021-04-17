@@ -236,9 +236,9 @@ public class autoCmdManual extends CommandBase {
 
   public static void Shoot(final double speed, int shots){
     Robot.shooter.setShooterMotor(speed);
-    Timer.delay(3);
+    Timer.delay(2);
     while (shots > 0){
-      Timer.delay(2);
+      //Timer.delay(0.5);
       Robot.intake.setVerticalIntake(1); //turn on intake
       Timer.delay(.78); //intake time
       

@@ -46,8 +46,12 @@ public class ShooterCom extends CommandBase {
 
 
     if (a) {
-      speed = shooterSpeed;
+      ShooterCom.limeLightAdjust();
+      autoCmdManual.Shoot(1.2,3);
     } else if(b) {
+      speed = shooterSpeed;
+    }
+    else if(x) {
       speed = 0;
     }
 
@@ -81,8 +85,8 @@ public class ShooterCom extends CommandBase {
       Robot.driveTrain.setRightMotors(-angleFrom/50);
 
       if (angleFrom < 0.1 && angleFrom > -0.1){
-      Robot.driveTrain.setLeftMotors(0);
-      Robot.driveTrain.setRightMotors(0);
+      Robot.driveTrain.brakeLeftMotors(0.1);
+      Robot.driveTrain.brakeRightMotors(0.1);
       }
     }
       Robot.driveTrain.setLeftMotors(0);
