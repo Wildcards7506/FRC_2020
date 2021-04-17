@@ -50,87 +50,6 @@ public class ShooterCom extends CommandBase {
     } else if(b) {
       speed = 0;
     }
-/*
-    if (x){
-      headingError = -tx;
-      steerAdjust = 0.0;
-      if(tx>0.2)
-      {
-        steerAdjust = Kp*headingError - min;
-      }
-      else if(tx<0.2)
-      {
-        steerAdjust = Kp*headingError + min;
-      }
-
-      lOut += steerAdjust;
-      rOut -= steerAdjust;
-
-      Robot.driveTrain.setRightMotors(rOut);
-      Robot.driveTrain.setLeftMotors(lOut);
-
-      speed = 1.1;
-    }
-    if (y){
-      headingError = -tx;
-      steerAdjust = 0.0;
-      if(tx>0.2)
-      {
-        steerAdjust = Kp*headingError - min;
-      }
-      else if(tx<0.2)
-      {
-        steerAdjust = Kp*headingError + min;
-      }
-
-      lOut += steerAdjust;
-      rOut -= steerAdjust;
-
-      Robot.driveTrain.setRightMotors(rOut);
-      Robot.driveTrain.setLeftMotors(lOut);
-      
-      speed = 1.1;
-    }
-    if (a){
-      headingError = -tx;
-      steerAdjust = 0.0;
-      if(tx>0.2)
-      {
-        steerAdjust = Kp*headingError - min;
-      }
-      else if(tx<0.2)
-      {
-        steerAdjust = Kp*headingError + min;
-      }
-
-      lOut += steerAdjust;
-      rOut -= steerAdjust;
-
-      Robot.driveTrain.setRightMotors(rOut);
-      Robot.driveTrain.setLeftMotors(lOut);
-      
-      speed = .34;
-    }
-    if (b){
-      headingError = -tx;
-      steerAdjust = 0.0;
-      if(tx>0.2)
-      {
-        steerAdjust = Kp*headingError - min;
-      }
-      else if(tx<0.2)
-      {
-        steerAdjust = Kp*headingError + min;
-      }
-
-      lOut += steerAdjust;
-      rOut -= steerAdjust;
-
-      Robot.driveTrain.setRightMotors(rOut);
-      Robot.driveTrain.setLeftMotors(lOut);
-      
-      speed = 1.0;
-    }*/
 
 
     
@@ -155,22 +74,19 @@ public class ShooterCom extends CommandBase {
 
   public static void limeLightAdjust(){
     double angleFrom = Robot.Limelight.getTX(); //90 deg turn is 163 deg
-
-    while (Math.abs(angleFrom) > 0.5){
+    while (angleFrom > 0.5 || angleFrom < -0.5){
+      Robot.Limelight.updateData();
+      angleFrom = Robot.Limelight.getTX();
       Robot.driveTrain.setLeftMotors(angleFrom/50);
       Robot.driveTrain.setRightMotors(-angleFrom/50);
-      angleFrom = Robot.Limelight.getTX();
-      if (Math.abs(angleFrom) <0.1){
-        Robot.driveTrain.brakeLeftMotors(0.1);
-        Robot.driveTrain.brakeRightMotors(0.1);
 
+      if (angleFrom < 0.1 && angleFrom > -0.1){
+      Robot.driveTrain.setLeftMotors(0);
+      Robot.driveTrain.setRightMotors(0);
       }
     }
-      Robot.driveTrain.brakeLeftMotors(0.1);
-      Robot.driveTrain.brakeRightMotors(0.1);
-
-    
-
+      Robot.driveTrain.setLeftMotors(0);
+      Robot.driveTrain.setRightMotors(0);
   }
 
   /* Called once the command ends or is interrupted. */

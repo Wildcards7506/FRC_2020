@@ -200,6 +200,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
 
-    return new HomeAuton();
+    return new FieldAuton();
   }
 }

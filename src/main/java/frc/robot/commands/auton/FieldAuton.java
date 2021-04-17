@@ -28,23 +28,25 @@ public class FieldAuton extends SequentialCommandGroup {
    */
   private static Intake intake = new Intake();
   public FieldAuton() {
-    //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    DriveFwd();
+    Tester();
   }
 
-  public void LeftShoot(){  // Left side, go forwards, shoot 
+  public void LeftShoot(){  // Left side, go forwards, shoot -- setup backwards on leftmost side
     intake.setHorizontalIntake(Constants.INTAKE_SPEED);
-    Timer.delay(1);
+    Timer.delay(2);
     intake.setHorizontalIntake(Constants.INTAKE_SPEED * .55);
-    //setup backwards on leftmost side
+  
     autoCmdManual.Forward(10,true); //go back past AIL
     ShooterCom.limeLightAdjust(); //adjust
     autoCmdManual.Shoot(1,5); //shoot
     autoCmdManual.Right(250, true); //turn around 180
+    //drop intake
   }
 
-  public void DriveFwd(){
-    autoCmdManual.Forward(10,false);
+  public void Tester(){
+    //autoCmdManual.Forward(10,false);
+    ShooterCom.limeLightAdjust();
+    autoCmdManual.Shoot(1.2,3);
   }
 }

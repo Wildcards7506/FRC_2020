@@ -28,7 +28,7 @@ public class HomeAuton extends SequentialCommandGroup {
   public HomeAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    SearchA();
+    Barrel();
     
 
   }
