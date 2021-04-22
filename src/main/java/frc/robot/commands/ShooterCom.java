@@ -47,7 +47,7 @@ public class ShooterCom extends CommandBase {
 
     if (a) {
       ShooterCom.limeLightAdjust();
-      autoCmdManual.Shoot(1.2,3);
+      
     } else if(b) {
       speed = shooterSpeed;
     }
@@ -91,6 +91,8 @@ public class ShooterCom extends CommandBase {
     }
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
+
+      autoCmdManual.Shoot(1.2*Robot.Limelight.getTA()/2.075,3);
   }
 
   /* Called once the command ends or is interrupted. */

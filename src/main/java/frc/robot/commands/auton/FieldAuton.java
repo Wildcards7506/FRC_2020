@@ -39,7 +39,7 @@ public class FieldAuton extends SequentialCommandGroup {
   
     autoCmdManual.Forward(10,true); //go back past AIL
     ShooterCom.limeLightAdjust(); //adjust
-    autoCmdManual.Shoot(1,5); //shoot
+    autoCmdManual.Shoot(1.2,5); //shoot
     autoCmdManual.Right(250, true); //turn around 180
     //drop intake
   }
@@ -47,6 +47,6 @@ public class FieldAuton extends SequentialCommandGroup {
   public void Tester(){
     //autoCmdManual.Forward(10,false);
     ShooterCom.limeLightAdjust();
-    autoCmdManual.Shoot(1.2,3);
+    
   }
 }
