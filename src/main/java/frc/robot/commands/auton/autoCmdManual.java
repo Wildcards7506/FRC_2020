@@ -214,9 +214,9 @@ public class autoCmdManual extends CommandBase {
   }
 
   public static void motorTest() {
-    DriveTrain.motorLeft1.set(ControlMode.PercentOutput, 0.5);
+    //DriveTrain.motorLeft1.set(ControlMode.PercentOutput, 0.5);
     Timer.delay(2);
-    DriveTrain.motorLeft1.set(ControlMode.PercentOutput, 0);
+    //DriveTrain.motorLeft1.set(ControlMode.PercentOutput, 0);
     DriveTrain.motorLeft2.set(ControlMode.PercentOutput, 0.5);
     Timer.delay(2);
     DriveTrain.motorLeft2.set(ControlMode.PercentOutput, 0);
@@ -229,9 +229,9 @@ public class autoCmdManual extends CommandBase {
     DriveTrain.motorRight15.set(ControlMode.PercentOutput, 0.5);
     Timer.delay(2);
     DriveTrain.motorRight15.set(ControlMode.PercentOutput, 0);
-    DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0.5);
+    //DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0.5);
     Timer.delay(2);
-    DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0);
+    //DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0);
   }
 
   public static void Shoot(final double speed, int shots){
