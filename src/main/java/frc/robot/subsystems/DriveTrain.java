@@ -70,7 +70,7 @@ public class DriveTrain extends SubsystemBase {
 public void brakeLeftMotors(final double speed) {
     //motorLeft1.set(ControlMode.PercentOutput, -speed);
     motorLeft2.set(ControlMode.PercentOutput, speed);
-    motorLeft3.set(ControlMode.PercentOutput, 0);
+    motorLeft3.set(ControlMode.PercentOutput, -speed);
   }
 
   public void brakeRightMotors(final double speed) {

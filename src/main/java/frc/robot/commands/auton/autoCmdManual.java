@@ -235,10 +235,11 @@ public class autoCmdManual extends CommandBase {
   }
 
   public static void Shoot(final double speed, int shots){
+    boolean b =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
     Robot.shooter.setShooterMotor(speed);
     Timer.delay(2);
     while (shots > 0){
-      //Timer.delay(0.5);
+      if (b) {break;}
       Robot.intake.setVerticalIntake(1); //turn on intake
       Timer.delay(.78); //intake time
       

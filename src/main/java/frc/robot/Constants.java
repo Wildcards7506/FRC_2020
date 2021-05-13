@@ -57,7 +57,7 @@ public final class Constants {
 
 	// Control Buttons
 	public static final int PAD_X = 2;
-	public static final int PAD_y = 3;
+	public static final int PAD_Y = 3;
 	public static final int BUTTON_A = 1;
 	public static final int BUTTON_B = 2;
 	public static final int BUTTON_X = 3;
@@ -82,7 +82,7 @@ public final class Constants {
 	public static final double DRIVE_MAX_SPEED = 1;
 	public static final double TURN_MAX_SPEED = 1.3;
 	public static final double STM_SPEED = 0.5;
-	public static final double CLIMB_SPEED = 2;
+	public static final double CLIMB_SPEED = 1;
 	public static final double STOP = 0;
 
 	// Fixed Variables

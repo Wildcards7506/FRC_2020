@@ -30,13 +30,13 @@ public class IntakeCom extends CommandBase {
     int POV = Robot.m_robotContainer.getDriver2POV();
 
     switch (POV) {
-    case 180:
+    case 270:
       Robot.intake.setTriggerSpool(-Constants.SPOOL_SPEED);
       break;
-    case 0:
+    case 90:
       Robot.intake.setTriggerSpool(Constants.SPOOL_SPEED);
       break;
-    case -1:
+    default:
       Robot.intake.setTriggerSpool(Constants.STOP);
       break;
     }

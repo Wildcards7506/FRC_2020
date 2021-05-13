@@ -28,22 +28,28 @@ public class ClimbCom extends CommandBase {
   @Override
   public void execute() {
     // initializes and declares the speed for climbing
-    double leftSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick",Constants.STOP, Constants.CLIMB_SPEED);
-    double rightSpeed = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_STICK_Y, "joystick",Constants.STOP, Constants.CLIMB_SPEED);
-    boolean buttonY = Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_Y);
-    boolean buttonX = Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_X);
+    double leftJoyStick = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick");
+    double rightJoyStick = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_STICK_Y, "joystick");
+    double leftSpeed = 0;
+    double rightSpeed = 0;
+    int pov = Robot.m_robotContainer.getDriver2POV();
     // sets the speed pf climb
-
-    if(buttonY){
-      Robot.climb.setLeft(Constants.CLIMB_SPEED);
-      Robot.climb.setRight(Constants.CLIMB_SPEED);
-    }else if(buttonX){
-      Robot.climb.setLeft(-Constants.CLIMB_SPEED);
-      Robot.climb.setRight(-Constants.CLIMB_SPEED);
-    }else{
-      Robot.climb.setLeft(leftSpeed);
-      Robot.climb.setRight(rightSpeed);
+    switch(pov){
+      case 0 : 
+        leftSpeed = Constants.CLIMB_SPEED;
+        rightSpeed = Constants.CLIMB_SPEED;
+        break;
+      case 180 :
+        leftSpeed = -Constants.CLIMB_SPEED;
+        rightSpeed = -Constants.CLIMB_SPEED;
+        break;
+      default :
+        leftSpeed = -leftJoyStick;
+        rightSpeed = -rightJoyStick;
+        break;
     }
+    Robot.climb.setLeft(leftSpeed);
+    Robot.climb.setRight(rightSpeed);
   }
 
   /* Called once the command ends or is interrupted. */

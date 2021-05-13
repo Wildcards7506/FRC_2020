@@ -29,13 +29,14 @@ public class ShooterCom extends CommandBase {
   @Override
   public void execute() {
     double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
-    boolean x =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_X);
-    boolean y =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_Y);
+    boolean x =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_X);
+    boolean y =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_Y);
     boolean a =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_A);
     boolean b =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_B);
+    
     int POV = Robot.m_robotContainer.getDriver2POV();
     double speed = 0;
-    double shooterSpeed = 2;
+    double shooterSpeed = 5;
     double Kp = 0.01;
     double tx = Robot.Limelight.getTX();
     double headingError;
@@ -61,10 +62,10 @@ public class ShooterCom extends CommandBase {
 
     switch (POV) {
     case 270:
-      Robot.shooter.setPneumatics(Value.kForward);
+      //Robot.shooter.setPneumatics(Value.kForward);
       break;
     case 90:
-      Robot.shooter.setPneumatics(Value.kReverse);
+      //Robot.shooter.setPneumatics(Value.kReverse);
       break;
     }
 
@@ -77,22 +78,19 @@ public class ShooterCom extends CommandBase {
   }
 
   public static void limeLightAdjust(){
+    boolean bstop =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
     double angleFrom = Robot.Limelight.getTX(); //90 deg turn is 163 deg
     while (angleFrom > 0.5 || angleFrom < -0.5){
       Robot.Limelight.updateData();
       angleFrom = Robot.Limelight.getTX();
-      Robot.driveTrain.setLeftMotors(angleFrom/50);
-      Robot.driveTrain.setRightMotors(-angleFrom/50);
-
-      if (angleFrom < 0.1 && angleFrom > -0.1){
-      Robot.driveTrain.brakeLeftMotors(0.1);
-      Robot.driveTrain.brakeRightMotors(0.1);
-      }
+      Robot.driveTrain.setLeftMotors(angleFrom/60);
+      Robot.driveTrain.setRightMotors(-angleFrom/60);
+      if (bstop){break;}
     }
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
 
-      autoCmdManual.Shoot(1.2*Robot.Limelight.getTA()/2.075,3);  // 1.2 / 2.075 = Speed / getTA
+      autoCmdManual.Shoot(1,3);  // 1.2 / 2.075 = Speed / getTA
   }
 
   /* Called once the command ends or is interrupted. */
