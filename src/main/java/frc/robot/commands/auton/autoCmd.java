@@ -28,6 +28,7 @@ public class autoCmd extends CommandBase {
   public autoCmd() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(new DriveTrain());
+
   }
 
   public static void trackFwd(double runTime)

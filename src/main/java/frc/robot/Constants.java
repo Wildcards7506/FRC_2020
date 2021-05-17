@@ -77,7 +77,7 @@ public final class Constants {
 	// Fixed MotorSpeeds
 	public static final double SHOOTER_SPEED = -1;
 	public static final double INTAKE_SPEED = 1;
-	public static final double SPOOL_SPEED = 0.2;
+	public static final double SPOOL_SPEED = 0.4;
 	public static final double INTAKE_PULSE = 2;
 	public static final double DRIVE_MAX_SPEED = 1;
 	public static final double TURN_MAX_SPEED = 1.3;

@@ -7,11 +7,11 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.commands.auton.autoCmdManual;
+import edu.wpi.first.wpilibj.Timer;
 
 public class ShooterCom extends CommandBase {
   public ShooterCom() {
@@ -36,61 +36,59 @@ public class ShooterCom extends CommandBase {
     
     int POV = Robot.m_robotContainer.getDriver2POV();
     double speed = 0;
-    double shooterSpeed = 5;
-    double Kp = 0.01;
-    double tx = Robot.Limelight.getTX();
-    double headingError;
-    double steerAdjust;
-    double min = 0.1;
-    double lOut = 0;
-    double rOut = 0;
-
+    double shooterSpeed = 1.5;
 
     if (a) {
       ShooterCom.limeLightAdjust();
-
     } else if(b) {
-      speed = shooterSpeed;
-    }
-    else if(x) {
-      speed = 0;
+      speed = -shooterSpeed;
+    } else if(x) {
+      speed = -.7;
+    } else if(y){
+      speed = -1;
     }
 
-
-    
     Robot.shooter.setShooterMotor(speed);
-
-    switch (POV) {
-    case 270:
-      //Robot.shooter.setPneumatics(Value.kForward);
-      break;
-    case 90:
-      //Robot.shooter.setPneumatics(Value.kReverse);
-      break;
-    }
-
-    // makes sure compressor maintains pressure
-    //if (Robot.shooter.compressor.getPressureSwitchValue()) {
-      //Robot.shooter.compressor.start();
-    //} else {
-      //Robot.shooter.compressor.stop();
-    //}
   }
 
   public static void limeLightAdjust(){
-    boolean bstop =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
+    
+    boolean bstop = Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
     double angleFrom = Robot.Limelight.getTX(); //90 deg turn is 163 deg
-    while (angleFrom > 0.5 || angleFrom < -0.5){
+    double lastAngle = 0;
+    double errorSum = 0;
+    double lastTimestamp = 0;
+    double dt;
+    double kP = 0.03;
+    double kI = 0.007;
+    double kD = 0.45;
+    double output;
+    double errorRate;
+
+    while (angleFrom > 2 || angleFrom < -2){
+      bstop = Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
       Robot.Limelight.updateData();
+
+      lastAngle = angleFrom;
       angleFrom = Robot.Limelight.getTX();
-      Robot.driveTrain.setLeftMotors(angleFrom/60);
-      Robot.driveTrain.setRightMotors(-angleFrom/60);
+      lastTimestamp = Timer.getFPGATimestamp();
+      dt = Timer.getFPGATimestamp() - lastTimestamp;
+
+      if (Math.abs(angleFrom) < 2) {
+        errorSum += angleFrom * dt;
+      }
+      errorRate = (Math.abs(angleFrom) - Math.abs(lastAngle)) / dt;
+
+      output = kP*angleFrom + kI*errorSum + kD*errorRate;
+      
+      Robot.driveTrain.setLeftMotors(output);
+      Robot.driveTrain.setRightMotors(-output);
+
       if (bstop){break;}
     }
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
-
-      autoCmdManual.Shoot(1,3);  // 1.2 / 2.075 = Speed / getTA
+      if (!bstop){autoCmdManual.Shoot(1.1 ,3);}
   }
 
   /* Called once the command ends or is interrupted. */
@@ -98,8 +96,6 @@ public class ShooterCom extends CommandBase {
   public void end(boolean interrupted) {
     // stops motor
     Robot.shooter.setShooterMotor(Constants.STOP);
-    //Robot.shooter.compressor.stop();
-    Robot.shooter.setPneumatics(Value.kOff);
   }
 
   // Returns true when the command should end.

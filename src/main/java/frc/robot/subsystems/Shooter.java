@@ -9,8 +9,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -18,27 +16,11 @@ import frc.robot.commands.ShooterCom;
 
 public class Shooter extends SubsystemBase {
   /* Declares and initializes motor */
-  private final VictorSPX shooterMotor8 = new VictorSPX(Constants.MOTOR_8);
-  //public final Compressor compressor = new Compressor(0);
-  //private final DoubleSolenoid pneumatics = new DoubleSolenoid(Constants.PNEUMATIC_1, Constants.PNEUMATIC_2);
+  private final VictorSPX shooterMotor2 = new VictorSPX(Constants.MOTOR_2);
 
   public void setShooterMotor(final double speed) {
-    shooterMotor8.set(ControlMode.PercentOutput, -speed * .73);
-    //shooterMotor8.set(ControlMode.PercentOutput, -speed);
+    shooterMotor2.set(ControlMode.PercentOutput, -speed * .73);
   }
-
-  public void setPneumatics(final DoubleSolenoid.Value value) {
-    //pneumatics.set(value);
-  }
-
-  /*
-   * public String getShooterMotor() { double busVoltage =
-   * shooterMotor8.getBusVoltage(); double outputPercent =
-   * shooterMotor8.getMotorOutputPercent(); double outputVoltage =
-   * shooterMotor8.getMotorOutputVoltage(); String str = "BusVoltage: " +
-   * busVoltage + "\nMotorOutputPercent: " + outputPercent +
-   * "\nMotorOutputVoltage: " + outputVoltage; return str; }
-   */
 
   @Override
   public void periodic() {

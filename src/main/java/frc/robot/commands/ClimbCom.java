@@ -37,11 +37,11 @@ public class ClimbCom extends CommandBase {
     switch(pov){
       case 0 : 
         leftSpeed = Constants.CLIMB_SPEED;
-        rightSpeed = Constants.CLIMB_SPEED;
+        rightSpeed = Constants.CLIMB_SPEED * .9;
         break;
       case 180 :
         leftSpeed = -Constants.CLIMB_SPEED;
-        rightSpeed = -Constants.CLIMB_SPEED;
+        rightSpeed = -Constants.CLIMB_SPEED * .9;
         break;
       default :
         leftSpeed = -leftJoyStick;

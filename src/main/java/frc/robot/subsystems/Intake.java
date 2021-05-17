@@ -16,26 +16,20 @@ import frc.robot.commands.IntakeCom;
 
 public class Intake extends SubsystemBase {
   /* Declares and initializes motor */
+  private final VictorSPX intakeMotor12 = new VictorSPX(Constants.MOTOR_12);
+  private final VictorSPX intakeMotor13 = new VictorSPX(Constants.MOTOR_13);
   private final VictorSPX intakeMotor5 = new VictorSPX(Constants.MOTOR_5);
-  private final VictorSPX intakeMotor6 = new VictorSPX(Constants.MOTOR_6);
-  private final VictorSPX intakeMotor7 = new VictorSPX(Constants.MOTOR_7);
-  private final VictorSPX intakeMotor4 = new VictorSPX(Constants.MOTOR_4);
-  /*
 
-   * This method sets the speed of the motor (returns a double ranging from -1 to
-   * 1)
-   */
   public void setVerticalIntake(final double speed) {
-    intakeMotor7.set(ControlMode.PercentOutput, -speed);
-    intakeMotor4.set(ControlMode.PercentOutput, speed);
-  }
-
-  public void setHorizontalIntake(final double speed) {
     intakeMotor5.set(ControlMode.PercentOutput, speed);
   }
 
+  public void setHorizontalIntake(final double speed) {
+    intakeMotor12.set(ControlMode.PercentOutput, speed);
+  }
+
   public void setTriggerSpool(final double speed) {
-    intakeMotor6.set(ControlMode.PercentOutput, -speed);
+    intakeMotor13.set(ControlMode.PercentOutput, -speed);
   }
 
   @Override

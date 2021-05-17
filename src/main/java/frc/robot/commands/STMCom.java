@@ -47,13 +47,13 @@ public class STMCom extends CommandBase {
   @Override
   public void execute() {
     currentColor = m_colorSensor.getColor();
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_A))
+    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_A))
       STM_Spin(Color.kGreen);
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_B))
+    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_B))
       STM_Spin(Color.kRed);
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_X))
+    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_X))
       STM_Spin(Color.kCyan);
-    if (Robot.m_robotContainer.getDriver2ButtonPressed(Constants.BUTTON_Y))
+    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_Y))
       STM_Spin(Color.kYellow);
   }
 

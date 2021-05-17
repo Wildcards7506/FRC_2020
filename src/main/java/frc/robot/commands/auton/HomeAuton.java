@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.commands.ShooterCom;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 
@@ -28,9 +29,12 @@ public class HomeAuton extends SequentialCommandGroup {
   public HomeAuton() {
     //autoCmdManual.Forward(12,false);
     // Add your commands in the super() call, e.g.
-    Barrel();
-    
-
+    Robot.intake.setTriggerSpool(-.2);
+    Timer.delay(1.2);
+    Robot.intake.setTriggerSpool(0);
+    autoCmdManual.Forward(2,false);
+    Timer.delay(2);
+    ShooterCom.limeLightAdjust();
   }
 
   public void Barrel(){

@@ -16,12 +16,10 @@ import frc.robot.commands.TankDrive;
 
 public class DriveTrain extends SubsystemBase {
   /* Declares and initializes motors */
-  //public static final VictorSPX motorLeft1 = new VictorSPX(Constants.MOTOR_1);
-  public static final VictorSPX motorLeft2 = new VictorSPX(Constants.MOTOR_2);
+  public static final VictorSPX motorLeft4 = new VictorSPX(Constants.MOTOR_4);
   public static final VictorSPX motorLeft3 = new VictorSPX(Constants.MOTOR_3);
   public static final VictorSPX motorRight14 = new VictorSPX(Constants.MOTOR_14);
   public static final VictorSPX motorRight15 = new VictorSPX(Constants.MOTOR_15);
-  //public static final VictorSPX motorRight16 = new VictorSPX(Constants.MOTOR_16);
   public final Encoder encoderL = new Encoder(1, 2, false,EncodingType.k4X);
   public final Encoder encoderR = new Encoder(5, 6, true,EncodingType.k4X);
 
@@ -52,7 +50,7 @@ public class DriveTrain extends SubsystemBase {
 
   public void setLeftMotors(final double speed) {
     //motorLeft1.set(ControlMode.PercentOutput, -speed);
-    motorLeft2.set(ControlMode.PercentOutput, -speed);
+    motorLeft4.set(ControlMode.PercentOutput, -speed);
     motorLeft3.set(ControlMode.PercentOutput, -speed);
   }
 
@@ -69,8 +67,8 @@ public class DriveTrain extends SubsystemBase {
 
 public void brakeLeftMotors(final double speed) {
     //motorLeft1.set(ControlMode.PercentOutput, -speed);
-    motorLeft2.set(ControlMode.PercentOutput, speed);
-    motorLeft3.set(ControlMode.PercentOutput, -speed);
+    motorLeft3.set(ControlMode.PercentOutput, speed);
+    motorLeft4.set(ControlMode.PercentOutput, -speed);
   }
 
   public void brakeRightMotors(final double speed) {

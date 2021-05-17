@@ -8,9 +8,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Shooter;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //import org.graalvm.compiler.core.common.alloc.Trace;
@@ -18,7 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Timer;
 
 public class autoCmdManual extends CommandBase {
-  private static Timer timer = new Timer();
   public static double encSpeedLeft;
   public static double encSpeedRight;
   private static double sensorPosition;
@@ -28,8 +24,6 @@ public class autoCmdManual extends CommandBase {
   private static double error;
   private static double errorRate;
   private static double outputSpeed;
-  private static double outputSpeedR;
-  private static double outputSpeedL;
   private static double dt;
 
   private static double encoderDiff;
@@ -213,34 +207,13 @@ public class autoCmdManual extends CommandBase {
     }
   }
 
-  public static void motorTest() {
-    //DriveTrain.motorLeft1.set(ControlMode.PercentOutput, 0.5);
-    Timer.delay(2);
-    //DriveTrain.motorLeft1.set(ControlMode.PercentOutput, 0);
-    DriveTrain.motorLeft2.set(ControlMode.PercentOutput, 0.5);
-    Timer.delay(2);
-    DriveTrain.motorLeft2.set(ControlMode.PercentOutput, 0);
-    DriveTrain.motorLeft3.set(ControlMode.PercentOutput, 0.5);
-    Timer.delay(2);
-    DriveTrain.motorLeft3.set(ControlMode.PercentOutput, 0);
-    DriveTrain.motorRight14.set(ControlMode.PercentOutput, 0.5);
-    Timer.delay(2);
-    DriveTrain.motorRight14.set(ControlMode.PercentOutput, 0);
-    DriveTrain.motorRight15.set(ControlMode.PercentOutput, 0.5);
-    Timer.delay(2);
-    DriveTrain.motorRight15.set(ControlMode.PercentOutput, 0);
-    //DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0.5);
-    Timer.delay(2);
-    //DriveTrain.motorRight16.set(ControlMode.PercentOutput, 0);
-  }
-
   public static void Shoot(final double speed, int shots){
-    boolean b =Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
-    Robot.shooter.setShooterMotor(speed);
+    boolean b = Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
+    Robot.shooter.setShooterMotor(-speed);
     Timer.delay(2);
     while (shots > 0){
       if (b) {break;}
-      Robot.intake.setVerticalIntake(1); //turn on intake
+      Robot.intake.setVerticalIntake(-1); //turn on intake
       Timer.delay(.78); //intake time
       
       Robot.intake.setVerticalIntake(0); //turn off intake

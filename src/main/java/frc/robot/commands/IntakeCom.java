@@ -27,38 +27,36 @@ public class IntakeCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    int POV = Robot.m_robotContainer.getDriver2POV();
-
-    switch (POV) {
-    case 270:
-      Robot.intake.setTriggerSpool(-Constants.SPOOL_SPEED);
-      break;
-    case 90:
-      Robot.intake.setTriggerSpool(Constants.SPOOL_SPEED);
-      break;
-    default:
-      Robot.intake.setTriggerSpool(Constants.STOP);
-      break;
-    }
+    double leftTrigger1 = Robot.m_robotContainer.getDriver1Axis(Constants.LEFT_TRIGGER, "trigger", 0,1);
+    boolean leftButton1 = Robot.m_robotContainer.getDriver1Button(Constants.LEFT_BUTTON);
 
     double RightTrigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
     double LeftTrigger = Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_TRIGGER, "trigger", 0, 1);
     
     boolean RightButton = Robot.m_robotContainer.getDriver2Button(Constants.RIGHT_BUTTON);
     boolean LeftButton = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
+
+    if (leftTrigger1 == 1) {
+      Robot.intake.setTriggerSpool(-Constants.INTAKE_SPEED*.3);
+    } else if(leftButton1){
+      Robot.intake.setTriggerSpool(Constants.INTAKE_SPEED*.3);
+    } else {
+      Robot.intake.setTriggerSpool(0);
+    }
+
     double horizontalSpeed, verticalSpeed;
-    if (RightTrigger == 1) {
-      horizontalSpeed = Constants.INTAKE_SPEED * .5;
-    } else if(RightButton){
-      horizontalSpeed = Constants.INTAKE_SPEED * -.5;
+    if (RightButton) {
+      horizontalSpeed = Constants.INTAKE_SPEED*0.5;
+    } else if(RightTrigger == 1){
+      horizontalSpeed = -Constants.INTAKE_SPEED*0.5;
     } else {
       horizontalSpeed = 0;//Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,Constants.INTAKE_SPEED);
     }
 
-    if (LeftTrigger == 1) {
-      verticalSpeed = Constants.INTAKE_SPEED;
-    } else if(LeftButton) {
+    if (LeftButton) {
       verticalSpeed = -Constants.INTAKE_SPEED;
+    } else if(LeftTrigger == 1) {
+      verticalSpeed = Constants.INTAKE_SPEED;
     } else {
       verticalSpeed = 0;//Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP, Constants.INTAKE_SPEED);
     }
