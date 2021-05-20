@@ -26,13 +26,15 @@ public class STMCom extends CommandBase {
   public void STM_Spin(Color colorGoal) {
     int rotations = 0;
     Robot.stm.setSTM_Motor(Constants.STM_SPEED);
-    if (currentColor == colorGoal)
-      rotations++;
-    Timer.delay(0.5); // prevent robot from detecting the color we are looking for immmediately after
-                      // already detecting it
-    if (rotations > 3) {
-      Robot.stm.setSTM_Motor(Constants.STOP);
-      rotations = 0;
+    while(rotations < 3) {
+      if (currentColor == colorGoal)
+        rotations++;
+      Timer.delay(0.5); // prevent robot from detecting the color we are looking for immmediately after
+                        // already detecting it
+      if (rotations > 3) {
+        Robot.stm.setSTM_Motor(Constants.STOP);
+        rotations = 0;
+      }
     }
   }
 
