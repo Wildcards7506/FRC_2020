@@ -14,12 +14,14 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.commands.ClimbCom;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Climb extends SubsystemBase {
   /* Declares and initializes motor */
-  private final VictorSPX climbMotor1 = new VictorSPX(Constants.MOTOR_1);
+  private final CANSparkMax climbMotor1 = new CANSparkMax(Constants.MOTOR_1, MotorType.kBrushless);
   //private final VictorSPX climbMotor9 = new VictorSPX(Constants.MOTOR_9);
-  private final VictorSPX climbMotor16 = new VictorSPX(Constants.MOTOR_16);
+  private final CANSparkMax climbMotor16 = new CANSparkMax(Constants.MOTOR_16, MotorType.kBrushless);
   //private final VictorSPX climbMotor13 = new VictorSPX(Constants.MOTOR_13);
 
   /*
@@ -27,11 +29,11 @@ public class Climb extends SubsystemBase {
    * 1)
    */
   public void setLeft(final double speed) {
-    climbMotor1.set(ControlMode.PercentOutput, speed);
+    climbMotor1.set(speed);
   }
 
   public void setRight(final double speed) {
-    climbMotor16.set(ControlMode.PercentOutput, speed);
+    climbMotor16.set(speed);
   }
 
 

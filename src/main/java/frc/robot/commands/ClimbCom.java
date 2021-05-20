@@ -8,8 +8,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.PWM;
 import frc.robot.Constants;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.Spark;
+import com.revrobotics.CANSparkMax;
 
 public class ClimbCom extends CommandBase {
   public ClimbCom() {
@@ -33,6 +36,7 @@ public class ClimbCom extends CommandBase {
     double leftSpeed = 0;
     double rightSpeed = 0;
     int pov = Robot.m_robotContainer.getDriver2POV();
+
     // sets the speed pf climb
     switch(pov){
       case 0 : 
