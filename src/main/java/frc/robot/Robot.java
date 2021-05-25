@@ -14,11 +14,10 @@ import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.STM;
+import frc.robot.subsystems.ColorWheel;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.LimeLight;
 
-import frc.robot.commands.auton.autoCmd;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import edu.wpi.cscore.CvSink;
@@ -45,7 +44,7 @@ public class Robot extends TimedRobot {
   public static Shooter shooter = new Shooter();
   public static Climb climb = new Climb();
   public static Camera camera = new Camera();
-  public static STM stm = new STM();
+  public static ColorWheel cw = new ColorWheel();
   public static LimeLight Limelight = new LimeLight();
 
   //public static autoCmd autocmd = new autoCmd();

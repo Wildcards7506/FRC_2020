@@ -37,11 +37,11 @@ public class IntakeCom extends CommandBase {
     boolean LeftButton = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
 
     if (leftTrigger1 == 1) {
-      Robot.intake.setTriggerSpool(-Constants.INTAKE_SPEED*.3);
+      Robot.intake.setIntakeLift(-Constants.INTAKE_SPEED*.3);
     } else if(leftButton1){
-      Robot.intake.setTriggerSpool(Constants.INTAKE_SPEED*.3);
+      Robot.intake.setIntakeLift(Constants.INTAKE_SPEED*.3);
     } else {
-      Robot.intake.setTriggerSpool(0);
+      Robot.intake.setIntakeLift(0);
     }
 
     double horizontalSpeed, verticalSpeed;

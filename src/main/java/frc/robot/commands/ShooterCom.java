@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.commands.auton.autoCmdManual;
+import frc.robot.commands.auton.autoCmd;
 import edu.wpi.first.wpilibj.Timer;
 
 public class ShooterCom extends CommandBase {
@@ -28,24 +28,20 @@ public class ShooterCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    double trigger = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_TRIGGER, "trigger", 0, 1);
-    boolean x =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_X);
-    boolean y =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_Y);
-    boolean a =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_A);
-    boolean b =Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_B);
-    
-    int POV = Robot.m_robotContainer.getDriver2POV();
+    boolean x = Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_X);
+    boolean y = Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_Y);
+    boolean a = Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_A);
+    boolean b = Robot.m_robotContainer.getDriver2Button(Constants.BUTTON_B);
     double speed = 0;
-    double shooterSpeed = 1.5;
 
     if (a) {
-      ShooterCom.limeLightAdjust();
-    } else if(b) {
-      speed = -shooterSpeed;
-    } else if(x) {
-      speed = -.7;
-    } else if(y){
       speed = -1;
+    } else if(b) {
+      speed = -0.7;
+    } else if(x) {
+      speed = -0.5;
+    } else if(y){
+      speed = -0.3;
     }
 
     Robot.shooter.setShooterMotor(speed);
@@ -54,18 +50,21 @@ public class ShooterCom extends CommandBase {
   public static void limeLightAdjust(){
     
     boolean bstop = Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
-    double angleFrom = Robot.Limelight.getTX(); //90 deg turn is 163 deg
+    double angleFrom = Robot.Limelight.getTX();
     double lastAngle = 0;
     double errorSum = 0;
     double lastTimestamp = 0;
     double dt;
-    double kP = 0.03;
-    double kI = 0.007;
-    double kD = 0.45;
+    double kP = 0.02;
+    double kI = 0.07;
     double output;
     double errorRate;
 
-    while (angleFrom > 2 || angleFrom < -2){
+    //Start shooter spool up
+    Robot.shooter.setShooterMotor(-1);
+
+    //While the bot is aiming >2 degrees away from target, correct
+    while (Math.abs(angleFrom) > 2){
       bstop = Robot.m_robotContainer.getDriver1Button(Constants.BUTTON_B);
       Robot.Limelight.updateData();
 
@@ -74,12 +73,11 @@ public class ShooterCom extends CommandBase {
       lastTimestamp = Timer.getFPGATimestamp();
       dt = Timer.getFPGATimestamp() - lastTimestamp;
 
-      if (Math.abs(angleFrom) < 2) {
+      if (Math.abs(angleFrom) < 5) {
         errorSum += angleFrom * dt;
       }
-      errorRate = (Math.abs(angleFrom) - Math.abs(lastAngle)) / dt;
 
-      output = kP*angleFrom + kI*errorSum + kD*errorRate;
+      output = kP*angleFrom + kI*errorSum;
       
       Robot.driveTrain.setLeftMotors(output);
       Robot.driveTrain.setRightMotors(-output);
@@ -88,7 +86,9 @@ public class ShooterCom extends CommandBase {
     }
       Robot.driveTrain.setLeftMotors(0);
       Robot.driveTrain.setRightMotors(0);
-      if (!bstop){autoCmdManual.Shoot(1.1 ,3);}
+
+      //if the autotarget has not been stopped, fire.
+      if (!bstop){autoCmd.Shoot(3);}
   }
 
   /* Called once the command ends or is interrupted. */

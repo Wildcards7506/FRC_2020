@@ -8,11 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Robot;
-import edu.wpi.first.wpilibj.Spark;
-import com.revrobotics.CANSparkMax;
 
 public class ClimbCom extends CommandBase {
   public ClimbCom() {
@@ -35,25 +33,33 @@ public class ClimbCom extends CommandBase {
     double rightJoyStick = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_STICK_Y, "joystick");
     double leftSpeed = 0;
     double rightSpeed = 0;
+    int PWM = 100;
     int pov = Robot.m_robotContainer.getDriver2POV();
 
-    // sets the speed pf climb
+    //Encoder Check
+    SmartDashboard.putNumber("Right Climb Encoder", Robot.climb.encoderRC.getPosition());
+    SmartDashboard.putNumber("Left Climb Encoder", Robot.climb.encoderLC.getPosition());
+    // sets climber direction
     switch(pov){
       case 0 : 
         leftSpeed = Constants.CLIMB_SPEED;
-        rightSpeed = Constants.CLIMB_SPEED * .9;
+        rightSpeed = Constants.CLIMB_SPEED;
+        PWM = 30;
         break;
       case 180 :
         leftSpeed = -Constants.CLIMB_SPEED;
-        rightSpeed = -Constants.CLIMB_SPEED * .9;
+        rightSpeed = -Constants.CLIMB_SPEED;
+        PWM = 10;
         break;
       default :
         leftSpeed = -leftJoyStick;
         rightSpeed = -rightJoyStick;
         break;
     }
+
     Robot.climb.setLeft(leftSpeed);
     Robot.climb.setRight(rightSpeed);
+    Robot.climb.setPWM(PWM);
   }
 
   /* Called once the command ends or is interrupted. */

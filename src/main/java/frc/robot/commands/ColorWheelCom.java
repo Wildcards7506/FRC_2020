@@ -17,22 +17,22 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 /* Class still in development */
-public class STMCom extends CommandBase {
+public class ColorWheelCom extends CommandBase {
   /* Declares and initializes the colorSensor */
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
   private Color currentColor = m_colorSensor.getColor();
 
-  public void STM_Spin(Color colorGoal) {
+  public void ColorWheelSpin(Color colorGoal) {
     int rotations = 0;
-    Robot.stm.setSTM_Motor(Constants.STM_SPEED);
+    Robot.cw.setCW_Motor(Constants.STM_SPEED);
     while(rotations < 3) {
       if (currentColor == colorGoal)
         rotations++;
       Timer.delay(0.5); // prevent robot from detecting the color we are looking for immmediately after
                         // already detecting it
       if (rotations > 3) {
-        Robot.stm.setSTM_Motor(Constants.STOP);
+        Robot.cw.setCW_Motor(Constants.STOP);
         rotations = 0;
       }
     }
@@ -42,7 +42,7 @@ public class STMCom extends CommandBase {
   @Override
   public void initialize() {
     // makes sure motor does not move when robot starts
-    Robot.stm.setSTM_Motor(Constants.STOP);
+    Robot.cw.setCW_Motor(Constants.STOP);
   }
 
   /* Called every time the scheduler runs while the command is scheduled. */
@@ -50,20 +50,20 @@ public class STMCom extends CommandBase {
   public void execute() {
     currentColor = m_colorSensor.getColor();
     if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_A))
-      STM_Spin(Color.kGreen);
+      ColorWheelSpin(Color.kGreen);
     if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_B))
-      STM_Spin(Color.kRed);
+      ColorWheelSpin(Color.kRed);
     if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_X))
-      STM_Spin(Color.kCyan);
+      ColorWheelSpin(Color.kCyan);
     if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_Y))
-      STM_Spin(Color.kYellow);
+      ColorWheelSpin(Color.kYellow);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     // stops motor
-    Robot.stm.setSTM_Motor(Constants.STOP);
+    Robot.cw.setCW_Motor(Constants.STOP);
   }
 
   // Returns true when the command should end.

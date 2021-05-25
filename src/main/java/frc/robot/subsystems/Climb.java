@@ -10,33 +10,33 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Spark;
 import frc.robot.Constants;
 import frc.robot.commands.ClimbCom;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
+import com.revrobotics.CANEncoder;
+import com.revrobotics.EncoderType;
 public class Climb extends SubsystemBase {
   /* Declares and initializes motor */
-  private final CANSparkMax climbMotor1 = new CANSparkMax(Constants.MOTOR_1, MotorType.kBrushless);
-  //private final VictorSPX climbMotor9 = new VictorSPX(Constants.MOTOR_9);
-  private final CANSparkMax climbMotor16 = new CANSparkMax(Constants.MOTOR_16, MotorType.kBrushless);
-  //private final VictorSPX climbMotor13 = new VictorSPX(Constants.MOTOR_13);
-
-  /*
-   * This method sets the speed of the motor (returns a double ranging from -1 to
-   * 1)
-   */
-  public void setLeft(final double speed) {
-    climbMotor1.set(speed);
+  private final CANSparkMax climbMotorL = new CANSparkMax(Constants.climberL, MotorType.kBrushless);
+  private final CANSparkMax climbMotorR = new CANSparkMax(Constants.climberR, MotorType.kBrushless);
+  public final CANEncoder encoderLC = climbMotorL.getEncoder(EncoderType.kHallSensor, 42);
+  public final CANEncoder encoderRC = climbMotorR.getEncoder(EncoderType.kHallSensor, 42);
+  public final Spark Arduino = new Spark(0);
+ 
+  public void setLeft(double speed) {
+    climbMotorL.set(speed);
   }
 
-  public void setRight(final double speed) {
-    climbMotor16.set(speed);
+  public void setRight(double speed) {
+    climbMotorR.set(speed);
   }
 
-
+  public void setPWM(int PWM) {
+    Arduino.setRaw(PWM);
+  }
 
   @Override
   public void periodic() { 

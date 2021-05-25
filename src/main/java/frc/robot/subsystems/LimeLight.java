@@ -6,18 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /* LimeLight specific Imports*/
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
-
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 
@@ -36,8 +32,6 @@ public class LimeLight extends SubsystemBase {
   NetworkTableEntry tv;
   double txDouble;
   NetworkTableEntry ledMode;
-
-  // private final Spark spark = new Spark(0);
 
   public void updateData() {
     // update table, then update from updated table
@@ -72,27 +66,9 @@ public class LimeLight extends SubsystemBase {
     return tv.getDouble(0.0);
   }
 
-  public double getDist() {
-    double dist = 0.0;
-    int targetHeight = 82; // Goal Height is 82 inches to the bottom of the hexagon.
-    int limelightHeight = 30; //The expected final height of the limelight is 30 inches. This may change.
-    dist = 1;
-    //(targetHeight - limelightHeight) / Math.atan(Math.toRadians(5));
-    return dist;
-  }
-
   @Override
   public void periodic() {
     updateData();
     // This method will be called once per scheduler run
-    //ledMode.setNumber(0);
-     //pwm.setRaw(255);
-     //pwm.setSpeed(50);
-    //spark.set(.5);
-
   }
-
-  //public void resetEncoder() {
-  //  encoder.reset();
-  //}
 }

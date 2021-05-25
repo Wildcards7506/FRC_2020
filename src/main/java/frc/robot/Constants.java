@@ -22,26 +22,25 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
-	// MotorController / Solenoid Assignments
-	public static final int MOTOR_1 = 1;
-	public static final int MOTOR_2 = 2;
-	public static final int MOTOR_3 = 3;
-	public static final int MOTOR_4 = 4;
-	public static final int MOTOR_5 = 5;
-	public static final int MOTOR_6 = 6;
-	public static final int MOTOR_7 = 7;
-	public static final int MOTOR_8 = 8;
-	public static final int MOTOR_9 = 9;
-	public static final int MOTOR_10 = 10;
-	public static final int MOTOR_11 = 11;
-	public static final int MOTOR_12 = 12;
-	public static final int MOTOR_13 = 13;
-	public static final int MOTOR_14 = 14;
-	public static final int MOTOR_15 = 15;
-	public static final int MOTOR_16 = 16;
-
-	public static final int PNEUMATIC_1 = 17;
-	public static final int PNEUMATIC_2 = 18;
+	// MotorController Assignments
+	//Left Side of board
+	public static final int climberL = 1;  //40 AMP FUSE
+	public static final int shooterMotor = 2; //40 AMP FUSE
+	public static final int driveL1 = 3;  //40 AMP FUSE
+	public static final int driveL2 = 4;  //40 AMP FUSE
+	public static final int vertIntakeMotor = 5;
+	public static final int OPENMOTOR_6 = 6;
+	public static final int OPENMOTOR_7 = 7;
+	public static final int OPENMOTOR_8 = 8;
+	//Right side of board
+	public static final int OPENMOTOR_9 = 9;
+	public static final int colorWheelMotor = 10;
+	public static final int OPENMOTOR_11 = 11;
+	public static final int horizIntakeMotor = 12;
+	public static final int intakeLiftMotor = 13; //40 AMP FUSE
+	public static final int driveR1 = 14;  //40 AMP FUSE
+	public static final int driveR2 = 15;  //40 AMP FUSE
+	public static final int climberR = 16;  //40 AMP FUSE
 
 	// DriverController Assignments
 	public static final int DRIVER_CONTROLLER_1 = 0;
@@ -75,10 +74,8 @@ public final class Constants {
 	public static final int[][] BLACK = new int[3][11]; // { 0, 0, 0 };
 
 	// Fixed MotorSpeeds
-	public static final double SHOOTER_SPEED = -1;
 	public static final double INTAKE_SPEED = 1;
 	public static final double SPOOL_SPEED = 0.4;
-	public static final double INTAKE_PULSE = 2;
 	public static final double DRIVE_MAX_SPEED = 1;
 	public static final double TURN_MAX_SPEED = 1.3;
 	public static final double STM_SPEED = 0.5;

@@ -45,9 +45,6 @@ public class TankDrive extends CommandBase {
     if(rightButton){
       Robot.driveTrain.setRightMotors(-rightSpeed*.3);
       Robot.driveTrain.setLeftMotors(-leftSpeed*.3);
-    }else if(leftButton){
-      //Robot.driveTrain.setRightMotors(-rightSpeed/.4);
-      //Robot.driveTrain.setLeftMotors(-leftSpeed/.4);
     }else{
       Robot.driveTrain.setRightMotors(-rightSpeed);
       Robot.driveTrain.setLeftMotors(-leftSpeed);
