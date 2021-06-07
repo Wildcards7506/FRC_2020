@@ -9,29 +9,22 @@ ed and shared by FRC teams. The code   */
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Spark;
 import frc.robot.Constants;
 import frc.robot.commands.ClimbCom;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.CANEncoder;
-import com.revrobotics.EncoderType;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 public class Climb extends SubsystemBase {
   /* Declares and initializes motor */
-  private final CANSparkMax climbMotorL = new CANSparkMax(Constants.climberL, MotorType.kBrushless);
-  private final CANSparkMax climbMotorR = new CANSparkMax(Constants.climberR, MotorType.kBrushless);
-  public final CANEncoder encoderLC = climbMotorL.getEncoder(EncoderType.kHallSensor, 42);
-  public final CANEncoder encoderRC = climbMotorR.getEncoder(EncoderType.kHallSensor, 42);
-  public final Spark Arduino = new Spark(0);
+  public static final VictorSPX climbMotorL = new VictorSPX(Constants.climberL);
+  public static final VictorSPX climbMotorR = new VictorSPX(Constants.climberR);
  
   public void setLeft(double speed) {
-    climbMotorL.set(speed);
+    climbMotorL.set(ControlMode.PercentOutput,speed);
   }
 
   public void setRight(double speed) {
-    climbMotorR.set(speed);
+    climbMotorR.set(ControlMode.PercentOutput,speed);
   }
 
   public void setPWM(int PWM) {

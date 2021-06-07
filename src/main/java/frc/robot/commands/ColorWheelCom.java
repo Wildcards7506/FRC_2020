@@ -48,15 +48,15 @@ public class ColorWheelCom extends CommandBase {
   /* Called every time the scheduler runs while the command is scheduled. */
   @Override
   public void execute() {
-    currentColor = m_colorSensor.getColor();
-    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_A))
-      ColorWheelSpin(Color.kGreen);
-    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_B))
-      ColorWheelSpin(Color.kRed);
-    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_X))
-      ColorWheelSpin(Color.kCyan);
-    if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_Y))
-      ColorWheelSpin(Color.kYellow);
+    //currentColor = m_colorSensor.getColor();
+    //if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_A))
+      //ColorWheelSpin(Color.kGreen);
+    //if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_B))
+      //ColorWheelSpin(Color.kRed);
+    //if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_X))
+      //ColorWheelSpin(Color.kCyan);
+    //if (Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_Y))
+      //ColorWheelSpin(Color.kYellow);
   }
 
   // Called once the command ends or is interrupted.

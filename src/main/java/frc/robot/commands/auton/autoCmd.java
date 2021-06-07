@@ -74,10 +74,6 @@ public class autoCmd extends CommandBase {
       Robot.driveTrain.encoderR.reset();
       while (angle-0.1 > sensorPosition){
         // get sensor position
-        SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.encoderL.getDistance());
-        SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.encoderR.getDistance());
-        SmartDashboard.putNumber("Set Point", sensorPosition);
-        SmartDashboard.putNumber("Constant", Math.PI);
         sensorPosition = Robot.driveTrain.encoderR.get() * Constants.kDriveTick2Angle;
 
         // calculations
@@ -111,10 +107,6 @@ public class autoCmd extends CommandBase {
       Robot.driveTrain.encoderR.reset();
       while (angle-0.1 > sensorPosition){
         // get sensor position
-        SmartDashboard.putNumber("Right Encoder", Robot.driveTrain.encoderL.getDistance());
-        SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.encoderR.getDistance());
-        SmartDashboard.putNumber("Set Point", sensorPosition);
-        SmartDashboard.putNumber("Constant", Math.PI);
         sensorPosition = Robot.driveTrain.encoderL.get() * Constants.kDriveTick2Angle;
         
         // calculations
