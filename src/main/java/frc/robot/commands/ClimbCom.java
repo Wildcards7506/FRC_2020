@@ -55,10 +55,11 @@ public class ClimbCom extends CommandBase {
         PWM = 0;
         break;
     }
-
+    while(buttonConfirm == 1){
     Robot.climb.setLeft(leftSpeed);
     Robot.climb.setRight(rightSpeed);
     Robot.climb.setPWM(PWM);
+    }
   }
 
   /* Called once the command ends or is interrupted. */
