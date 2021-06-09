@@ -57,8 +57,8 @@ public class ClimbCom extends CommandBase {
         break;
     }
     
-    Robot.climb.setLeft(leftSpeed * buttonMult);
-    Robot.climb.setRight(rightSpeed * buttonMult);
+    Robot.climb.setLeft(leftSpeed);
+    Robot.climb.setRight(rightSpeed);
     Robot.climb.setPWM(PWM);
     
   }
