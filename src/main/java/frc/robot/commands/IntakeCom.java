@@ -37,26 +37,26 @@ public class IntakeCom extends CommandBase {
     boolean LeftButton = Robot.m_robotContainer.getDriver2Button(Constants.LEFT_BUTTON);
 
     if (leftTrigger1 == 1) {
-      Robot.intake.setIntakeLift(-Constants.INTAKE_SPEED*.3);
+      Robot.intake.setIntakeLift(-Constants.INTAKE_SPEED*.5);
     } else if(leftButton1){
-      Robot.intake.setIntakeLift(Constants.INTAKE_SPEED*.3);
+      Robot.intake.setIntakeLift(Constants.INTAKE_SPEED*.5);
     } else {
       Robot.intake.setIntakeLift(0);
     }
 
     double horizontalSpeed, verticalSpeed;
     if (RightButton) {
-      horizontalSpeed = Constants.INTAKE_SPEED*0.5;
-    } else if(RightTrigger == 1){
       horizontalSpeed = -Constants.INTAKE_SPEED*0.5;
+    } else if(RightTrigger == 1){
+      horizontalSpeed = Constants.INTAKE_SPEED*0.5;
     } else {
       horizontalSpeed = 0;//Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP,Constants.INTAKE_SPEED);
     }
 
     if (LeftButton) {
-      verticalSpeed = -Constants.INTAKE_SPEED;
-    } else if(LeftTrigger == 1) {
       verticalSpeed = Constants.INTAKE_SPEED;
+    } else if(LeftTrigger == 1) {
+      verticalSpeed = -Constants.INTAKE_SPEED;
     } else {
       verticalSpeed = 0;//Robot.m_robotContainer.getDriver2Axis(Constants.LEFT_STICK_Y, "joystick", Constants.STOP, Constants.INTAKE_SPEED);
     }

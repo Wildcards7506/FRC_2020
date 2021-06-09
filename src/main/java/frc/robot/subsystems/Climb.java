@@ -18,7 +18,8 @@ public class Climb extends SubsystemBase {
   /* Declares and initializes motor */
   public static final VictorSPX climbMotorL = new VictorSPX(Constants.climberL);
   public static final VictorSPX climbMotorR = new VictorSPX(Constants.climberR);
- 
+  public static final Spark Arduino = new Spark(0);
+
   public void setLeft(double speed) {
     climbMotorL.set(ControlMode.PercentOutput,speed);
   }

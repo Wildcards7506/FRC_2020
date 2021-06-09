@@ -33,7 +33,7 @@ public class HomeAuton extends SequentialCommandGroup {
     Robot.intake.setIntakeLift(-.2);
     Timer.delay(1.2);
     Robot.intake.setIntakeLift(0);
-    autoCmd.Forward(2,false);
+    autoCmd.Forward(0.8,false);
     Timer.delay(2);
     ShooterCom.limeLightAdjust();
   }

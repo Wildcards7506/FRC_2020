@@ -33,7 +33,8 @@ public class ClimbCom extends CommandBase {
     double rightJoyStick = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_STICK_Y, "joystick");
     double leftSpeed = 0;
     double rightSpeed = 0;
-    //int PWM = 100;
+    double buttonConfirm = Robot.m_robotContainer.getdriver1ButtonPressed(Constants.BUTTON_B);
+    int PWM;
     int pov = Robot.m_robotContainer.getDriver2POV();
     
     // sets climber direction
@@ -41,22 +42,23 @@ public class ClimbCom extends CommandBase {
       case 0 : 
         leftSpeed = Constants.CLIMB_SPEED;
         rightSpeed = Constants.CLIMB_SPEED;
-        //PWM = 30;
+        PWM = 100;
         break;
       case 180 :
         leftSpeed = -Constants.CLIMB_SPEED;
         rightSpeed = -Constants.CLIMB_SPEED;
-        //PWM = 10;
+        PWM = 100;
         break;
       default :
         leftSpeed = -leftJoyStick;
         rightSpeed = -rightJoyStick;
+        PWM = 0;
         break;
     }
 
     Robot.climb.setLeft(leftSpeed);
     Robot.climb.setRight(rightSpeed);
-    //Robot.climb.setPWM(PWM);
+    Robot.climb.setPWM(PWM);
   }
 
   /* Called once the command ends or is interrupted. */

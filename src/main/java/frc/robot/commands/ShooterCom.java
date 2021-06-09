@@ -37,11 +37,11 @@ public class ShooterCom extends CommandBase {
     if (a) {
       speed = -1;
     } else if(b) {
-      speed = -0.7;
+      speed = -0.8;
     } else if(x) {
-      speed = -0.5;
+      speed = -0.6;
     } else if(y){
-      speed = -0.3;
+      speed = -0.5;
     }
 
     Robot.shooter.setShooterMotor(speed);
@@ -55,7 +55,7 @@ public class ShooterCom extends CommandBase {
     double errorSum = 0;
     double lastTimestamp = 0;
     double dt;
-    double kP = 0.02;
+    double kP = 0.03;
     double kI = 0.07;
     double output;
     double errorRate;
