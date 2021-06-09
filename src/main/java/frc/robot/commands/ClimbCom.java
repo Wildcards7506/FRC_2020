@@ -34,6 +34,7 @@ public class ClimbCom extends CommandBase {
     double leftSpeed = 0;
     double rightSpeed = 0;
     boolean buttonConfirm = Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_B);
+    int buttonMult = (buttonConfirm) ? 1 : 0;
     int PWM;
     int pov = Robot.m_robotContainer.getDriver2POV();
     
@@ -55,11 +56,11 @@ public class ClimbCom extends CommandBase {
         PWM = 0;
         break;
     }
-    while(buttonConfirm == true){
-    Robot.climb.setLeft(leftSpeed);
-    Robot.climb.setRight(rightSpeed);
+    
+    Robot.climb.setLeft(leftSpeed * buttonMult);
+    Robot.climb.setRight(rightSpeed * buttonMult);
     Robot.climb.setPWM(PWM);
-    }
+    
   }
 
   /* Called once the command ends or is interrupted. */
