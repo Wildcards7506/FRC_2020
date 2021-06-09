@@ -33,7 +33,7 @@ public class ClimbCom extends CommandBase {
     double rightJoyStick = Robot.m_robotContainer.getDriver2Axis(Constants.RIGHT_STICK_Y, "joystick");
     double leftSpeed = 0;
     double rightSpeed = 0;
-    double buttonConfirm = Robot.m_robotContainer.getdriver1ButtonPressed(Constants.BUTTON_B);
+    boolean buttonConfirm = Robot.m_robotContainer.getDriver1ButtonPressed(Constants.BUTTON_B);
     int PWM;
     int pov = Robot.m_robotContainer.getDriver2POV();
     
@@ -55,7 +55,7 @@ public class ClimbCom extends CommandBase {
         PWM = 0;
         break;
     }
-    while(buttonConfirm == 1){
+    while(buttonConfirm == true){
     Robot.climb.setLeft(leftSpeed);
     Robot.climb.setRight(rightSpeed);
     Robot.climb.setPWM(PWM);
